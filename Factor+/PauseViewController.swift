@@ -12,14 +12,25 @@ class PauseViewController: UIViewController {
     @IBOutlet weak var restartButton: UIButton!
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var continueButton: UIButton!
-    
+
+    var restarting: Bool = false
     var numQuestion = Int()
     var score = Int()
     var type = String()
+    var factorOne = String()
+    var factorTwo = String()
+    var question = String()
+    var multipleChoiceChoices = [String]()
+    var rightAnswerIndex = Int()
+    var currentM = Int() //current value of sliderM
+    var currentN = Int() //current value of sliderN
+    var xval = [String]()
+    var yval = [Double]()
     
     @IBAction func restartGame(sender: AnyObject) {
         score = 0
         numQuestion = 0
+        restarting = true
         continueToGame()
     }
     @IBAction func continueGame(sender: AnyObject) {
@@ -64,8 +75,6 @@ class PauseViewController: UIViewController {
         }
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -84,20 +93,58 @@ class PauseViewController: UIViewController {
         else if(segue.identifier == "Continue MCF")
         {
             let mcvc = segue.destinationViewController as! MultipleChoiceViewController
-            mcvc.ttlScore = score
+            mcvc.numCorrect = score
             mcvc.numQuestions = numQuestion
+            
+            if (restarting == false) {
+            
+                mcvc.firstFactor = factorOne
+                mcvc.secondFactor = factorTwo
+                mcvc.question = question
+                mcvc.rightAnsIndex = rightAnswerIndex
+                mcvc.fromPause = true
+            }
+            for (var i = 0; i < 4; i++){
+                mcvc.choice.insert(multipleChoiceChoices[i], atIndex: i)
+            }
         }
         else if(segue.identifier == "Continue UIF")
         {
             let uifvc = segue.destinationViewController as! UIFViewController
             uifvc.numQuestions = numQuestion
             uifvc.ttlScore = score
+            
+            if (restarting == false) {
+                
+                uifvc.firstFactor = factorOne
+                uifvc.secondFactor = factorTwo
+                uifvc.question = question
+                uifvc.currentM = currentM
+                uifvc.currentN = currentN
+                uifvc.fromPause = true
+            }
         }
         else if(segue.identifier == "Continue MCG")
         {
             let mc2vc = segue.destinationViewController as! MultipleChoice2ViewController
             mc2vc.numQuestions = numQuestion
             mc2vc.ttlScore = score
+            
+            if (restarting == false) {
+                
+                mc2vc.rightAnsIndex = rightAnswerIndex
+                mc2vc.fromPause = true
+                
+                for (var i = 0; i < 4; i++){
+                    mc2vc.choice.insert(multipleChoiceChoices[i], atIndex: i)
+                }
+                
+                for (var i = 0; i < 12; i++) {
+                    mc2vc.xValues.insert(xval[i], atIndex: i)
+                    mc2vc.yValues.insert(yval[i], atIndex: i)
+                }
+
+            }
         }
         else if(segue.identifier == "Continue UIG")
         {

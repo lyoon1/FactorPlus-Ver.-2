@@ -10,6 +10,8 @@ import UIKit
 
 class CreditsViewController: UIViewController {
 
+    @IBOutlet weak var backButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

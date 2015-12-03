@@ -7,13 +7,18 @@
 //
 
 import UIKit
+import Charts
 
 class UIGViewController: UIViewController {
     
     
+    @IBOutlet weak var graphView: LineChartView!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var progressUIG: UIProgressView!
     @IBOutlet weak var enterButton: UIButton!
+    
+    var numQuestions = Int(), ttlScore = Int()
+    
     @IBAction func changeProgress(sender: AnyObject) {
         numQuestions++
         var temp = Double(numQuestions)/10
@@ -21,17 +26,38 @@ class UIGViewController: UIViewController {
         endGame()
     }
     
+    //http://www.appcoda.com/ios-charts-api-tutorial/
+    func setChart(xval: [String], yval: [Double]) {
+        var dataEntries: [ChartDataEntry] = []
+        
+        for i in 0..<xval.count {
+            let dataEntry = ChartDataEntry(value: yval[i], xIndex: i)
+            dataEntries.append(dataEntry)
+        }
+        
+        let xvalDataSet = LineChartDataSet(yVals: dataEntries, label: "")
+        let xvalData = LineChartData(xVals: xval, dataSet: xvalDataSet)
+        graphView.data = xvalData
+        graphView.data?.setValueFont(UIFont(name:"Helvetica Neuve", size: 12))
+        graphView.setDescriptionTextPosition(x: CGFloat(10000), y: CGFloat(100000))
+        graphView.zoom(1.2, scaleY: 1, x: 110, y: 82)
+    }
+    
     
     @IBAction func pauseClicked(sender: AnyObject) {
         performSegueWithIdentifier("pauseUIG", sender: sender)
     }
     
-    var numQuestions = Int(), ttlScore = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         var temp = Double(numQuestions)/10
         progressUIG.setProgress(Float(temp), animated: false)
+        var graphPoint = GraphingPoints()
+        
+        let xval = graphPoint.getXVal()
+        let yval = graphPoint.getYVal()
+        setChart(xval, yval:yval)
         // Do any additional setup after loading the view.
     }
 

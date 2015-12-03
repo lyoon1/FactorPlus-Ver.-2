@@ -12,13 +12,21 @@ class UIFViewController: UIViewController {
     
     
     //initializing UI objects from the UIF (User Input Factor) view controller by declareing them as an outlet.
-    @IBOutlet weak var sliderS: UISlider!
-    @IBOutlet weak var sliderZ: UISlider!
+    @IBOutlet weak var sliderM: UISlider!
+    @IBOutlet weak var sliderN: UISlider!
     @IBOutlet weak var enterButton: UIButton!
     @IBOutlet weak var progressUIF: UIProgressView!
     @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var rightOrWrong: UIImageView!
+    @IBOutlet weak var nextButton: UIButton!
     
-    var ttlScore = Int(), numQuestions = Int()
+    var ttlScore = Int(), numQuestions = Int(), currentM = Int(), currentN = Int()
+    var quadraticRelation = quadratic()
+    var firstFactor: String = ""
+    var secondFactor: String = ""
+    var fromPause: Bool = false
+    var question: String = ""
     
     @IBAction func pauseClicked(sender: AnyObject) {
         performSegueWithIdentifier("pauseUIF", sender: sender)
@@ -29,60 +37,75 @@ class UIFViewController: UIViewController {
     //source to the code: https://www.youtube.com/watch?v=jJA9UCbcos0
     
     @IBAction func changeProgress(sender: AnyObject) {
+        checkAnswer()
+        nextButton.hidden = false
+        enterButton.hidden = true
+        pauseButton.hidden = true
+    }
+
+    
+    @IBAction func valChangeM(sender: AnyObject) {
+        
+        currentM = Int(sliderM.value)
+        currentN = Int(sliderN.value)
+        
+        if(currentM >= 0 && currentN >= 0){
+            label.text = "( x - \(currentM) ) ( x - \(currentN) )"
+        }
+        else if(currentM >= 0 && currentN < 0)
+        {
+            var temp = abs(currentN)
+            label.text = "( x - \(currentM) ) ( x + \(temp) )"
+        }
+        else if(currentM < 0 && currentN >= 0)
+        {
+            var temp = abs(currentM)
+            label.text = "( x + \(temp) ) ( x - \(currentN) )"
+        }
+        else
+        {
+            var temp = abs(currentM), temp2 = abs(currentN)
+            label.text = "( x + \(temp) ) ( x + \(temp2) )"
+        }
+        
+    }
+    
+    @IBAction func valChangeN(sender: AnyObject) {
+
+        var currentM = Int(sliderM.value)
+        var currentN = Int(sliderN.value)
+        
+        if(currentM >= 0 && currentN >= 0){
+            label.text = "( x - \(currentM) ) ( x - \(currentN) )"
+        }
+        else if(currentM >= 0 && currentN < 0)
+        {
+            var temp = abs(currentN)
+            label.text = "( x - \(currentM) ) ( x + \(temp) )"
+        }
+        else if(currentM < 0 && currentN >= 0)
+        {
+            var temp = abs(currentM)
+            label.text = "( x + \(temp) ) ( x - \(currentN) )"
+        }
+        else
+        {
+            var temp = abs(currentM), temp2 = abs(currentN)
+            label.text = "( x + \(temp) ) ( x + \(temp2) )"
+        }
+    
+    }
+    
+    @IBAction func nextButtonClicked(sender: AnyObject) {
         numQuestions += 1
         var temp = Double(numQuestions)/10
         progressUIF.setProgress(Float(temp), animated: true)
         endGame()
-    }
-    @IBAction func valChangeS(sender: UISlider) {
-        
-        var currentS = Int(sliderS.value)
-        var currentZ = Int(sliderZ.value)
-        
-        if(currentS >= 0 && currentZ >= 0){
-            label.text = "( x - \(currentS) ) ( x - \(currentZ) )"
-        }
-        else if(currentS >= 0 && currentZ < 0)
-        {
-            var temp = abs(currentZ)
-            label.text = "( x - \(currentS) ) ( x + \(temp) )"
-        }
-        else if(currentS < 0 && currentZ >= 0)
-        {
-            var temp = abs(currentS)
-            label.text = "( x + \(temp) ) ( x - \(currentZ) )"
-        }
-        else
-        {
-            var temp = abs(currentS), temp2 = abs(currentZ)
-            label.text = "( x + \(temp) ) ( x + \(temp2) )"
-        }
-        
-        
-    }
-    @IBAction func valChangeZ(sender: UISlider) {
-        
-        var currentS = Int(sliderS.value)
-        var currentZ = Int(sliderZ.value)
-        
-        if(currentS >= 0 && currentZ >= 0){
-            label.text = "( x - \(currentS) ) ( x - \(currentZ) )"
-        }
-        else if(currentS >= 0 && currentZ < 0)
-        {
-            var temp = abs(currentZ)
-            label.text = "( x - \(currentS) ) ( x + \(temp) )"
-        }
-        else if(currentS < 0 && currentZ >= 0)
-        {
-            var temp = abs(currentS)
-            label.text = "( x + \(temp) ) ( x - \(currentZ) )"
-        }
-        else
-        {
-            var temp = abs(currentS), temp2 = abs(currentZ)
-            label.text = "( x + \(temp) ) ( x + \(temp2) )"
-        }
+        makeQuestion()
+        nextButton.hidden = true
+        rightOrWrong.hidden = true
+        enterButton.hidden = false
+        pauseButton.hidden = false
     }
     
     override func viewDidLoad() {
@@ -90,6 +113,34 @@ class UIFViewController: UIViewController {
         print(numQuestions)
         var temp = Double(numQuestions)/10
         progressUIF.setProgress(Float(temp), animated: false)
+        
+        if (fromPause == true) {
+            questionLabel.text = question
+            sliderM.setValue(Float (currentM), animated: false)
+            sliderN.setValue(Float (currentN), animated: false)
+            
+            if(currentM >= 0 && currentN >= 0){
+                label.text = "( x - \(currentM) ) ( x - \(currentN) )"
+            }
+            else if(currentM >= 0 && currentN < 0)
+            {
+                var temp = abs(currentN)
+                label.text = "( x - \(currentM) ) ( x + \(temp) )"
+            }
+            else if(currentM < 0 && currentN >= 0)
+            {
+                var temp = abs(currentM)
+                label.text = "( x + \(temp) ) ( x - \(currentN) )"
+            }
+            else
+            {
+                var temp = abs(currentM), temp2 = abs(currentN)
+                label.text = "( x + \(temp) ) ( x + \(temp2) )"
+            }
+        }
+        else {
+            makeQuestion()
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -98,6 +149,57 @@ class UIFViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func makeQuestion(){
+        sliderM.setValue(Float (0), animated: false)
+        sliderN.setValue(Float (0), animated: false)
+        
+        label.text = "( x - m ) ( x - n )"
+
+        var temp = "s" + quadraticRelation.generateExpression() + "f"
+        
+        if var start = temp.rangeOfString("s"), end = temp.rangeOfString("x²") {
+            firstFactor = temp[start.endIndex..<end.startIndex]
+        }
+        
+        if var start = temp.rangeOfString("e"), end = temp.rangeOfString("f") {
+            secondFactor = temp[start.endIndex..<end.startIndex]
+        }
+        
+        let indexOfXSquaredChar = temp.lowercaseString.characters.indexOf(Character("x"))
+        let indexOfXSquaredInt = temp.startIndex.distanceTo(indexOfXSquaredChar!)
+        
+        let rangeOne = temp.endIndex.advancedBy((-1 * temp.characters.count))..<temp.endIndex.advancedBy((-1 * Int(temp.characters.count - indexOfXSquaredInt)))
+        
+        temp.removeRange(rangeOne)
+        
+        let indexOfLastStringChar = temp.lowercaseString.characters.indexOf(Character("e"))
+        let indexOfLastStringInt = temp.startIndex.distanceTo(indexOfLastStringChar!)
+        
+        let rangeTwo = temp.endIndex.advancedBy((-1 * Int(temp.characters.count - indexOfLastStringInt)))..<temp.endIndex
+        
+        temp.removeRange(rangeTwo)
+        
+        question = temp
+        
+        self.questionLabel.text = question
+    }
+    
+    func checkAnswer(){
+        rightOrWrong.hidden = false;
+        
+        if (Int(firstFactor) == (Int(sliderM.value)) && Int(secondFactor) == (Int(sliderN.value))) {
+            ttlScore++
+            rightOrWrong.image = UIImage(named: "Check Mark")
+        }
+        else if (Int(firstFactor) == (Int(sliderN.value)) && Int(secondFactor) == (Int(sliderM.value))) {
+            ttlScore++
+            rightOrWrong.image = UIImage(named: "Check Mark")
+        }
+        else {
+            rightOrWrong.image = UIImage(named: "X Mark")
+        }
+    }
+
     func endGame() {
         if(numQuestions == 10)
         {
@@ -112,6 +214,12 @@ class UIFViewController: UIViewController {
             pvc.score = ttlScore
             pvc.numQuestion = numQuestions
             pvc.type = "User Input Factor"
+            pvc.factorOne = firstFactor
+            pvc.factorTwo = secondFactor
+            pvc.question = question
+            pvc.currentM = Int(sliderM.value)
+            pvc.currentN = Int(sliderN.value)
+
         }
         else if(segue.identifier == "endUIF")
         {
@@ -120,8 +228,5 @@ class UIFViewController: UIViewController {
             evc.type = "User Input Factor"
         }
     }
-    
-
-   
 
 }

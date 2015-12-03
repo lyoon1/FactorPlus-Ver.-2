@@ -16,6 +16,7 @@ class MCTViewController: UIViewController {
     @IBOutlet weak var choice4Button: UIButton!
     @IBOutlet weak var progressMCT: UIProgressView!
     @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var coverUpButton: UIButton!
     
     
     @IBAction func choice1Clicked(sender: AnyObject) {
@@ -64,6 +65,7 @@ class MCTViewController: UIViewController {
         
         var temp = Double(numQuestions)/10
         progressMCT.setProgress(Float(temp), animated: false)
+        coverUpButton.hidden = true
         
         // Do any additional setup after loading the view.
     }
