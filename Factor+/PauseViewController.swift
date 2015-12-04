@@ -24,6 +24,9 @@ class PauseViewController: UIViewController {
     var rightAnswerIndex = Int()
     var currentM = Int() //current value of sliderM
     var currentN = Int() //current value of sliderN
+    var currentA = Int() //current value of sliderA
+    var currentH = Int() //current value of sliderH
+    var currentK = Int() //current value of sliderK
     var xval = [String]()
     var yval = [Double]()
     
@@ -151,6 +154,20 @@ class PauseViewController: UIViewController {
             let uigvc = segue.destinationViewController as! UIGViewController
             uigvc.numQuestions = numQuestion
             uigvc.ttlScore = score
+            
+            if (restarting == false) {
+                uigvc.numQuestions = numQuestion
+                uigvc.currentA = currentA
+                uigvc.currentH = currentH
+                uigvc.currentK = currentK
+                uigvc.fromPause = true
+                
+                for (var i = 0; i < 12; i++) {
+                    uigvc.xValues.insert(xval[i], atIndex: i)
+                    uigvc.yValues.insert(yval[i], atIndex: i)
+                }
+            }
+            
         }
         else if(segue.identifier == "Continue MCT")
         {

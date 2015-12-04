@@ -49,6 +49,7 @@ class UIFViewController: UIViewController {
         currentM = Int(sliderM.value)
         currentN = Int(sliderN.value)
         
+        /*
         if(currentM >= 0 && currentN >= 0){
             label.text = "( x - \(currentM) ) ( x - \(currentN) )"
         }
@@ -67,7 +68,36 @@ class UIFViewController: UIViewController {
             var temp = abs(currentM), temp2 = abs(currentN)
             label.text = "( x + \(temp) ) ( x + \(temp2) )"
         }
+            */
         
+        var tempCurrentM = String(currentM)
+        if (currentM < 0) {
+            tempCurrentM = "(x + \(abs(currentM)))"
+        }
+        else if (currentM > 0) {
+            tempCurrentM = "(x - \(currentM))"
+        }
+        else {
+            tempCurrentM = "x"
+        }
+        
+        var tempCurrentN = String(currentN)
+        if (currentN < 0) {
+            tempCurrentN = "(x + \(abs(currentN)))"
+        }
+        else if (currentN > 0) {
+            tempCurrentN = "(x - \(currentN))"
+        }
+        else {
+            tempCurrentN = "x"
+        }
+        
+        if (currentM == 0 && currentN == 0) {
+            label.text = "x²"
+        }
+        else {
+            label.text = ("\(tempCurrentM) \(tempCurrentN)")
+        }
     }
     
     @IBAction func valChangeN(sender: AnyObject) {
@@ -75,6 +105,7 @@ class UIFViewController: UIViewController {
         var currentM = Int(sliderM.value)
         var currentN = Int(sliderN.value)
         
+        /*
         if(currentM >= 0 && currentN >= 0){
             label.text = "( x - \(currentM) ) ( x - \(currentN) )"
         }
@@ -93,11 +124,40 @@ class UIFViewController: UIViewController {
             var temp = abs(currentM), temp2 = abs(currentN)
             label.text = "( x + \(temp) ) ( x + \(temp2) )"
         }
-    
+    */
+        var tempCurrentM = String(currentM)
+        if (currentM < 0) {
+            tempCurrentM = "(x + \(abs(currentM)))"
+        }
+        else if (currentM > 0) {
+            tempCurrentM = "(x - \(currentM))"
+        }
+        else {
+            tempCurrentM = "x"
+        }
+        
+        var tempCurrentN = String(currentN)
+        if (currentN < 0) {
+            tempCurrentN = "(x + \(abs(currentN)))"
+        }
+        else if (currentN > 0) {
+            tempCurrentN = "(x - \(currentN))"
+        }
+        else {
+            tempCurrentN = "x"
+        }
+        
+        if (currentM == 0 && currentN == 0) {
+            label.text = "x²"
+        }
+        else {
+            label.text = ("\(tempCurrentM) \(tempCurrentN)")
+        }
+
     }
     
     @IBAction func nextButtonClicked(sender: AnyObject) {
-        numQuestions += 1
+        numQuestions++
         var temp = Double(numQuestions)/10
         progressUIF.setProgress(Float(temp), animated: true)
         endGame()
@@ -110,7 +170,6 @@ class UIFViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(numQuestions)
         var temp = Double(numQuestions)/10
         progressUIF.setProgress(Float(temp), animated: false)
         
@@ -185,8 +244,6 @@ class UIFViewController: UIViewController {
     }
     
     func checkAnswer(){
-        rightOrWrong.hidden = false;
-        
         if (Int(firstFactor) == (Int(sliderM.value)) && Int(secondFactor) == (Int(sliderN.value))) {
             ttlScore++
             rightOrWrong.image = UIImage(named: "Check Mark")
@@ -198,6 +255,8 @@ class UIFViewController: UIViewController {
         else {
             rightOrWrong.image = UIImage(named: "X Mark")
         }
+        
+        rightOrWrong.hidden = false;
     }
 
     func endGame() {
