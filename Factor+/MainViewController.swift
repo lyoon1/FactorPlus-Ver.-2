@@ -8,20 +8,29 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
    
-    let imageArray = [UIImage(named:"Start"),UIImage(named:"Help"),UIImage(named:"Credits")]
+    @IBOutlet weak var mainSlider: UISlider!
+   
+    let imageArray = [UIImage(named:"Help"),UIImage(named:"Start"),UIImage(named:"Credits")]
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let thumbImage = UIImage(named: "Thumb Image for Main Menu")
+        
+        mainSlider.setThumbImage(thumbImage, forState: UIControlState.Normal)
+        mainSlider.setThumbImage(thumbImage, forState: UIControlState.Highlighted)
+        
         // Do any additional setup after loading the view.
     }
-    private struct Storyboard {
-        static let CellIdentifier = "Options Cell"
+    
+    override func viewDidLayoutSubviews() {
+        let indexPath = NSIndexPath(forItem: 1, inSection: 0)
+        collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredHorizontally, animated: false)
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -33,7 +42,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.CellIdentifier, forIndexPath: indexPath) as! OptionsCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Options Cell", forIndexPath: indexPath) as! OptionsCollectionViewCell
         
         cell.featuredImage?.image = imageArray[indexPath.item]
         
@@ -42,11 +51,11 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if(indexPath.item == 0)
         {
-            self.performSegueWithIdentifier("Start", sender: self)
+            self.performSegueWithIdentifier("Help", sender: self)
         }
         else if(indexPath.item == 1)
         {
-            self.performSegueWithIdentifier("Help", sender: self)
+            self.performSegueWithIdentifier("Start", sender: self)
         }
         else if(indexPath.item == 2)
         {
@@ -66,6 +75,27 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         {
             let cvc = segue.destinationViewController as! CreditsViewController
         }
+    }
+    
+    func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let layout = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
+        
+        let cellLengthPlusSpacing = layout.itemSize.width + layout.minimumLineSpacing
+        
+        var offset = targetContentOffset.memory
+        
+        let index = (offset.x + scrollView.contentInset.left) / cellLengthPlusSpacing
+        
+        let roundedIndex = round(index)
+        
+        offset = CGPoint(x: (roundedIndex * cellLengthPlusSpacing - scrollView.contentInset.left) - 10, y: -scrollView.contentInset.top)
+        targetContentOffset.memory = offset
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        var percentOffset = Float(scrollView.contentOffset.x)/500.0
+        
+        mainSlider.setValue(percentOffset, animated: true)
     }
 }
 

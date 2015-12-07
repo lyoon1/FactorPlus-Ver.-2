@@ -13,11 +13,24 @@
 //  This file, as with all other files, is linked to various other View Controllers (screens)
 //  such as the Pause screen or the End screen, to enable a progress in the application.
 //
+//  The MCFViewController works in a 5-step format, from the loading of the screen to the
+//  creation of the question, to assigning random answer choices to the buttons, and to 
+//  checking for the correctness of the user's choice, then finally creating a new question.
+//  
+//  Additionally, there are 2 extra steps that only occur after 10 questions are answered.
+//  The 7 steps and their respective funcs are outlined and commented below in chronological order.
+//
+//  * Work distribution
+//  Taehyun: responsible for the creation of the class and setting up the skeletons of the class
+//           such as the endGame(), viewDidLoad(), prepareForSegue(), etc.
+//  John: responsible for the Multiple Choice algorithm used in this class
+//  Leo: responsible for thoroughly commenting the class, and completing other funcs such as the
+//       resetColours() or checkForRightAnswer() as well as integrating all of the pieces together
+//
 
 import UIKit
 
 class MultipleChoiceViewController: UIViewController {
-    
     
     var numQuestions = Int()
     
@@ -43,308 +56,104 @@ class MultipleChoiceViewController: UIViewController {
     var question: String = ""           //the variable that stores the question
     var fromPause: Bool = false         //was the "continue" button pressed from the pause menu?
     
-    //run this code when the first answer is clicked
-    @IBAction func choice1Clicked(sender: AnyObject) {
-        if (checkForRightAnswer(1) == true)
-        {
-            choice1Button.backgroundColor = UIColor.greenColor()     //if correct, set the button to green
-            numCorrect++
-        }
-        else //if choice 1 is incorrect
-        {
-            choice1Button.backgroundColor = UIColor.redColor()       //if incorrect, set the button to red
-            
-            //then check every other index to see if they are correct, and highlight the correct answer in green
-            if (checkForRightAnswer(2) == true) {
-                choice2Button.backgroundColor = UIColor.greenColor()
-            }
-            
-            else if (checkForRightAnswer(3) == true) {
-                choice3Button.backgroundColor = UIColor.greenColor()
-            }
-            
-            else if (checkForRightAnswer(4) == true) {
-                choice4Button.backgroundColor = UIColor.greenColor()
-            }
-        }
-        
-        nextButton.hidden = false       //show the 'next' button
-        pauseButton.hidden = true       //hide the 'pause' button to prevent the question from resetting
-        coverUpButton.hidden = false    //show the 'coverUp' button which is to prevent other answer buttons from
-                                        //being clicked once the question is answered
-        
-        /* the following lines of codes commented out is the timer object in XCode, and may be used later for 
-           when the timed game mode getas implemented
-        
-        //http://stackoverflow.com/questions/27990085/nstimer-how-to-delay-in-swift
-        let seconds = 5.0
-        let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
-        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-        
-        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-            
-            // here code perfomed with delay (5 seconds in this case)
-            
-            self.resetColours()
-            self.changeProgress()
-            self.makeQuestion()
-            self.makeMultipleChoice()
-            self.selectionSort()
-            self.assignToButtons()
-            
-        })
-
-        */
-    }
-    @IBAction func choice2Clicked(sender: AnyObject) {
-        if (checkForRightAnswer(2) == true)
-        {
-            choice2Button.backgroundColor = UIColor.greenColor()
-            numCorrect++
-        }
-        else
-        {
-            choice2Button.backgroundColor = UIColor.redColor()
-            
-            if (checkForRightAnswer(1) == true) {
-                choice1Button.backgroundColor = UIColor.greenColor()
-            }
-                
-            else if (checkForRightAnswer(3) == true) {
-                choice3Button.backgroundColor = UIColor.greenColor()
-            }
-                
-            else if (checkForRightAnswer(4) == true) {
-                choice4Button.backgroundColor = UIColor.greenColor()
-            }
-        }
-        nextButton.hidden = false
-        pauseButton.hidden = true
-        coverUpButton.hidden = false
-    }
-    @IBAction func choice3Clicked(sender: AnyObject) {
-        if (checkForRightAnswer(3) == true)
-        {
-            choice3Button.backgroundColor = UIColor.greenColor()
-            numCorrect++
-        }
-        else
-        {
-            choice3Button.backgroundColor = UIColor.redColor()
-            
-            if (checkForRightAnswer(1) == true) {
-                choice1Button.backgroundColor = UIColor.greenColor()
-            }
-            
-            else if (checkForRightAnswer(2) == true) {
-                choice2Button.backgroundColor = UIColor.greenColor()
-            }
-            
-            else if (checkForRightAnswer(4) == true) {
-                choice4Button.backgroundColor = UIColor.greenColor()
-            }
-        }
-        nextButton.hidden = false
-        pauseButton.hidden = true
-        coverUpButton.hidden = false
-    }
-    @IBAction func choice4Clicked(sender: AnyObject) {
-        if (checkForRightAnswer(4) == true)
-        {
-            choice4Button.backgroundColor = UIColor.greenColor()
-            numCorrect++
-        }
-        else
-        {
-            choice4Button.backgroundColor = UIColor.redColor()
-            
-            if (checkForRightAnswer(1) == true) {
-                choice1Button.backgroundColor = UIColor.greenColor()
-            }
-            
-            else if (checkForRightAnswer(2) == true) {
-                choice2Button.backgroundColor = UIColor.greenColor()
-            }
-            
-            else if (checkForRightAnswer(3) == true) {
-                choice3Button.backgroundColor = UIColor.greenColor()
-            }
-        }
-        nextButton.hidden = false
-        pauseButton.hidden = true
-        coverUpButton.hidden = false
-    }
-    
-    @IBAction func nextButtonClicked(sender: AnyObject) {
-        
-        resetColours()
-        changeProgress()
-        makeQuestion()
-        makeMultipleChoice()
-        selectionSort()
-        assignToButtons()
-        pauseButton.hidden = false
-        nextButton.hidden = true
-        coverUpButton.hidden = true
-        
-    }
-    
-    func changeProgress(){
-        numQuestions++
-        var temp = Double(numQuestions)/10
-        progressMCF.setProgress(Float(temp), animated: true)
-        endGame()
-    }
-    
-    func resetColours(){
-        choice1Button.backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
-        choice2Button.backgroundColor = UIColor(red: 205/255.0, green: 86/255.0, blue: 67/255.0, alpha: 1.0)
-        choice3Button.backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
-        choice4Button.backgroundColor = UIColor(red: 205/255.0, green: 86/255.0, blue: 67/255.0, alpha: 1.0)    }
-    
-    func makeQuestion()
+    //Step 1 (but only occurs once unless pause is activated)
+    //when this screen is loaded, the following occurs:
+    override func viewDidLoad()
     {
-        var temp = "s" + quadraticRelation.generateExpression() + "f"
+        super.viewDidLoad()
+        var temp = Double(numQuestions)/10
+        progressMCF.setProgress(Float(temp), animated: false)   //the progress bar is set, anywhere from 0% to 90%
+                                                                //depending on the progress of the game at the point
+                                                                //which the screen was loaded at
+        coverUpButton.hidden = true                             //hide the disabler to begin
         
-        if var start = temp.rangeOfString("s"), end = temp.rangeOfString("x²")
-        {
-            firstFactor = temp[start.endIndex..<end.startIndex]
+        //if the screen is loaded from the Pause menu
+        if (fromPause == true) {
+            
+            questionLabel.text = question                           //set the questionLabel to the preserved question
+            choice1Button.setTitle(choice[0], forState: .Normal)    //then set each of the buttons to the corresponding
+            choice2Button.setTitle(choice[1], forState: .Normal)    //answer choices that were preserved
+            choice3Button.setTitle(choice[2], forState: .Normal)
+            choice4Button.setTitle(choice[3], forState: .Normal)
+            
+        }
+        //if the screen is NOT loaded from the Pause menu
+        //so if this is a fresh game
+        else {
+            
+            makeQuestion()       //make a new question
+            makeMultipleChoice() //make new and random multiple choice answers
+            selectionSort()      //determine the rightAnsIndex
+            assignToButtons()    //update the buttons for answer choices
+        }
+    }
+    
+    //step 2-1
+    //the question to be factored is made here
+    //this func may change in the future to accommodate for advanced factoring where a > 1
+    func makeQuestion() {
+        
+        var temp = "s" + quadraticRelation.generateExpression() + "f"   //the temp variable to store the quadratic
+                                                                        //relation and the temporary characters for
+                                                                        //string manipulation, so that the first and
+                                                                        //second factors stored within the expression
+                                                                        //can be extracted
+        
+        //set a temporary variable "start" to the value of the index of the character "s"
+        //and set a temporary variable "end" to the value of the index of the characters "x²"
+        if var start = temp.rangeOfString("s"), end = temp.rangeOfString("x²") {
+            
+            firstFactor = temp[start.endIndex..<end.startIndex] //the first factor is stored between the "s" and
+                                                                //the x² (refer to the "quadratic" class)
         }
         
-        if var start = temp.rangeOfString("e"), end = temp.rangeOfString("f")
-        {
-            secondFactor = temp[start.endIndex..<end.startIndex]
+        //same logic as above
+        if var start = temp.rangeOfString("e"), end = temp.rangeOfString("f") {
+           
+            secondFactor = temp[start.endIndex..<end.startIndex] //the second and last factor is stored between the
+                                                                 //temporary character "e" which stands for "end" and
+                                                                 //the temporary character "f" which stands for "finish"
         }
         
+        //these two lines of code calculate the distance (in Int) from index 0 to the first occurence of "x"
         let indexOfXSquaredChar = temp.lowercaseString.characters.indexOf(Character("x"))
         let indexOfXSquaredInt = temp.startIndex.distanceTo(indexOfXSquaredChar!)
         
+        //then track back the String, starting at the end
+        //the range here is the first index, to the index of "x"
         let rangeOne = temp.endIndex.advancedBy((-1 * temp.characters.count))..<temp.endIndex.advancedBy((-1 * Int(temp.characters.count - indexOfXSquaredInt)))
         
-        temp.removeRange(rangeOne)
+        temp.removeRange(rangeOne) //remove everything between the first index and "x"
+                                   //this gets rid of the firstFactor and "s" so that only the actual
+                                   //quadratic relation is visible
         
+        //same logic here, for "e" to the end
         let indexOfLastStringChar = temp.lowercaseString.characters.indexOf(Character("e"))
         let indexOfLastStringInt = temp.startIndex.distanceTo(indexOfLastStringChar!)
         
         let rangeTwo = temp.endIndex.advancedBy((-1 * Int(temp.characters.count - indexOfLastStringInt)))..<temp.endIndex
         
-        temp.removeRange(rangeTwo)
+        temp.removeRange(rangeTwo) //gets rid of "e" to "f" inclusive, thus removing the secondFactor as well
         
-        question = temp
+        question = temp //question String to be displayed; now without all of the temporary characters
         
-        self.questionLabel.text = question
+        questionLabel.text = question //set the questionLabel to display the question
     }
     
-    @IBAction func pauseClicked(sender: AnyObject)
-    {
-        performSegueWithIdentifier("pauseMCF", sender: sender)
-    }
+    //step 2-2
+    //
+    func makeMultipleChoice() {
     
-    override func viewDidLoad()
-    {
-        super.viewDidLoad()
-        var temp = Double(numQuestions)/10
-        progressMCF.setProgress(Float(temp), animated: false)
-        coverUpButton.hidden = true
-        
-        if (fromPause == true) {
-            questionLabel.text = question
-            choice1Button.setTitle(choice[0], forState: .Normal)
-            choice2Button.setTitle(choice[1], forState: .Normal)
-            choice3Button.setTitle(choice[2], forState: .Normal)
-            choice4Button.setTitle(choice[3], forState: .Normal)
-
-        }
-        else {
-            makeQuestion()
-            makeMultipleChoice()
-            selectionSort()
-            assignToButtons()
-        }
-        // Do any additional setup after loading the view.
-    }
-
-    func selectionSort()
-    {
-        var rightAns: String = choice [0]
-        choice.removeAtIndex(0)
-        
-        rightAnsIndex = 4 - Int(arc4random_uniform (4) + 1)
-        choice.insert(rightAns, atIndex: rightAnsIndex)
-    }
-    
-    func assignToButtons()
-    {
-        self.choice1Button.setTitle(choice[0], forState: .Normal)
-        self.choice2Button.setTitle(choice[1], forState: .Normal)
-        self.choice3Button.setTitle(choice[2], forState: .Normal)
-        self.choice4Button.setTitle(choice[3], forState: .Normal)
-    }
-    
-    override func didReceiveMemoryWarning()
-    {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func endGame()
-    {
-        if(numQuestions == 10)
-        {
-            performSegueWithIdentifier("endMCF", sender: self)
-        }
-    }
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!)
-    {
-        if(segue.identifier == "pauseMCF")
-        {
-            let pvc = segue.destinationViewController as! PauseViewController
-            
-            pvc.score = numCorrect
-            pvc.numQuestion = numQuestions
-            pvc.type = "Multiple Choice Factor"
-            pvc.factorOne = firstFactor
-            pvc.factorTwo = secondFactor
-            pvc.question = question
-            pvc.rightAnswerIndex = rightAnsIndex
-            
-            for (var i = 0; i <= 3; i++){
-                pvc.multipleChoiceChoices.insert(choice[i], atIndex: i)
-            }
-        }
-        else if(segue.identifier == "endMCF")
-        {
-            let evc = segue.destinationViewController as! EndViewController
-            evc.numCorrect = numCorrect
-            evc.type = "Multiple Choice Factor"
-        }
-    }
-
-    func checkForRightAnswer(buttonNumber: Int) -> Bool
-    {
-        if (rightAnsIndex == (buttonNumber - 1))
-        {
-            return true
-        }
-        else
-        {
-            return false
-        }
-    }
-    
-    func makeMultipleChoice()
-    {
         var finalAns: String = ""
         var i: Int = 0
         var a: Int = 0
         
         var finalChoice = [String]()
         
-        for ( a = 0; a <= 3; a++)
-        {
+        for ( a = 0; a <= 3; a++) {
+        
             choice.insert("", atIndex: a)
-        }
+        } //end of forloop
         
         var rAns = multipleChoice()
         var sAns = multipleChoice()
@@ -363,17 +172,13 @@ class MultipleChoiceViewController: UIViewController {
             rAns.r = Int(arc4random_uniform(9) + 1) - Int(arc4random_uniform(9) + 1)
             sAns.s = Int(arc4random_uniform(9) + 1) - Int(arc4random_uniform(9) + 1)
             
-            if(rAns.r >= 10 || rAns.r <= -10 || sAns.s >= 10 || sAns.s <= -10)
-            {
+            if(rAns.r >= 10 || rAns.r <= -10 || sAns.s >= 10 || sAns.s <= -10) {
                 
                 i--
-                
             }
-            else
-            {
+            else {
                 
-                if (choice[i] == "")
-                {
+                if (choice[i] == "") {
                     
                     choice[i] = "(x"+rAns.getRAns(rAns.r)+")(x"+sAns.getSAns(sAns.s)+")"
                     
@@ -382,12 +187,297 @@ class MultipleChoiceViewController: UIViewController {
                         choice.removeAtIndex(i)
                         choice.insert("", atIndex: i)
                         i--
-                    }
-                }
+                    } //end of 'if' statement
+                    
+                } //end of 'if' statement
                 
+            } //end of 'if else' statement
+            
+        } //end of forloop
+        
+    } //end of makeMultipleChoice func
+    
+    //step 2-3
+    //responsible for assigning the correct answer to a random index
+    func selectionSort() {
+        
+        var rightAns: String = choice [0] //the right answer is stored in the first index thanks to 
+                                          //the makeMultipleChoice() func
+        choice.removeAtIndex(0)           //remove the value for now
+        
+        rightAnsIndex = 4 - Int(arc4random_uniform (4) + 1) //pick a random index to store the correct answer in
+        choice.insert(rightAns, atIndex: rightAnsIndex)     //then insert the value in the array
+        
+    } //end of selectionSort func
+    
+    //step 2-4
+    //responsible for updating the UI for the buttons
+    func assignToButtons() {
+        
+        //set each button's text to display the answer choices saved in choice[String]
+        self.choice1Button.setTitle(choice[0], forState: .Normal)
+        self.choice2Button.setTitle(choice[1], forState: .Normal)
+        self.choice3Button.setTitle(choice[2], forState: .Normal)
+        self.choice4Button.setTitle(choice[3], forState: .Normal)
+        
+    } //end of assignToButtons func
+    
+    //step 3-1
+    //run this code when the first answer is clicked
+    @IBAction func choice1Clicked(sender: AnyObject) {
+        if (checkForRightAnswer(1) == true) {
+            
+            choice1Button.backgroundColor = UIColor.greenColor()    //if correct, set the button to green
+            numCorrect++                                            //increment number of answers correctly chosen
+        }
+        else { //if choice 1 is incorrect
+        
+            choice1Button.backgroundColor = UIColor.redColor()      //if incorrect, set the button to red
+            
+            //then check every other answer to see if they are correct, and highlight the correct answer in green
+            if (checkForRightAnswer(2) == true) {
+                choice2Button.backgroundColor = UIColor.greenColor()
             }
             
+            else if (checkForRightAnswer(3) == true) {
+                choice3Button.backgroundColor = UIColor.greenColor()
+            }
+            
+            else if (checkForRightAnswer(4) == true) {
+                choice4Button.backgroundColor = UIColor.greenColor()
+            }
+            
+        } //end of 'if else' statement
         
+        nextButton.hidden = false       //show the 'next' button
+        pauseButton.hidden = true       //hide the 'pause' button to prevent the question from resetting
+        coverUpButton.hidden = false    //show the 'coverUp' button which is to prevent other answer buttons from
+                                        //being clicked once the question is answered
+        
+        /* the following lines of codes commented out is the timer object in XCode, and may be used later for 
+           when the timed game mode getas implemented
+        
+        //http://stackoverflow.com/questions/27990085/nstimer-how-to-delay-in-swift
+        let seconds = 5.0
+        let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
+        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        
+        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+            
+            // here code perfomed with delay (5 seconds in this case)
+            
+        })
+
+        */
+        
+    } //end of choice1Clicked func
+    
+    //run this code when the second answer is clicked, same logic as 'choice1Clicked'
+    @IBAction func choice2Clicked(sender: AnyObject) {
+        if (checkForRightAnswer(2) == true) {
+         
+            choice2Button.backgroundColor = UIColor.greenColor()
+            numCorrect++
         }
-    }
-}
+        else {
+            
+            choice2Button.backgroundColor = UIColor.redColor()
+            
+            if (checkForRightAnswer(1) == true) {
+                choice1Button.backgroundColor = UIColor.greenColor()
+            }
+                
+            else if (checkForRightAnswer(3) == true) {
+                choice3Button.backgroundColor = UIColor.greenColor()
+            }
+                
+            else if (checkForRightAnswer(4) == true) {
+                choice4Button.backgroundColor = UIColor.greenColor()
+            }
+        }
+        nextButton.hidden = false
+        pauseButton.hidden = true
+        coverUpButton.hidden = false
+        
+    } //end of choice2Clicked func
+    
+    //run this code when the third answer is clicked, same logic as 'choice1Clicked'
+    @IBAction func choice3Clicked(sender: AnyObject) {
+        if (checkForRightAnswer(3) == true) {
+            
+            choice3Button.backgroundColor = UIColor.greenColor()
+            numCorrect++
+        }
+        else {
+            
+            choice3Button.backgroundColor = UIColor.redColor()
+            
+            if (checkForRightAnswer(1) == true) {
+                choice1Button.backgroundColor = UIColor.greenColor()
+            }
+            
+            else if (checkForRightAnswer(2) == true) {
+                choice2Button.backgroundColor = UIColor.greenColor()
+            }
+            
+            else if (checkForRightAnswer(4) == true) {
+                choice4Button.backgroundColor = UIColor.greenColor()
+            }
+        }
+        nextButton.hidden = false
+        pauseButton.hidden = true
+        coverUpButton.hidden = false
+        
+    } //end of choice3Clicked func
+    
+    //run this code when the fourth answer is clicked, same logic and set-up as 'choice1Clicked'
+    @IBAction func choice4Clicked(sender: AnyObject) {
+        if (checkForRightAnswer(4) == true) {
+          
+            choice4Button.backgroundColor = UIColor.greenColor()
+            numCorrect++
+        }
+        else {
+            
+            choice4Button.backgroundColor = UIColor.redColor()
+            
+            if (checkForRightAnswer(1) == true) {
+                choice1Button.backgroundColor = UIColor.greenColor()
+            }
+            
+            else if (checkForRightAnswer(2) == true) {
+                choice2Button.backgroundColor = UIColor.greenColor()
+            }
+            
+            else if (checkForRightAnswer(3) == true) {
+                choice3Button.backgroundColor = UIColor.greenColor()
+            }
+        }
+        
+        nextButton.hidden = false
+        pauseButton.hidden = true
+        coverUpButton.hidden = false
+        
+    } //end of choice4Clicked func
+    
+    //step 3-2
+    //checks for whether the user clicked the right answer or not, returns a "true" or "false" Bool
+    func checkForRightAnswer(buttonNumber: Int) -> Bool
+    {
+        //if the user chose the correct answer
+        if ((buttonNumber - 1) == rightAnsIndex) { //button numbers range from 1 ~ 4, and rightAnsIndex ranges from 0 ~ 3
+                                                   //hence the subtraction of 1
+            return true     //return true
+        }
+        //if the user's choice is incorrect
+        else {
+            
+            return false    //return false
+        } //end of 'if else' statement
+        
+    } //end of checkForRightAnswer func
+    
+    //step 4
+    //run this code when the next button is clicked
+    //in essence, these codes occur when generating the next question
+    @IBAction func nextButtonClicked(sender: AnyObject) {
+        
+        resetColours()              //resets the colour pattern of buttons to usual state
+        changeProgress()            //change the progress bar's status
+        makeQuestion()              //make a new quadratic relation and a question to be factored
+        makeMultipleChoice()        //randomly generate multiple choice answers
+        selectionSort()             //insert the correct answer to a random index
+        assignToButtons()           //change text of buttons to the random answers, including a correct one
+        pauseButton.hidden = false  //show the pause button
+        nextButton.hidden = true    //hide the next button
+        coverUpButton.hidden = true //hide the disabler
+        
+    } //end of nextButtonClicked func
+    
+    //step 5-1
+    //responsible for reverting the button's colours to default at the start of each question
+    func resetColours() {
+        
+        //alternates pink, reddish-pink, pink, reddish-pink
+        choice1Button.backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
+        choice2Button.backgroundColor = UIColor(red: 205/255.0, green: 86/255.0, blue: 67/255.0, alpha: 1.0)
+        choice3Button.backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
+        choice4Button.backgroundColor = UIColor(red: 205/255.0, green: 86/255.0, blue: 67/255.0, alpha: 1.0)
+        
+    } //end of resetColours func
+    
+    //step 5-2
+    //responsible for changing the progress bar
+    func changeProgress() {
+        
+        numQuestions++                                       //increment the number of questions answered
+        var temp = Double(numQuestions)/10                   //the temp variable to be used for the progress bar
+        progressMCF.setProgress(Float(temp), animated: true) //set the progress bar
+        
+        if (numQuestions == 10) { //if 10 questions are completed
+          
+            endGame()             //call the endGame func
+        
+        } //end of 'if' statement
+        
+    } //end of changeProgress func
+    
+    //step 6 (when 10 cycles of step (1) - 5 is complete)
+    //when 10 questions have been answered,
+    func endGame() {
+        
+        performSegueWithIdentifier("endMCF", sender: self) //proceed to the EndViewController
+        
+    } //end of endGame func
+    
+    //if the pause button is clicked
+    @IBAction func pauseClicked(sender: AnyObject) {
+        
+        performSegueWithIdentifier("pauseMCF", sender: sender)  //proceed to the PauseViewController
+        
+    } //end of pauseClicked func
+    
+    //just a default func, there should be no chance of insufficient memory
+    override func didReceiveMemoryWarning() {
+       
+        super.didReceiveMemoryWarning()
+        
+    } //end of didReceiveMemoryWarning func
+
+    //funcs that do the transition from one screen to another
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+      
+        //if the Pause button is clicked, this will load
+        if(segue.identifier == "pauseMCF") {
+            
+            let pvc = segue.destinationViewController as! PauseViewController //call the PauseViewController
+            
+            //pass on the following values to be preserved for when the game is resumed
+            pvc.score = numCorrect
+            pvc.numQuestion = numQuestions
+            pvc.type = "Multiple Choice Factor"
+            pvc.factorOne = firstFactor
+            pvc.factorTwo = secondFactor
+            pvc.question = question
+            pvc.rightAnswerIndex = rightAnsIndex
+            
+            //also pass on the values stored in choice[String], so that the multiple choice can be replicated
+            //again without creating new choices
+            for (var i = 0; i <= 3; i++) {
+                
+                pvc.multipleChoiceChoices.insert(choice[i], atIndex: i)
+            }
+        } //end of 'if' statement for PauseViewController
+            
+        //step 7
+        //if the endGame() func is called, this will load
+        else if(segue.identifier == "endMCF") {
+          
+            let evc = segue.destinationViewController as! EndViewController //call the EndViewController
+            evc.numCorrect = numCorrect
+            evc.type = "Multiple Choice Factor"
+        } //end of 'else if' statement for EndViewController
+        
+    } //end of prepareForSegue func
+    
+} //end of class

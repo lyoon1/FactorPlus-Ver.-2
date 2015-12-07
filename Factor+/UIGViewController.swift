@@ -10,9 +10,7 @@ import UIKit
 import Charts
 
 class UIGViewController: UIViewController {
-    
-    //why does next button not create new graph? fix pls
-    
+        
     @IBOutlet weak var sliderA: UISlider!
     @IBOutlet weak var sliderH: UISlider!
     @IBOutlet weak var sliderK: UISlider!
@@ -29,7 +27,6 @@ class UIGViewController: UIViewController {
     var graphPoint = [GraphingPoints]()
     var xValues = [String]()
     var yValues = [Double]()
-    
     
     func makeNewGraph() {
         
@@ -203,6 +200,10 @@ class UIGViewController: UIViewController {
         var temp = Double(numQuestions)/10
         progressUIG.setProgress(Float(temp), animated: false)
     
+        graphView.zoom(1.2, scaleY: 1, x: 120, y: 64)
+        graphView.dragEnabled = false
+        graphView.doubleTapToZoomEnabled = false
+        
         if (fromPause == true) {
             setChart(xValues, yval: yValues)
             
@@ -210,9 +211,9 @@ class UIGViewController: UIViewController {
             sliderH.setValue(Float (currentH), animated: false)
             sliderK.setValue(Float (currentK), animated: false)
             valChangeA(sliderA)
+        
         }
         else {
-            graphView.zoom(1.2, scaleY: 1, x: 110, y: 82)
             makeNewGraph()
             plotGraph()
         }
@@ -279,6 +280,8 @@ class UIGViewController: UIViewController {
                 pvc.xval.insert(xValues[i], atIndex: i)
                 pvc.yval.insert(yValues[i], atIndex: i)
             }
+            
+            pvc.graphPoint.insert(graphPoint[0], atIndex: 0)
         }
         else if(segue.identifier == "endUIG")
         {

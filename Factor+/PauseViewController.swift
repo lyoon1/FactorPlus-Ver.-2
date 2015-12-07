@@ -29,6 +29,7 @@ class PauseViewController: UIViewController {
     var currentK = Int() //current value of sliderK
     var xval = [String]()
     var yval = [Double]()
+    var graphPoint = [GraphingPoints]()
     
     @IBAction func restartGame(sender: AnyObject) {
         score = 0
@@ -166,6 +167,8 @@ class PauseViewController: UIViewController {
                     uigvc.xValues.insert(xval[i], atIndex: i)
                     uigvc.yValues.insert(yval[i], atIndex: i)
                 }
+                
+                uigvc.graphPoint.insert(graphPoint[0], atIndex: 0)
             }
             
         }

@@ -14,21 +14,21 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Factor+ Logo" translatesAutoresizingMaskIntoConstraints="NO" id="sr4-ET-hUc">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="60" y="184" width="200" height="200"/>
-                                </variation>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Is Now Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VkR-fw-fMa">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="35"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Factor+ Logo" translatesAutoresizingMaskIntoConstraints="NO" id="sr4-ET-hUc">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="60" y="184" width="200" height="200"/>
+                                </variation>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.66274509800000003" green="0.81960784310000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -46,30 +46,30 @@
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="sr4-ET-hUc"/>
                                 <exclude reference="VkR-fw-fMa"/>
+                                <exclude reference="sr4-ET-hUc"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="Dqn-QM-EqE"/>
+                                <exclude reference="XCH-Lw-VKY"/>
                                 <exclude reference="5N1-pT-hbp"/>
                                 <exclude reference="Dwu-yj-Ibj"/>
                                 <exclude reference="IKG-vC-HpE"/>
                                 <exclude reference="ao9-jd-Ylf"/>
-                                <exclude reference="Dqn-QM-EqE"/>
-                                <exclude reference="XCH-Lw-VKY"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="sr4-ET-hUc"/>
                                 <include reference="VkR-fw-fMa"/>
+                                <include reference="sr4-ET-hUc"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="Dqn-QM-EqE"/>
+                                <include reference="XCH-Lw-VKY"/>
                                 <include reference="5N1-pT-hbp"/>
                                 <include reference="Dwu-yj-Ibj"/>
                                 <include reference="IKG-vC-HpE"/>
                                 <include reference="ao9-jd-Ylf"/>
-                                <include reference="Dqn-QM-EqE"/>
-                                <include reference="XCH-Lw-VKY"/>
                             </mask>
                         </variation>
                     </view>
