@@ -2,9 +2,13 @@
 //  MultipleChoice2ViewController.swift
 //  Factor+
 //
-//  Created by Taehyun Lee on 2015-11-03.
+//  Created by John Ma on 2015-11-03.
 //  Copyright © 2015 LYM. All rights reserved.
 //
+//Credits to:
+//Taehyun Lee: For integration into the UI and separating the algorithmn into functions
+//Leo Yoon: For integration of the buttons around the algorithm and implementing the pause function
+//John Ma: For creating the base algorithm that generates multiple choice answers and returns the correct index
 
 import UIKit
 import Charts
