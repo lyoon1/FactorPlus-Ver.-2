@@ -89,12 +89,12 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         let roundedIndex = round(index)
         
-        offset = CGPoint(x: (roundedIndex * cellLengthPlusSpacing - scrollView.contentInset.left) - 10, y: -scrollView.contentInset.top)
+        offset = CGPoint(x: (roundedIndex * cellLengthPlusSpacing - scrollView.contentInset.left), y: -scrollView.contentInset.top)
         targetContentOffset.memory = offset
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        var percentOffset = Float(scrollView.contentOffset.x)/500.0
+        var percentOffset = Float(scrollView.contentOffset.x)/520.0
         
         mainSlider.setValue(percentOffset, animated: true)
     }
