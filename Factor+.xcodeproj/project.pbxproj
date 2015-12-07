@@ -115,9 +115,9 @@
 		77364D351C15ED320078D164 /* HelpCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpCollectionViewCell.swift; sourceTree = "<group>"; };
 		775DF07D1BECF55C0060FE50 /* Quadratic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quadratic.swift; sourceTree = "<group>"; };
 		775DF07F1BECF5DF0060FE50 /* Trigonometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trigonometry.swift; sourceTree = "<group>"; };
-		7773B2DA1C0C8B45001CDA64 /* GraphingPoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphingPoints.swift; path = ../../../Downloads/vertexnstuff/GraphingPoints.swift; sourceTree = "<group>"; };
-		7773B2DE1C0C8B58001CDA64 /* MultipleCGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MultipleCGraph.swift; path = ../../../Downloads/vertexnstuff/MultipleCGraph.swift; sourceTree = "<group>"; };
-		7773B2E01C0C8B62001CDA64 /* mutipleCGraphComp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = mutipleCGraphComp.swift; path = ../../../Downloads/vertexnstuff/mutipleCGraphComp.swift; sourceTree = "<group>"; };
+		7773B2DA1C0C8B45001CDA64 /* GraphingPoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphingPoints.swift; sourceTree = "<group>"; };
+		7773B2DE1C0C8B58001CDA64 /* MultipleCGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleCGraph.swift; sourceTree = "<group>"; };
+		7773B2E01C0C8B62001CDA64 /* mutipleCGraphComp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mutipleCGraphComp.swift; sourceTree = "<group>"; };
 		7789D8A11BDA76AA00A0619F /* Factor+.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Factor+.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7789D8A41BDA76AA00A0619F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7789D8A91BDA76AA00A0619F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
