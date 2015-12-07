@@ -24,6 +24,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         mainSlider.setThumbImage(thumbImage, forState: UIControlState.Normal)
         mainSlider.setThumbImage(thumbImage, forState: UIControlState.Highlighted)
+        mainSlider.userInteractionEnabled = false
         
         // Do any additional setup after loading the view.
     }

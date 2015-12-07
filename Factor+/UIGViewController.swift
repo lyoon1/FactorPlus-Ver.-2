@@ -50,6 +50,12 @@ class UIGViewController: UIViewController {
         if (currentA == 0) {
             tempCurrentA = "a"
         }
+        else if (currentA == 1) {
+            tempCurrentA = ""
+        }
+        else if (currentA == -1) {
+            tempCurrentA = "-"
+        }
         
         var tempCurrentH = String()
         
@@ -77,6 +83,10 @@ class UIGViewController: UIViewController {
         
         answerLabel.text = ("\(tempCurrentA)(x\(tempCurrentH))²\(tempCurrentK)")
         
+        if (fromPause == true && currentA == 0 && currentH == 0 && currentK == 0) {
+            
+            answerLabel.text = "a(x - h)² + k"
+        }
     }
     
     @IBAction func valChangeH(sender: AnyObject) {
@@ -241,9 +251,8 @@ class UIGViewController: UIViewController {
     }
     
     func endGame() {
-        if(numQuestions == 10)
-        {
-        performSegueWithIdentifier("endUIG", sender: self)
+        if(numQuestions == 10) {
+            performSegueWithIdentifier("endUIG", sender: self)
         }
     }
     
