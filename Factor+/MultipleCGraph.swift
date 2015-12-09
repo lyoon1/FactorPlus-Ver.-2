@@ -11,6 +11,9 @@ import UIKit
 
 class MultipleCGraph{
     
+    //var checkAnyAns: Int
+    
+   // var tempAns: String
     var rightAnsIndex: Int
     var finalAns: String
     
@@ -24,11 +27,10 @@ class MultipleCGraph{
     init(){
         finalAns = ""
         
-        
-        
         for i in 0 ... 3 {
             choice.insert("", atIndex: i)
         }
+        
         var aS = String(GraphOfPointsMC.getaVal())
         var hS = String(GraphOfPointsMC.gethVal())
         var kS = String(GraphOfPointsMC.getkVal())
@@ -45,9 +47,43 @@ class MultipleCGraph{
         
         for ( var i: Int = 1; i <= 3; i++)
         {
+        
             aAns.a = Int(arc4random_uniform(5) + 1) - Int(arc4random_uniform(10) + 1)
             hAns.h = Int(arc4random_uniform(5) + 1) - Int(arc4random_uniform(10) + 1)
             kAns.k = Int(arc4random_uniform(5) + 1) - Int(arc4random_uniform(10) + 1)
+        
+            /*
+            
+            var randomTypeOfAns:Int = arc4random_uniform(3) + 1
+            
+            if(randomTypeOfAns == 1){
+            
+            aAns.a = Int(arc4random_uniform(5) + 1) - Int(arc4random_uniform(10) + 1)
+            hAns.h = Int(arc4random_uniform(5) + 1) - Int(arc4random_uniform(10) + 1)
+            kAns.k = Int(kS)
+            
+            }else if(randomTypeOfAns == 2){
+            
+            aAns.a = Int(arc4random_uniform(5) + 1) - Int(arc4random_uniform(10) + 1)
+            hAns.h = Int(hS)
+            kAns.k = Int(kS)
+            
+            }else if(randomTypeOfAns == 3){
+            
+            aAns.a = Int(aS)
+            hAns.h = Int(arc4random_uniform(5) + 1) - Int(arc4random_uniform(10) + 1)
+            kAns.k = Int(kS)
+            
+            }else{
+            
+            aAns.a = Int(aS)
+            hAns.h = Int(hS)
+            kAns.k = Int(arc4random_uniform(5) + 1) - Int(arc4random_uniform(10) + 1)
+            
+            }
+
+            */
+            
             //kAns.k = Int(kS)!
          /*   var checkAns = [String]()
             var checkIndex:Int
@@ -77,16 +113,30 @@ class MultipleCGraph{
                     if (choice[i] == "")
                     {
                         choice[i] = aAns.getaAns(aAns.a)+"(x"+hAns.gethAns(hAns.h)+")²"+kAns.getkAns(kAns.k)
+                       // tempAns = choice[i]
                         
                         if(choice [i] == choice [0])
                         {
                             choice.removeAtIndex(i)
                             choice.insert("", atIndex: i)
+                            //tempAns = ""
                             i--
                         }
                     }
                 }
-                
+            
+           /* for ( var checkAnyAns: Int = 0; checkAnyAns < i; checkAnyAns++){
+            
+                if (tempAns == choice[checkAnyAns]){
+                    
+                    choice.removeAtIndex(i)
+                    choice.insert("", atIndex: i)
+                    i--
+                    
+                }
+            }*/
+            
+            
             
         }
         var rightAns: String = choice[0]
