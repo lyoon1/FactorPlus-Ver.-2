@@ -31,25 +31,34 @@ class MultipleCGraph{//Start of Class
     var rightAnsIndex = Int()//variable rightAnsIndex is declared, rightAnsIndex will hold the value of index which has the
                              //right multiple choice answer in the multiple choice array
                              
-    var finalAns: String
+    var finalAns: String//Variable finalAns is declared, finalAns will contain the value of the correct multiple choice answer
     
-    var finalChoice = [String]()
-    var choice = [String]()
+    //var finalChoice = [String]()
+    var choice = [String]()// Array choice is declared, this array will hold all possible multiple choice selections as elements
+                           // in a String array
     
-    var GraphOfPointsMC = GraphingPoints()
+    var GraphOfPointsMC = GraphingPoints()//declares a GraphingPoints() object, this will help pass through values for a, h and k
     
-    var tempForFinalAns = multipleCGraphComp()
+    var tempForFinalAns = multipleCGraphComp()//declares a multipleCGraphComp() object, the multipleCGraphComp class changes 
+                                              //a, h and k values into Strings depending on whether they are negative or positive
     
     init(){
-        finalAns = ""
+    
+        finalAns = ""//finalAns is initialized
         
+        /*The for loop inserts 3 blank strings into the choice array
+        * In swift, arrays can have any number of elements
+        * The point of adding blank strings is to prevent syntax errors
+        */
         for i in 0 ... 3 {
             choice.insert("", atIndex: i)
         }
         
-        var aS = String(GraphOfPointsMC.getaVal())
-        var hS = String(GraphOfPointsMC.gethVal())
-        var kS = String(GraphOfPointsMC.getkVal())
+        /*The following variables will store strings based on the a, h and k values passed into the current class from the
+        * graphingPoints class and 
+        var aS = String(GraphOfPointsMC.getaVal())//
+        var hS = String(GraphOfPointsMC.gethVal())//
+        var kS = String(GraphOfPointsMC.getkVal())//
      
         //  finalAns = aS+"(x"+hS+")²"+kS
         
