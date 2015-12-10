@@ -20,9 +20,9 @@ class UIFViewController: UIViewController {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var rightOrWrong: UIImageView!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var pauseImage: UIImageView!
     
     var ttlScore = Int(), numQuestions = Int(), currentM = Int(), currentN = Int()
-    var quadraticRelation = quadratic()
     var firstFactor: String = ""
     var secondFactor: String = ""
     var fromPause: Bool = false
@@ -41,6 +41,7 @@ class UIFViewController: UIViewController {
         nextButton.hidden = false
         enterButton.hidden = true
         pauseButton.hidden = true
+        pauseImage.hidden = true
     }
 
     
@@ -166,6 +167,7 @@ class UIFViewController: UIViewController {
         rightOrWrong.hidden = true
         enterButton.hidden = false
         pauseButton.hidden = false
+        pauseImage.hidden = false
     }
     
     override func viewDidLoad() {
@@ -209,11 +211,20 @@ class UIFViewController: UIViewController {
     }
     
     func makeQuestion(){
+        var quadraticRelation = quadratic()
+        
         sliderM.setValue(Float (0), animated: false)
         sliderN.setValue(Float (0), animated: false)
         
         label.text = "( x - m ) ( x - n )"
 
+        question = quadraticRelation.getExpression()
+        questionLabel.text = question
+        firstFactor = String(quadraticRelation.getMValue())
+        secondFactor = String(quadraticRelation.getNValue())
+        
+        /* Code below here is the string manipulation process that used be used to isolate the factors
+        
         var temp = "s" + quadraticRelation.generateExpression() + "f"
         
         if var start = temp.rangeOfString("s"), end = temp.rangeOfString("x²") {
@@ -240,7 +251,7 @@ class UIFViewController: UIViewController {
         
         question = temp
         
-        self.questionLabel.text = question
+*/
     }
     
     func checkAnswer(){

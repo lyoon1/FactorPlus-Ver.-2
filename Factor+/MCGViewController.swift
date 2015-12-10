@@ -25,6 +25,7 @@ class MultipleChoice2ViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var coverUpButton: UIButton!
     @IBOutlet weak var graphView: LineChartView!
+    @IBOutlet weak var pauseImage: UIImageView!
     
     var rightAnsIndex = Int(), numQuestions = Int(), ttlScore = Int()
     var fromPause: Bool = false
@@ -62,6 +63,8 @@ class MultipleChoice2ViewController: UIViewController {
         pauseButton.hidden = true       //hide the 'pause' button to prevent the question from resetting
         coverUpButton.hidden = false    //show the 'coverUp' button which is to prevent other answer buttons from
         //being clicked once the question is answered
+        pauseImage.hidden = true        //hide the pause image as well
+
     }
     @IBAction func choice2Clicked(sender: AnyObject) {
         if (checkForRightAnswer(2) == true)
@@ -89,6 +92,7 @@ class MultipleChoice2ViewController: UIViewController {
         nextButton.hidden = false
         pauseButton.hidden = true
         coverUpButton.hidden = false
+        pauseImage.hidden = true
     }
     @IBAction func choice3Clicked(sender: AnyObject) {
         if (checkForRightAnswer(3) == true)
@@ -116,6 +120,7 @@ class MultipleChoice2ViewController: UIViewController {
         nextButton.hidden = false
         pauseButton.hidden = true
         coverUpButton.hidden = false
+        pauseImage.hidden = true
     }
     @IBAction func choice4Clicked(sender: AnyObject) {
         if (checkForRightAnswer(4) == true)
@@ -143,6 +148,7 @@ class MultipleChoice2ViewController: UIViewController {
         nextButton.hidden = false
         pauseButton.hidden = true
         coverUpButton.hidden = false
+        pauseImage.hidden = true
     }
     @IBAction func pauseClicked(sender: AnyObject) {
         performSegueWithIdentifier("pauseMCG", sender: sender)
@@ -156,6 +162,8 @@ class MultipleChoice2ViewController: UIViewController {
         pauseButton.hidden = false
         nextButton.hidden = true
         coverUpButton.hidden = true
+        pauseImage.hidden = false
+
     }
     
     func changeProgress(){

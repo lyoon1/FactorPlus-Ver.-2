@@ -21,6 +21,7 @@ class UIGViewController: UIViewController {
     @IBOutlet weak var enterButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var rightOrWrong: UIImageView!
+    @IBOutlet weak var pauseImage: UIImageView!
     
     var numQuestions = Int(), ttlScore = Int(), currentA = Int(), currentH = Int(), currentK = Int()
     var fromPause: Bool = false
@@ -38,6 +39,7 @@ class UIGViewController: UIViewController {
         nextButton.hidden = false
         enterButton.hidden = true
         pauseButton.hidden = true
+        pauseImage.hidden = true
     }
     
     @IBAction func valChangeA(sender: AnyObject) {
@@ -199,6 +201,8 @@ class UIGViewController: UIViewController {
         rightOrWrong.hidden = true
         enterButton.hidden = false
         pauseButton.hidden = false
+        pauseImage.hidden = false
+
     }
     
     @IBAction func pauseClicked(sender: AnyObject) {

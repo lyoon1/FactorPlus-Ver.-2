@@ -23,7 +23,7 @@
 //  * Work distribution
 //  Taehyun: responsible for the creation of the class and setting up the skeletons of the class
 //           such as the endGame(), viewDidLoad(), prepareForSegue(), etc.
-//  John: responsible for the Multiple Choice algorithm used in this class
+//  John: responsible for the Multiple Choice algorithm used in this class: makeMultipleChoice()
 //  Leo: responsible for thoroughly commenting the class, and completing other funcs such as the
 //       resetColours() or checkForRightAnswer() as well as integrating all of the pieces together
 //
@@ -45,8 +45,8 @@ class MultipleChoiceViewController: UIViewController {
                                                       //clicked
     @IBOutlet weak var coverUpButton: UIButton!       //this appears when an answer is clicked, as a
                                                       //means of disabling other buttons
+    @IBOutlet weak var pauseImage: UIImageView!       //the green pause image
  
-    var quadraticRelation = quadratic() //the quadratic object, which generates a quadratic relation
     var firstFactor: String = ""        //the first factor
     var secondFactor: String = ""       //the second factor
     var choice = [String]()             //this array stores each of the randomly generated answers
@@ -92,6 +92,17 @@ class MultipleChoiceViewController: UIViewController {
     //the question to be factored is made here
     //this func may change in the future to accommodate for advanced factoring where a > 1
     func makeQuestion() {
+
+        var quadraticRelation = quadratic() //the quadratic object, which generates a quadratic relation
+
+        question = quadraticRelation.getExpression()    //use an accessor method to get the question
+        
+        questionLabel.text = question //set the questionLabel to display the question
+        
+        firstFactor = String(quadraticRelation.getMValue())     //access the first factor and second
+        secondFactor = String(quadraticRelation.getNValue())    //factor with an accessor method
+
+    /* Code below here is the string manipulation process that used be used to isolate the factors
         
         var temp = "s" + quadraticRelation.generateExpression() + "f"   //the temp variable to store the quadratic
                                                                         //relation and the temporary characters for
@@ -136,64 +147,114 @@ class MultipleChoiceViewController: UIViewController {
         temp.removeRange(rangeTwo) //gets rid of "e" to "f" inclusive, thus removing the secondFactor as well
         
         question = temp //question String to be displayed; now without all of the temporary characters
-        
-        questionLabel.text = question //set the questionLabel to display the question
+    
+    */
+
     }
     
     //step 2-2
-    //
+    //make the Multiple Choice system
     func makeMultipleChoice() {
     
-        var finalAns: String = ""
-        var i: Int = 0
+        var finalAns = ""           //stores correct answer
+        var i: Int = 0              //i and a are forloop counters
         var a: Int = 0
         
-        var finalChoice = [String]()
-        
         for ( a = 0; a <= 3; a++) {
-        
-            choice.insert("", atIndex: a)
+            choice.insert("", atIndex: a)   //fill in the array with blanks
         } //end of forloop
         
-        var rAns = multipleChoice()
-        var sAns = multipleChoice()
+        let rAns = multipleChoice() //multipleChoice objects that are used to format
+        let sAns = multipleChoice() //the text that is displayed
         
-        var rS: String = rAns.getRAns(-1 * Int(firstFactor)!)
-        var sS: String = sAns.getSAns(-1 * Int(secondFactor)!)
+        let rS: String = rAns.getRAns(-1 * Int(firstFactor)!)  //the formatted versions of the
+        let sS: String = sAns.getSAns(-1 * Int(secondFactor)!) //first and second factors to be
+                                                               //used to display
         
-        choice.removeAtIndex(0)
-        choice.insert("(x"+rS+")(x"+sS+")", atIndex: 0)
-        
+        choice.removeAtIndex(0) //remove the value at first index,
+        choice.insert("(x"+rS+")(x"+sS+")", atIndex: 0) //and then fill it with the correct one
         finalAns = choice[0]
         
-        for ( i = 1; i <= 3; i++)
+        for (i = 1; i <= 3; i++) //for 3 times - which is excluding the 0th index
         {
             
-            rAns.r = Int(arc4random_uniform(9) + 1) - Int(arc4random_uniform(9) + 1)
-            sAns.s = Int(arc4random_uniform(9) + 1) - Int(arc4random_uniform(9) + 1)
+            //the various types of answers to be displayed
+            //added after Beta Test (December 9th)
+            var randomTypeOfAns = Int(arc4random_uniform(3) + 1)
             
-            if(rAns.r >= 10 || rAns.r <= -10 || sAns.s >= 10 || sAns.s <= -10) {
+              //completely random answer
+            if(randomTypeOfAns == 1) {
                 
-                i--
+                rAns.r = Int(arc4random_uniform(19) + 1) - 10 //get random number between -9 ~ 9
+                sAns.s = Int(arc4random_uniform(19) + 1) - 10
+                
+              //both brackets will be equal in magnitude relative to the correct answer, but one of them will be different in signs
+            } else if(randomTypeOfAns == 2) {
+                
+                rAns.r = -1 * Int(firstFactor)!
+                sAns.s = Int(secondFactor)!
+                
+            } else if(randomTypeOfAns == 3) {
+                
+                //both brackets will be equal in magnitude relative to the correct answer, but different in signs
+                rAns.r = -1 * Int(firstFactor)!
+                sAns.s = -1 * Int(secondFactor)!
+                
+                //same as randomTypeOfAns == 2
+            } else {
+                
+                rAns.r = Int(firstFactor)!
+                sAns.s = -1 * Int(secondFactor)!
+                
             }
-            else {
-                
+            
+                //if the index of the array is blank (not filled yet)
                 if (choice[i] == "") {
                     
+                    //fill it with one of the randomly generated 'r' and 's' values from above
                     choice[i] = "(x"+rAns.getRAns(rAns.r)+")(x"+sAns.getSAns(sAns.s)+")"
                     
-                    if(choice [i] == choice [0])
-                    {
-                        choice.removeAtIndex(i)
-                        choice.insert("", atIndex: i)
-                        i--
-                    } //end of 'if' statement
+                    //if the second index is being filled
+                    if (i == 1) {
+                        
+                        //check to see that it doesn't equal the 0th index
+                        //this is to prevent multiple choices displaying the same answer
+                        if(choice[i] == choice[0]) {
+                            
+                            //if so remove that and blank it
+                            choice.removeAtIndex(i)
+                            choice.insert("", atIndex: i)
+                            i-- //i would equal the same thing once the forloop ends, since
+                                //i increments each time the forloop ends
+                            
+                        } //end of 'if' statement
+                    }
+                    //same logic as above
+                    else if (i == 2) {
+                        
+                        //this time check 0th and 1st index
+                        if(choice[i] == choice[0] || choice[i] == choice[1]) {
+                            
+                            choice.removeAtIndex(i)
+                            choice.insert("", atIndex: i)
+                            i--
+                        } //end of 'if' statement
+                    }
+                    //same logic as above
+                    else if (i == 3) {
+                        
+                        //check all but the 3rd index
+                        if(choice[i] == choice[0] || choice[i] == choice[1] || choice[i] == choice[2]) {
+                            
+                            choice.removeAtIndex(i)
+                            choice.insert("", atIndex: i)
+                            i--
+                        } //end of 'if' statement
+                    } //end of the duplicate check 'else if' statements
                     
-                } //end of 'if' statement
-                
-            } //end of 'if else' statement
+                } //end of the blank check 'if' statement
             
-        } //end of forloop
+        } //end of forloop that generates multiple choice
         
     } //end of makeMultipleChoice func
     
@@ -253,6 +314,8 @@ class MultipleChoiceViewController: UIViewController {
         pauseButton.hidden = true       //hide the 'pause' button to prevent the question from resetting
         coverUpButton.hidden = false    //show the 'coverUp' button which is to prevent other answer buttons from
                                         //being clicked once the question is answered
+        pauseImage.hidden = true        //hide the 'pause' image as well
+
         
         /* the following lines of codes commented out is the timer object in XCode, and may be used later for 
            when the timed game mode getas implemented
@@ -298,6 +361,7 @@ class MultipleChoiceViewController: UIViewController {
         nextButton.hidden = false
         pauseButton.hidden = true
         coverUpButton.hidden = false
+        pauseImage.hidden = true
         
     } //end of choice2Clicked func
     
@@ -327,6 +391,7 @@ class MultipleChoiceViewController: UIViewController {
         nextButton.hidden = false
         pauseButton.hidden = true
         coverUpButton.hidden = false
+        pauseImage.hidden = true
         
     } //end of choice3Clicked func
     
@@ -357,6 +422,7 @@ class MultipleChoiceViewController: UIViewController {
         nextButton.hidden = false
         pauseButton.hidden = true
         coverUpButton.hidden = false
+        pauseImage.hidden = true
         
     } //end of choice4Clicked func
     
@@ -391,6 +457,7 @@ class MultipleChoiceViewController: UIViewController {
         pauseButton.hidden = false  //show the pause button
         nextButton.hidden = true    //hide the next button
         coverUpButton.hidden = true //hide the disabler
+        pauseImage.hidden = false   //show the pause image
         
     } //end of nextButtonClicked func
     

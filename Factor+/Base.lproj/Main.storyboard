@@ -733,6 +733,7 @@
                         <outlet property="coverUpButton" destination="FQA-mC-VEG" id="mJM-dB-Q12"/>
                         <outlet property="nextButton" destination="PnZ-fi-7DW" id="Iwz-S3-j0k"/>
                         <outlet property="pauseButton" destination="XVZ-eg-Buu" id="Ql7-Mk-6lb"/>
+                        <outlet property="pauseImage" destination="BEd-wO-sWm" id="y7V-mF-hCQ"/>
                         <outlet property="progressMCF" destination="ba0-eo-WRg" id="1d9-2b-6oZ"/>
                         <outlet property="questionLabel" destination="Tg6-Zc-0DI" id="1fH-D1-2b5"/>
                         <segue destination="jqq-ri-0lq" kind="show" identifier="pauseMCF" id="xZa-W2-wiV"/>
@@ -1128,7 +1129,7 @@
                                 <rect key="frame" x="0.0" y="-2" width="150" height="2"/>
                                 <color key="tintColor" red="0.17073178089999999" green="0.35451942139999998" blue="0.55555555560000003" alpha="1" colorSpace="calibratedRGB"/>
                             </progressView>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-10" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="sHa-EX-kb0">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-9" maxValue="9" translatesAutoresizingMaskIntoConstraints="NO" id="sHa-EX-kb0">
                                 <rect key="frame" x="0.0" y="-15" width="118" height="31"/>
                                 <color key="tintColor" red="0.2772186479" green="0.1111374577" blue="0.053909945950000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
@@ -1177,7 +1178,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" red="0.2772186479" green="0.1111374577" blue="0.053909945950000003" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-10" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="zvl-OK-gfo">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-9" maxValue="9" translatesAutoresizingMaskIntoConstraints="NO" id="zvl-OK-gfo">
                                 <rect key="frame" x="0.0" y="-15" width="118" height="31"/>
                                 <color key="tintColor" red="0.2772186479" green="0.1111374577" blue="0.053909945950000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
@@ -1511,6 +1512,7 @@
                         <outlet property="label" destination="nbF-EC-l5w" id="2XV-AA-L5j"/>
                         <outlet property="nextButton" destination="3dT-E9-3Wd" id="7HK-gA-dcX"/>
                         <outlet property="pauseButton" destination="Kea-ZT-ePf" id="rNh-RU-gs1"/>
+                        <outlet property="pauseImage" destination="0Ix-Va-6bQ" id="cUh-jS-Lhk"/>
                         <outlet property="progressUIF" destination="qOn-3T-bUX" id="ofE-wb-7ks"/>
                         <outlet property="questionLabel" destination="mfo-6b-ugu" id="pKh-Gm-Qbi"/>
                         <outlet property="rightOrWrong" destination="rzd-Gs-Fbd" id="5zu-iT-Mnu"/>
@@ -3905,6 +3907,7 @@
                         <outlet property="graphView" destination="HW8-gw-1Vp" id="rvr-Ud-egc"/>
                         <outlet property="nextButton" destination="wcf-ch-kC0" id="yhG-1x-ks4"/>
                         <outlet property="pauseButton" destination="67b-BV-QVn" id="msd-TA-1kG"/>
+                        <outlet property="pauseImage" destination="FN8-xd-R7n" id="0jn-cL-SzS"/>
                         <outlet property="progressMCG" destination="gJh-cT-QIH" id="Xmd-mZ-gSd"/>
                         <segue destination="jqq-ri-0lq" kind="show" identifier="pauseMCG" id="gOF-6a-Hw9"/>
                         <segue destination="ObN-ub-0JA" kind="show" identifier="endMCG" id="yhb-hL-RnZ"/>
@@ -4298,6 +4301,7 @@
                         <outlet property="graphView" destination="m2b-Uf-YBf" id="TkU-Kv-6gq"/>
                         <outlet property="nextButton" destination="9NT-pB-kV7" id="3he-gW-biQ"/>
                         <outlet property="pauseButton" destination="gaY-Kp-6T3" id="Yv3-0U-t1d"/>
+                        <outlet property="pauseImage" destination="TDA-Fj-Pp0" id="KGn-iI-A5q"/>
                         <outlet property="progressUIG" destination="S31-Zx-P06" id="95V-jM-10X"/>
                         <outlet property="rightOrWrong" destination="gsn-Qt-cG9" id="QW0-uk-n6V"/>
                         <outlet property="sliderA" destination="CVj-Rm-BGD" id="H0I-mR-N9y"/>
@@ -4614,16 +4618,16 @@
         <image name="X Mark" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iga-Ka-6ot"/>
-        <segue reference="7Yb-lC-cUc"/>
-        <segue reference="hEq-Cf-HRD"/>
-        <segue reference="oUR-2q-YFh"/>
-        <segue reference="RRb-Wg-Lca"/>
-        <segue reference="NgK-Jf-Oue"/>
         <segue reference="ne8-2e-EJi"/>
         <segue reference="TzD-zS-1Xg"/>
         <segue reference="0v5-Nt-UQQ"/>
         <segue reference="0jl-vd-lyC"/>
         <segue reference="2Gm-Mn-mYV"/>
+        <segue reference="iga-Ka-6ot"/>
+        <segue reference="94G-sf-LDF"/>
+        <segue reference="hEq-Cf-HRD"/>
+        <segue reference="RRb-Wg-Lca"/>
+        <segue reference="NgK-Jf-Oue"/>
+        <segue reference="pYJ-84-rOX"/>
     </inferredMetricsTieBreakers>
 </document>
