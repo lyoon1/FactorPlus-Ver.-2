@@ -4,17 +4,33 @@
 //
 //  Created by Jia Long Ma on 2015-11-23.
 //  Copyright © 2015 LYM. All rights reserved.
+//  
+//  The following code is an algorithm that accepts a, h, and k values from a graphing class
+//  The a, h and k values are used to create an equation which is then termed the "right answer"
+//  Afterwards, 3 randomly generated multiple choice equations, some similar, some completely different are all placed in an
+//  array with 4 elements
+//  The "right answer" is then inserted randomly into the array at an index which is recorded as "right index"
+//  This forms the base of the graphing multiple choice game mode, where the MCG view controller takes the "multiple choice" 
+//  answer array and the index of the array which holds the correct answer to determine whether the user has pressed the
+//  corerect button
 //
+//  Credits
+//
+//  John - Responsible for algorithm MultipleCGraph and the following code
+//  Taehyun - Responsible for helping pass values into the class
+//  Leo - Responsible for linking the algorithm with multiple choice buttons 
 
 import Foundation
 import UIKit
 
-class MultipleCGraph{
+class MultipleCGraph{//Start of Class
     
     //var checkAnyAns: Int
     
-    var tempAns = String()
-    var rightAnsIndex = Int()
+    var tempAns = String()//Variable tempAns is declared, tempAns will play a major role in testing for repeated answers
+    var rightAnsIndex = Int()//variable rightAnsIndex is declared, rightAnsIndex will hold the value of index which has the
+                             //right multiple choice answer in the multiple choice array
+                             
     var finalAns: String
     
     var finalChoice = [String]()
@@ -69,7 +85,7 @@ class MultipleCGraph{
             } else if(randomTypeOfAns == 3) {
             
             aAns.a = Int(aS)!
-            hAns.h = Int(arc4random_uniform(7) + 1) - 4
+            hAns.h = Int(arc4random_uniform(7) + 1) - 4
             kAns.k = Int(kS)!
             
             } else {
@@ -81,25 +97,7 @@ class MultipleCGraph{
             }
 
             //kAns.k = Int(kS)!
-         /*   var checkAns = [String]()
-            var checkIndex:Int
-            if(i==0)
-            {
-                checkIndex = 0
-            }
-            else
-            {
-                checkIndex = i-1
-            }
 
-            
-                checkAns[i] = aAns.getaAns(aAns.a)+","+hAns.gethAns(hAns.h)+","+kAns.getkAns(kAns.k)
-                for j in 0...checkIndex{
-                    if(checkAns[i] == checkAns[j])
-                    {
-                        i--
-                    }
-*/
             if (choice[i] == "")
             {
                 choice.insert(aAns.getaAns(aAns.a)+"(x"+hAns.gethAns(hAns.h)+")²"+kAns.getkAns(kAns.k), atIndex: i)
@@ -163,7 +161,7 @@ class MultipleCGraph{
     func getChoice() -> [String] {
         return choice
     }
-    
+    
     func getGraphOfPointsMC() -> GraphingPoints {
         return GraphOfPointsMC
     }
