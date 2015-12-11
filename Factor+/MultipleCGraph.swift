@@ -106,6 +106,7 @@ class MultipleCGraph{//Start of Class
             * If randomTypeOfAns = 2, the multiple choice answer generated will definitely have the correct h value
             * If randomTypeOfAns = 3, the multiple choice answer generated will definitely have the correct a and k value
             * Otherwise, the multiple choice answer generated will definitely have the correct a and h value
+            */
             
             if(randomTypeOfAns == 1) {
             
