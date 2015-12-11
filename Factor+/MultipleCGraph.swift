@@ -56,6 +56,7 @@ class MultipleCGraph{//Start of Class
         
         /*The following variables will store integers based on the a, h and k values passed into the current class from the
         * graphingPoints class
+        */
         
         var aS = GraphOfPointsMC.getaVal()//Correct a value
         var hS = GraphOfPointsMC.gethVal()//Correct h value
@@ -67,7 +68,7 @@ class MultipleCGraph{//Start of Class
          * The tempForFinalAns varriable calls upon the function getaAns, gethAns, or getkAns in the multipleCGraphComp class to convert 
          * the values within the parameters (aS, hS, or kS) and returns them in the form of a string: ("aS"), ("+hS" or "-hS"),
          * ("+kS" or "-kS")
-        /
+         */
         finalAns = tempForFinalAns.getaAns((aS)!)+"(x"+tempForFinalAns.gethAns((hS)!)+")²"+tempForFinalAns.getkAns((kS)!)
         
         //Variables that will represent objects are declared
