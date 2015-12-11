@@ -69,7 +69,7 @@ class MultipleCGraph{//Start of Class
          * the values within the parameters (aS, hS, or kS) and returns them in the form of a string: ("aS"), ("+hS" or "-hS"),
          * ("+kS" or "-kS")
          */
-        finalAns = tempForFinalAns.getaAns((aS)!)+"(x"+tempForFinalAns.gethAns((hS)!)+")²"+tempForFinalAns.getkAns((kS)!)
+        finalAns = tempForFinalAns.getaAns(aS)+"(x"+tempForFinalAns.gethAns(hS)+")²"+tempForFinalAns.getkAns(kS)
         
         //Variables that will represent objects are declared
         var aAns = multipleCGraphComp()
@@ -112,24 +112,24 @@ class MultipleCGraph{//Start of Class
             
             aAns.a = Int(arc4random_uniform(9) + 1) - 5
             hAns.h = Int(arc4random_uniform(7) + 1) - 4
-            kAns.k = kS!
+            kAns.k = kS
             
             } else if(randomTypeOfAns == 2) {
             
             aAns.a = Int(arc4random_uniform(9) + 1) - 5
-            hAns.h = hS!
+            hAns.h = hS
             kAns.k = Int(arc4random_uniform(19) + 1) - 10
             
             } else if(randomTypeOfAns == 3) {
             
-            aAns.a = aS!
+            aAns.a = aS
             hAns.h = Int(arc4random_uniform(7) + 1) - 4
-            kAns.k = kS!
+            kAns.k = kS
             
             } else {
             
-            aAns.a = aS!
-            hAns.h = hS!
+            aAns.a = aS
+            hAns.h = hS
             kAns.k = Int(arc4random_uniform(19) + 1) - 10
             
             }

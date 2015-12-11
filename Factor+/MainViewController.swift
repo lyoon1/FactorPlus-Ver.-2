@@ -20,13 +20,13 @@ import UIKit
 
 class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate {
     
-    //initiliaztion of UICollectionView object in MainViewController from the Storyboard
+    //initialization of UICollectionView object in MainViewController from the Storyboard
     @IBOutlet weak var collectionView: UICollectionView!
    
-   //initiliaztion of UISlider object in MainViewController from the Storyboard
+   //initialization of UISlider object in MainViewController from the Storyboard
     @IBOutlet weak var mainSlider: UISlider!
    
-   //declaration and initiliazation of the array of images that will be displayed in the collectionView  object
+   //declaration and initialization of the array of images that will be displayed in the collectionView  object
     let imageArray = [UIImage(named:"Help"),UIImage(named:"Start"),UIImage(named:"Credits")]
     
     //Function that runs when the view of MainViewController loads
