@@ -12,9 +12,27 @@
 //  The "right answer" is then inserted randomly into the array at an index which is recorded as "right index"
 //  This forms the base of the graphing multiple choice game mode, where the MCG view controller takes the "multiple choice" 
 //  answer array and the index of the array which holds the correct answer to determine whether the user has pressed the
-//  corerect button
+//  correct button
 //
-//  Credits
+//  CODE ANAYLSIS (Read after understanding the way it functions)
+//
+//  This algorithm has proven to be quite efficient in terms of run time as there is barely any delay between the questions in the
+//  graphing multiple choice gamemode
+//  It is a relatively simple algorithm that takes 5 big steps (highlighted above) with a maximum of 3 increments in the longest for
+//  loop
+//  
+//  Areas of inefficiency include: 
+//
+//  The Checking portion: Could be removed because the multiple choice answers can probably be generated in a way that won't produce
+//  repeating answers
+//  
+//  The randomTypeOfAns portion: Doesn't generate consistent multiple choice answers. Most of the time, the answers are reasonably
+//  difficult, but sometimes, the right answer may be too obvious.
+//
+//  The random number generators that create values for a, h and k for the multiple choice answers: Sometimes they may generate the
+//  correct a, h and k values that are present in finalAns. This will be an issue when implementing an adaptive difficulty setting
+//
+//  CREDITS
 //
 //  John - Responsible for algorithm MultipleCGraph and the following code
 //  Taehyun - Responsible for helping pass values into the class
