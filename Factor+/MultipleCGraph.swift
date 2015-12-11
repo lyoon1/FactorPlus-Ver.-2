@@ -38,7 +38,7 @@ class MultipleCGraph{//Start of Class
                            // in a String array
     
     var GraphOfPointsMC = GraphingPoints()//declares a GraphingPoints() object, this will help pass through values for a, h and k
-    
+    
     var tempForFinalAns = multipleCGraphComp()//declares a multipleCGraphComp() object, the multipleCGraphComp class changes 
                                               //a, h and k values into Strings depending on whether they are negative or positive
     
@@ -167,9 +167,6 @@ class MultipleCGraph{//Start of Class
                 
                 tempAns = choice[i]//The multiple choice answer is then placed in the temporary variable tempAns
                                    //This variable will be compared to prevent repeated answers from occurring
-                
-                                   
-                //if (i == 1) {
                     
                     //First, the current multiple choice answer is compared to the correct multiple choice answer (finalAns) to see if
                     //they are equal
@@ -182,29 +179,8 @@ class MultipleCGraph{//Start of Class
                         choice.insert("", atIndex: i)
                         tempAns = ""
                         i--
-                    }
-                //}
-                
-                /*else if (i == 2) {
-                    
-                    if(choice[i] == finalAns || choice[i] == choice[1])
-                    {
-                        choice.removeAtIndex(i)
-                        choice.insert("", atIndex: i)
-                        tempAns = ""
-                        i--
-                    }
-                }
-                else if (i == 3) {
-                    
-                    if(choice[i] == finalAns || choice[i] == choice[1] || choice[i] == choice[2])
-                    {
-                        choice.removeAtIndex(i)
-                        choice.insert("", atIndex: i)
-                        tempAns = ""
-                        i--
-                    }
-                }*/
+                   }
+
             }
             
             /* If the multiple choice answer is completely different from the correct answer, it is compared to the rest of the
