@@ -54,19 +54,37 @@ class MultipleCGraph{//Start of Class
             choice.insert("", atIndex: i)
         }
         
-        /*The following variables will store strings based on the a, h and k values passed into the current class from the
-        * graphingPoints class and 
-        var aS = String(GraphOfPointsMC.getaVal())//
-        var hS = String(GraphOfPointsMC.gethVal())//
-        var kS = String(GraphOfPointsMC.getkVal())//
+        /*The following variables will store integers based on the a, h and k values passed into the current class from the
+        * graphingPoints class
+        
+        var aS = GraphOfPointsMC.getaVal()//Correct a value
+        var hS = GraphOfPointsMC.gethVal()//Correct h value
+        var kS = GraphOfPointsMC.getkVal()//Correct k value
      
         //  finalAns = aS+"(x"+hS+")²"+kS
         
-        finalAns = tempForFinalAns.getaAns(Int(aS)!)+"(x"+tempForFinalAns.gethAns(Int(hS)!)+")²"+tempForFinalAns.getkAns(Int(kS)!)
+        /* The finalAns String is created, this is the correct multiple choice answer in the format: a(x +/- h) +/- k
+         * The tempForFinalAns varriable calls upon the function getaAns, gethAns, or getkAns in the multipleCGraphComp class to convert 
+         * the values within the parameters (aS, hS, or kS) and returns them in the form of a string: ("aS"), ("+hS" or "-hS"),
+         * ("+kS" or "-kS")
+        /
+        finalAns = tempForFinalAns.getaAns((aS)!)+"(x"+tempForFinalAns.gethAns((hS)!)+")²"+tempForFinalAns.getkAns((kS)!)
         
+        //Variables that will represent objects are declared
         var aAns = multipleCGraphComp()
         var hAns = multipleCGraphComp()
         var kAns = multipleCGraphComp()
+        
+        /* This is where the main portion of the algorithm begins
+         * 
+         * The following for loop increments the value of i starting with i being equal to one until it is greater or equal to 3
+         * (This will cause the first element in the multiple choice array to be an empty string)
+         * A random integer then chooses a multiple choice answer format
+         * A multiple choice answer is then created and stored in the choice Array
+         * The next generated multiple choice answers are checked with all the other elements in the array so see if there are
+         * any repeating answers
+         * If there are no repeating answers, then the array can be expanded
+         */
         
         for ( var i: Int = 1; i <= 3; i++)
         {
@@ -77,52 +95,95 @@ class MultipleCGraph{//Start of Class
         
             */
             
-            var randomTypeOfAns:Int = Int(arc4random_uniform(3) + 1)
+            
+            // Everytime theres a loop, variable randomTypeOfAns is set equal to a random value from 1 to 3
+            var randomTypeOfAns:Int = Int(arc4random_uniform(4) + 1)
+            
+            /* Depending on the value of randomTypeOfAns, the following if/else statements will activate
+            *
+            * If randomTypeOfAns = 1, the multiple choice answer generated will definitely have the correct k value
+            * If randomTypeOfAns = 2, the multiple choice answer generated will definitely have the correct h value
+            * If randomTypeOfAns = 3, the multiple choice answer generated will definitely have the correct a and k value
+            * Otherwise, the multiple choice answer generated will definitely have the correct a and h value
             
             if(randomTypeOfAns == 1) {
             
             aAns.a = Int(arc4random_uniform(9) + 1) - 5
             hAns.h = Int(arc4random_uniform(7) + 1) - 4
-            kAns.k = Int(kS)!
+            kAns.k = kS!
             
             } else if(randomTypeOfAns == 2) {
             
             aAns.a = Int(arc4random_uniform(9) + 1) - 5
-            hAns.h = Int(hS)!
+            hAns.h = hS!
             kAns.k = Int(arc4random_uniform(19) + 1) - 10
             
             } else if(randomTypeOfAns == 3) {
             
-            aAns.a = Int(aS)!
-            hAns.h = Int(arc4random_uniform(7) + 1) - 4
-            kAns.k = Int(kS)!
+            aAns.a = aS!
+            hAns.h = Int(arc4random_uniform(7) + 1) - 4
+            kAns.k = kS!
             
             } else {
             
-            aAns.a = Int(aS)!
-            hAns.h = Int(hS)!
+            aAns.a = aS!
+            hAns.h = hS!
             kAns.k = Int(arc4random_uniform(19) + 1) - 10
             
             }
+            
+            /* This code may be improved in coordination with the MCG view controller to make the program adaptable to the user's level
+             * of skill and improve difficulty accoringly
+             *
+             * e.g if the user answers a certain number of questions right, the multiple choice answers can be restricted so that
+             * out of three a, h and k values: 
+             * Easy -> none of them are the same
+             * Medium -> one of them is constant
+             * Hard -> two of them are constant 
+             */
 
             //kAns.k = Int(kS)!
 
+            /* This is where the generated multiple choice answers are checked and inserted into the choice array
+             * There are two criteria that must be met before the multiple choice answers can be inserted:
+             *
+             * 1 -> The multiple choice answer cannot be the same as finalAns
+             * 2 -> The multiple choice answer cannot be the same as any other answer already in the array
+             *
+             */
+             
+            //The first if statement checks if the element at index i of the array is vacant
+            
             if (choice[i] == "")
             {
-                choice.insert(aAns.getaAns(aAns.a)+"(x"+hAns.gethAns(hAns.h)+")²"+kAns.getkAns(kAns.k), atIndex: i)
-                tempAns = choice[i]
                 
-                if (i == 1) {
+                //If the element is vacant, then a multiple choice answer is created using the aAns.a, hAns.h and kAns.k
+                //from the randomTypeOfAns if/else statement
+                
+                //The multiple choice answer is inserted into the array at index i first
+                choice.insert(aAns.getaAns(aAns.a)+"(x"+hAns.gethAns(hAns.h)+")²"+kAns.getkAns(kAns.k), atIndex: i)
+                
+                tempAns = choice[i]//The multiple choice answer is then placed in the temporary variable tempAns
+                                   //This variable will be compared to prevent repeated answers from occurring
+                
+                                   
+                //if (i == 1) {
                     
+                    //First, the current multiple choice answer is compared to the correct multiple choice answer (finalAns) to see if
+                    //they are equal
                     if(choice[i] == finalAns)
                     {
+                        
+                        //If they are equal, the multiple choice answer is erased completely and the i value decrements to repeat
+                        //the for loop again without wasting a turn
                         choice.removeAtIndex(i)
                         choice.insert("", atIndex: i)
                         tempAns = ""
                         i--
                     }
-                }
-                else if (i == 2) {
+                //}
+                
+                /*else if (i == 2) {
                     
                     if(choice[i] == finalAns || choice[i] == choice[1])
                     {
@@ -141,10 +202,18 @@ class MultipleCGraph{//Start of Class
                         tempAns = ""
                         i--
                     }
-                }
+                }*/
             }
             
-            
+            /* If the multiple choice answer is completely different from the correct answer, it is compared to the rest of the
+             * multiple choice answers in the choice array
+             * This is done through the following for loop
+             * If a single element in the choice array matches tempAns, the multiple choice answer will be erased and the i counter
+             * will decrement to prevent the wasting of a turn
+             *
+             * Otherwise, the multiple choice answer will be added to the choice array
+             */
+             
             for ( var checkAnyAns: Int = 0; checkAnyAns < i; checkAnyAns++){
             
                 if (tempAns == choice[checkAnyAns]){
@@ -157,24 +226,34 @@ class MultipleCGraph{//Start of Class
             }
         }
         
+        //The empty string at the beginning of the array is removed
         choice.removeAtIndex(0)
+        
+        //A random index is chosen and stored in rightAnsIndex
         rightAnsIndex = 4 - Int(arc4random_uniform (4) + 1)
         
+        //The correct multiple choice answer is inserted into the rightAnsIndex
         choice.insert(finalAns, atIndex: rightAnsIndex)
     }
     
+    //The methods below can be called upon to return specific values from the MultipleCGraph class
+    
+    //Method returns the index in the choice array that holds the correct multiple choice answer
     func getRightIndex() -> Int{
         return rightAnsIndex
     }
     
+    //Method returns the choice array containing allthe multiple choice answers generated
     func getChoice() -> [String] {
         return choice
     }
-    
+    
+    
     func getGraphOfPointsMC() -> GraphingPoints {
         return GraphOfPointsMC
     }
     
+    //These methods return a, h and k values
     func getAValue() -> Int{
         return GraphOfPointsMC.getaVal()
     }
