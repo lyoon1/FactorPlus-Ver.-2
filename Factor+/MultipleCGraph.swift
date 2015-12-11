@@ -244,7 +244,7 @@ class MultipleCGraph{//Start of Class
         return choice
     }
     
-    
+    //This method returns the GraphOfPointsMC object
     func getGraphOfPointsMC() -> GraphingPoints {
         return GraphOfPointsMC
     }
