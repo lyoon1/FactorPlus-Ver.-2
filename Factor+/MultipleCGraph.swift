@@ -18,7 +18,7 @@
 //
 //  This algorithm has proven to be quite efficient in terms of run time as there is barely any delay between the questions in the
 //  graphing multiple choice gamemode
-//  It is a relatively simple algorithm that takes 5 big steps (highlighted above) with a maximum of 3 increments in the longest for
+//  It is a relatively simplified algorithm that takes 5 big steps (highlighted above) with a maximum of 3 increments in the longest for
 //  loop
 //  
 //  Areas of inefficiency include: 
