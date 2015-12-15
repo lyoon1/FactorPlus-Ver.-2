@@ -49,12 +49,15 @@ class MultipleChoiceViewController: UIViewController {
  
     var firstFactor: String = ""        //the first factor
     var secondFactor: String = ""       //the second factor
+    var k: Int = 0
+    var j: Int = 0
     var choice = [String]()             //this array stores each of the randomly generated answers
                                         //for the multiple choice question
     var rightAnsIndex: Int = 0          //the index in the array that stores the correct answer
     var numCorrect: Int = 0             //the number of questions that were correct
     var question: String = ""           //the variable that stores the question
     var fromPause: Bool = false         //was the "continue" button pressed from the pause menu?
+    var basicFactor = Bool()            //is the quadratic relation basic or advanced?
     
     //Step 1 (but only occurs once unless pause is activated)
     //when this screen is loaded, the following occurs:
@@ -93,7 +96,7 @@ class MultipleChoiceViewController: UIViewController {
     //this func may change in the future to accommodate for advanced factoring where a > 1
     func makeQuestion() {
 
-        var quadraticRelation = quadratic() //the quadratic object, which generates a quadratic relation
+        var quadraticRelation = quadratic(fromUI: false) //the quadratic object, which generates a quadratic relation
 
         question = quadraticRelation.getExpression()    //use an accessor method to get the question
         
@@ -101,55 +104,10 @@ class MultipleChoiceViewController: UIViewController {
         
         firstFactor = String(quadraticRelation.getMValue())     //access the first factor and second
         secondFactor = String(quadraticRelation.getNValue())    //factor with an accessor method
-
-    /* Code below here is the string manipulation process that used be used to isolate the factors
+        k = quadraticRelation.getK()
+        j = quadraticRelation.getJ()
+        basicFactor = quadraticRelation.isBasicQuadratic()
         
-        var temp = "s" + quadraticRelation.generateExpression() + "f"   //the temp variable to store the quadratic
-                                                                        //relation and the temporary characters for
-                                                                        //string manipulation, so that the first and
-                                                                        //second factors stored within the expression
-                                                                        //can be extracted
-        
-        //set a temporary variable "start" to the value of the index of the character "s"
-        //and set a temporary variable "end" to the value of the index of the characters "x²"
-        if var start = temp.rangeOfString("s"), end = temp.rangeOfString("x²") {
-            
-            firstFactor = temp[start.endIndex..<end.startIndex] //the first factor is stored between the "s" and
-                                                                //the x² (refer to the "quadratic" class)
-        }
-        
-        //same logic as above
-        if var start = temp.rangeOfString("e"), end = temp.rangeOfString("f") {
-           
-            secondFactor = temp[start.endIndex..<end.startIndex] //the second and last factor is stored between the
-                                                                 //temporary character "e" which stands for "end" and
-                                                                 //the temporary character "f" which stands for "finish"
-        }
-        
-        //these two lines of code calculate the distance (in Int) from index 0 to the first occurence of "x"
-        let indexOfXSquaredChar = temp.lowercaseString.characters.indexOf(Character("x"))
-        let indexOfXSquaredInt = temp.startIndex.distanceTo(indexOfXSquaredChar!)
-        
-        //then track back the String, starting at the end
-        //the range here is the first index, to the index of "x"
-        let rangeOne = temp.endIndex.advancedBy((-1 * temp.characters.count))..<temp.endIndex.advancedBy((-1 * Int(temp.characters.count - indexOfXSquaredInt)))
-        
-        temp.removeRange(rangeOne) //remove everything between the first index and "x"
-                                   //this gets rid of the firstFactor and "s" so that only the actual
-                                   //quadratic relation is visible
-        
-        //same logic here, for "e" to the end
-        let indexOfLastStringChar = temp.lowercaseString.characters.indexOf(Character("e"))
-        let indexOfLastStringInt = temp.startIndex.distanceTo(indexOfLastStringChar!)
-        
-        let rangeTwo = temp.endIndex.advancedBy((-1 * Int(temp.characters.count - indexOfLastStringInt)))..<temp.endIndex
-        
-        temp.removeRange(rangeTwo) //gets rid of "e" to "f" inclusive, thus removing the secondFactor as well
-        
-        question = temp //question String to be displayed; now without all of the temporary characters
-    
-    */
-
     }
     
     //step 2-2
@@ -164,15 +122,30 @@ class MultipleChoiceViewController: UIViewController {
             choice.insert("", atIndex: a)   //fill in the array with blanks
         } //end of forloop
         
-        let rAns = multipleChoice() //multipleChoice objects that are used to format
-        let sAns = multipleChoice() //the text that is displayed
+        let formatter = multipleChoice() //multipleChoice object that is used to format
         
-        let rS: String = rAns.getRAns(-1 * Int(firstFactor)!)  //the formatted versions of the
-        let sS: String = sAns.getSAns(-1 * Int(secondFactor)!) //first and second factors to be
-                                                               //used to display
+        let kS: String = String(k)
+        let jS: String = String(j)
         
         choice.removeAtIndex(0) //remove the value at first index,
-        choice.insert("(x"+rS+")(x"+sS+")", atIndex: 0) //and then fill it with the correct one
+       
+        if (basicFactor == true) {
+            let rS: String = formatter.getRAns(-1 * Int(firstFactor)!)  //the formatted versions of the
+            let sS: String = formatter.getSAns(-1 * Int(secondFactor)!) //first and second factors to be
+            //used to display
+            
+            choice.insert("(x"+rS+")(x"+sS+")", atIndex: 0) //and then fill it with the correct one
+        }
+        else {
+            let rS: String = formatter.getRAns(Int(firstFactor)!)  //the formatted versions of the
+            let sS: String = formatter.getSAns(Int(secondFactor)!) //first and second factors to be
+            let kS: String = formatter.getKAns(k)
+            let jS: String = formatter.getJAns(j)
+            
+            //used to display
+            
+            choice.insert("("+kS+"x"+rS+")("+jS+"x"+sS+")", atIndex: 0) //and then fill it with the correct one
+        }
         finalAns = choice[0]
         
         for (i = 1; i <= 3; i++) //for 3 times - which is excluding the 0th index
@@ -185,26 +158,26 @@ class MultipleChoiceViewController: UIViewController {
               //completely random answer
             if(randomTypeOfAns == 1) {
                 
-                rAns.r = Int(arc4random_uniform(19) + 1) - 10 //get random number between -9 ~ 9
-                sAns.s = Int(arc4random_uniform(19) + 1) - 10
+                formatter.r = Int(arc4random_uniform(19) + 1) - 10 //get random number between -9 ~ 9
+                formatter.s = Int(arc4random_uniform(19) + 1) - 10
                 
               //both brackets will be equal in magnitude relative to the correct answer, but one of them will be different in signs
             } else if(randomTypeOfAns == 2) {
                 
-                rAns.r = -1 * Int(firstFactor)!
-                sAns.s = Int(secondFactor)!
+                formatter.r = -1 * Int(firstFactor)!
+                formatter.s = Int(secondFactor)!
                 
             } else if(randomTypeOfAns == 3) {
                 
                 //both brackets will be equal in magnitude relative to the correct answer, but different in signs
-                rAns.r = -1 * Int(firstFactor)!
-                sAns.s = -1 * Int(secondFactor)!
+                formatter.r = -1 * Int(firstFactor)!
+                formatter.s = -1 * Int(secondFactor)!
                 
                 //same as randomTypeOfAns == 2
             } else {
                 
-                rAns.r = Int(firstFactor)!
-                sAns.s = -1 * Int(secondFactor)!
+                formatter.r = Int(firstFactor)!
+                formatter.s = -1 * Int(secondFactor)!
                 
             }
             
@@ -212,7 +185,12 @@ class MultipleChoiceViewController: UIViewController {
                 if (choice[i] == "") {
                     
                     //fill it with one of the randomly generated 'r' and 's' values from above
-                    choice[i] = "(x"+rAns.getRAns(rAns.r)+")(x"+sAns.getSAns(sAns.s)+")"
+                    if (basicFactor == true) {
+                        choice[i] = "(x"+formatter.getRAns(formatter.r)+")(x"+formatter.getSAns(formatter.s)+")"
+                    }
+                    else {
+                        choice[i] = "("+formatter.getKAns(k)+"x"+formatter.getRAns(formatter.r)+")("+formatter.getJAns(j)+"x"+formatter.getSAns(formatter.s)+")"
+                    }
                     
                     //if the second index is being filled
                     if (i == 1) {
@@ -511,7 +489,7 @@ class MultipleChoiceViewController: UIViewController {
         
     } //end of didReceiveMemoryWarning func
 
-    //funcs that do the transition from one screen to another
+    //funcs that do the tformatterition from one screen to another
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
       
         //if the Pause button is clicked, this will load

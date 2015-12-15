@@ -52,7 +52,34 @@ class multipleChoice{
             
         }
     }
+    
+    func getKAns(kI: Int) -> String {
         
+        if(kI == 1) {
+            
+            return ""
+        }
+        else {
+        
+            return String(kI)
+            
+        }
+        
+    }
+    
+    func getJAns(jI: Int) -> String {
+        
+        if(jI == 1) {
+            
+            return ""
+        }
+        else {
+            
+            return String(jI)
+            
+        }
+        
+    }
     
 }
 

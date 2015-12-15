@@ -211,7 +211,7 @@ class UIFViewController: UIViewController {
     }
     
     func makeQuestion(){
-        var quadraticRelation = quadratic()
+        var quadraticRelation = quadratic(fromUI: true)
         
         sliderM.setValue(Float (0), animated: false)
         sliderN.setValue(Float (0), animated: false)
@@ -222,36 +222,6 @@ class UIFViewController: UIViewController {
         questionLabel.text = question
         firstFactor = String(quadraticRelation.getMValue())
         secondFactor = String(quadraticRelation.getNValue())
-        
-        /* Code below here is the string manipulation process that used be used to isolate the factors
-        
-        var temp = "s" + quadraticRelation.generateExpression() + "f"
-        
-        if var start = temp.rangeOfString("s"), end = temp.rangeOfString("x²") {
-            firstFactor = temp[start.endIndex..<end.startIndex]
-        }
-        
-        if var start = temp.rangeOfString("e"), end = temp.rangeOfString("f") {
-            secondFactor = temp[start.endIndex..<end.startIndex]
-        }
-        
-        let indexOfXSquaredChar = temp.lowercaseString.characters.indexOf(Character("x"))
-        let indexOfXSquaredInt = temp.startIndex.distanceTo(indexOfXSquaredChar!)
-        
-        let rangeOne = temp.endIndex.advancedBy((-1 * temp.characters.count))..<temp.endIndex.advancedBy((-1 * Int(temp.characters.count - indexOfXSquaredInt)))
-        
-        temp.removeRange(rangeOne)
-        
-        let indexOfLastStringChar = temp.lowercaseString.characters.indexOf(Character("e"))
-        let indexOfLastStringInt = temp.startIndex.distanceTo(indexOfLastStringChar!)
-        
-        let rangeTwo = temp.endIndex.advancedBy((-1 * Int(temp.characters.count - indexOfLastStringInt)))..<temp.endIndex
-        
-        temp.removeRange(rangeTwo)
-        
-        question = temp
-        
-*/
     }
     
     func checkAnswer(){
