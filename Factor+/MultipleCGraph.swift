@@ -12,9 +12,27 @@
 //  The "right answer" is then inserted randomly into the array at an index which is recorded as "right index"
 //  This forms the base of the graphing multiple choice game mode, where the MCG view controller takes the "multiple choice" 
 //  answer array and the index of the array which holds the correct answer to determine whether the user has pressed the
-//  corerect button
+//  correct button
 //
-//  Credits
+//  CODE ANAYLSIS (Read after understanding the way it functions)
+//
+//  This algorithm has proven to be quite efficient in terms of run time as there is barely any delay between the questions in the
+//  graphing multiple choice gamemode
+//  It is a relatively simplified algorithm that takes 5 big steps (highlighted above) with a maximum of 3 increments in the longest for
+//  loop
+//  
+//  Areas of inefficiency include: 
+//
+//  The Checking portion: Could be removed because the multiple choice answers can probably be generated in a way that won't produce
+//  repeating answers
+//  
+//  The randomTypeOfAns portion: Doesn't generate consistent multiple choice answers. Most of the time, the answers are reasonably
+//  difficult, but sometimes, the right answer may be too obvious.
+//
+//  The random number generators that create values for a, h and k for the multiple choice answers: Sometimes they may generate the
+//  correct a, h and k values that are present in finalAns. This will be an issue when implementing an adaptive difficulty setting
+//
+//  CREDITS
 //
 //  John - Responsible for algorithm MultipleCGraph and the following code
 //  Taehyun - Responsible for helping pass values into the class
@@ -38,7 +56,7 @@ class MultipleCGraph{//Start of Class
                            // in a String array
     
     var GraphOfPointsMC = GraphingPoints()//declares a GraphingPoints() object, this will help pass through values for a, h and k
-    
+    
     var tempForFinalAns = multipleCGraphComp()//declares a multipleCGraphComp() object, the multipleCGraphComp class changes 
                                               //a, h and k values into Strings depending on whether they are negative or positive
     
@@ -167,9 +185,6 @@ class MultipleCGraph{//Start of Class
                 
                 tempAns = choice[i]//The multiple choice answer is then placed in the temporary variable tempAns
                                    //This variable will be compared to prevent repeated answers from occurring
-                
-                                   
-                //if (i == 1) {
                     
                     //First, the current multiple choice answer is compared to the correct multiple choice answer (finalAns) to see if
                     //they are equal
@@ -182,29 +197,8 @@ class MultipleCGraph{//Start of Class
                         choice.insert("", atIndex: i)
                         tempAns = ""
                         i--
-                    }
-                //}
-                
-                /*else if (i == 2) {
-                    
-                    if(choice[i] == finalAns || choice[i] == choice[1])
-                    {
-                        choice.removeAtIndex(i)
-                        choice.insert("", atIndex: i)
-                        tempAns = ""
-                        i--
-                    }
-                }
-                else if (i == 3) {
-                    
-                    if(choice[i] == finalAns || choice[i] == choice[1] || choice[i] == choice[2])
-                    {
-                        choice.removeAtIndex(i)
-                        choice.insert("", atIndex: i)
-                        tempAns = ""
-                        i--
-                    }
-                }*/
+                   }
+
             }
             
             /* If the multiple choice answer is completely different from the correct answer, it is compared to the rest of the
@@ -250,7 +244,7 @@ class MultipleCGraph{//Start of Class
         return choice
     }
     
-    
+    //This method returns the GraphOfPointsMC object
     func getGraphOfPointsMC() -> GraphingPoints {
         return GraphOfPointsMC
     }
