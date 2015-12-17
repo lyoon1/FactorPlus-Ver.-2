@@ -24,13 +24,16 @@ class EndViewController: UIViewController {
     
     @IBOutlet weak var menuButton: UIButton!
     
+    @IBOutlet weak var questionTypeImage: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        questionTypeImage.image = UIImage(named: type)
         questionTypeLabel.text = type
         numCorrectLabel.text = String(numCorrect)
         numWrongLabel.text = String(10 - numCorrect)
-        scoreLabel.text = String(100 * numCorrect)
+        scoreLabel.text = "\(10 * numCorrect)%"
         
         // Do any additional setup after loading the view.
     }

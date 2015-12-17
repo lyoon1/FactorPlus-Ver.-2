@@ -25,6 +25,7 @@ class MultipleChoice2ViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var coverUpButton: UIButton!
     @IBOutlet weak var graphView: LineChartView!
+    @IBOutlet weak var graphView2: LineChartView!
     @IBOutlet weak var pauseImage: UIImageView!
     
     var rightAnsIndex = Int(), numQuestions = Int(), ttlScore = Int()
@@ -196,6 +197,10 @@ class MultipleChoice2ViewController: UIViewController {
         graphView.dragEnabled = false
         graphView.doubleTapToZoomEnabled = false
         
+        graphView2.zoom(1.2, scaleY: 1, x: 120, y: 64)
+        graphView2.dragEnabled = false
+        graphView2.doubleTapToZoomEnabled = false
+        
         if (fromPause == true) {
             setChart(xValues, yval: yValues)
             choice1Button.setTitle(choice[0], forState: .Normal)
@@ -229,6 +234,10 @@ class MultipleChoice2ViewController: UIViewController {
         graphView.data?.setValueFont(UIFont(name:"Helvetica Neuve", size: 12))
         graphView.setDescriptionTextPosition(x: CGFloat(10000), y: CGFloat(100000))
      
+        graphView2.data = xvalData
+        graphView2.data?.setValueFont(UIFont(name:"Helvetica Neuve", size: 12))
+        graphView2.setDescriptionTextPosition(x: CGFloat(10000), y: CGFloat(100000))
+        
         for (var i = 0; i < 12; i++)
         {
             xValues.insert(xval[i], atIndex: i)

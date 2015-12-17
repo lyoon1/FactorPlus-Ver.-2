@@ -16,6 +16,7 @@ class UIGViewController: UIViewController {
     @IBOutlet weak var sliderK: UISlider!
     @IBOutlet weak var answerLabel: UILabel!
     @IBOutlet weak var graphView: LineChartView!
+    @IBOutlet weak var graphView2: LineChartView!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var progressUIG: UIProgressView!
     @IBOutlet weak var enterButton: UIButton!
@@ -182,6 +183,9 @@ class UIGViewController: UIViewController {
         graphView.data?.setValueFont(UIFont(name:"Helvetica Neuve", size: 12))
         graphView.setDescriptionTextPosition(x: CGFloat(10000), y: CGFloat(100000))
         
+        graphView2.data = xvalData
+        graphView2.data?.setValueFont(UIFont(name:"Helvetica Neuve", size: 12))
+        graphView2.setDescriptionTextPosition(x: CGFloat(10000), y: CGFloat(100000))
         
         for (var i = 0; i < 12; i++)
         {
@@ -217,6 +221,10 @@ class UIGViewController: UIViewController {
         graphView.zoom(1.2, scaleY: 1, x: 120, y: 64)
         graphView.dragEnabled = false
         graphView.doubleTapToZoomEnabled = false
+        
+        graphView2.zoom(1.2, scaleY: 1, x: 120, y: 64)
+        graphView2.dragEnabled = false
+        graphView2.doubleTapToZoomEnabled = false
         
         if (fromPause == true) {
             setChart(xValues, yval: yValues)

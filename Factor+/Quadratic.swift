@@ -23,9 +23,9 @@ class quadratic {
     var expression: String
     var tempB: Int
     var tempC: Int
-    var randNum: Int
+    var factoringType: Int
     
-    init (fromUI: Bool) {
+    init (fromUI: Bool, numCorrect: Int) {
         
         k = Int(arc4random_uniform(5) + 1)
         j = Int(arc4random_uniform(5) + 1)
@@ -33,14 +33,17 @@ class quadratic {
         factorTwo = Int(arc4random_uniform(19) + 1) - 10   //random Integer from -9 ~ 9
         
         if (fromUI == true) {
-            randNum = 1
+            factoringType = 1
+        }
+        else if (numCorrect >= 5) {
+            factoringType = 2
         }
         else {
-            randNum = Int(arc4random_uniform(2) + 1)
+            factoringType = Int(arc4random_uniform(2) + 1)
         }
         
         //if random number = 1, use basic factoring
-        if (randNum == 1) {
+        if (factoringType == 1) {
             
             //this code assigns a value to b and c using mathematical procedures
             a = 1
@@ -293,7 +296,7 @@ class quadratic {
     }
     
     func isBasicQuadratic() -> Bool {
-        if (randNum == 1) {
+        if (factoringType == 1) {
             return true
         }
         else {

@@ -56,7 +56,7 @@ class MultipleCGraph{//Start of Class
                            // in a String array
     
     var GraphOfPointsMC = GraphingPoints()//declares a GraphingPoints() object, this will help pass through values for a, h and k
-    
+     
     var tempForFinalAns = multipleCGraphComp()//declares a multipleCGraphComp() object, the multipleCGraphComp class changes 
                                               //a, h and k values into Strings depending on whether they are negative or positive
     

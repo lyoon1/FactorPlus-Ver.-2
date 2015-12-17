@@ -211,7 +211,7 @@ class UIFViewController: UIViewController {
     }
     
     func makeQuestion(){
-        var quadraticRelation = quadratic(fromUI: true)
+        var quadraticRelation = quadratic(fromUI: true, numCorrect: 0)
         
         sliderM.setValue(Float (0), animated: false)
         sliderN.setValue(Float (0), animated: false)
