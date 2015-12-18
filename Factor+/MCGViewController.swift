@@ -20,6 +20,7 @@ class MultipleChoice2ViewController: UIViewController {
     @IBOutlet weak var choice2Button: UIButton!
     @IBOutlet weak var choice3Button: UIButton!
     @IBOutlet weak var choice4Button: UIButton!
+    @IBOutlet weak var rotateLabel: UILabel!
     @IBOutlet weak var progressMCG: UIProgressView!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
@@ -65,6 +66,8 @@ class MultipleChoice2ViewController: UIViewController {
         coverUpButton.hidden = false    //show the 'coverUp' button which is to prevent other answer buttons from
         //being clicked once the question is answered
         pauseImage.hidden = true        //hide the pause image as well
+        rotateLabel.hidden = true
+
 
     }
     @IBAction func choice2Clicked(sender: AnyObject) {
@@ -94,6 +97,8 @@ class MultipleChoice2ViewController: UIViewController {
         pauseButton.hidden = true
         coverUpButton.hidden = false
         pauseImage.hidden = true
+        rotateLabel.hidden = true
+
     }
     @IBAction func choice3Clicked(sender: AnyObject) {
         if (checkForRightAnswer(3) == true)
@@ -122,6 +127,8 @@ class MultipleChoice2ViewController: UIViewController {
         pauseButton.hidden = true
         coverUpButton.hidden = false
         pauseImage.hidden = true
+        rotateLabel.hidden = true
+
     }
     @IBAction func choice4Clicked(sender: AnyObject) {
         if (checkForRightAnswer(4) == true)
@@ -150,6 +157,8 @@ class MultipleChoice2ViewController: UIViewController {
         pauseButton.hidden = true
         coverUpButton.hidden = false
         pauseImage.hidden = true
+        rotateLabel.hidden = true
+
     }
     @IBAction func pauseClicked(sender: AnyObject) {
         performSegueWithIdentifier("pauseMCG", sender: sender)
@@ -164,6 +173,7 @@ class MultipleChoice2ViewController: UIViewController {
         nextButton.hidden = true
         coverUpButton.hidden = true
         pauseImage.hidden = false
+        rotateLabel.hidden = false
 
     }
     

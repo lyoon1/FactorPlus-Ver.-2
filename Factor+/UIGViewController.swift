@@ -15,6 +15,7 @@ class UIGViewController: UIViewController {
     @IBOutlet weak var sliderH: UISlider!
     @IBOutlet weak var sliderK: UISlider!
     @IBOutlet weak var answerLabel: UILabel!
+    @IBOutlet weak var rotateLabel: UILabel!
     @IBOutlet weak var graphView: LineChartView!
     @IBOutlet weak var graphView2: LineChartView!
     @IBOutlet weak var pauseButton: UIButton!
@@ -41,6 +42,7 @@ class UIGViewController: UIViewController {
         enterButton.hidden = true
         pauseButton.hidden = true
         pauseImage.hidden = true
+        rotateLabel.hidden = true
     }
     
     @IBAction func valChangeA(sender: AnyObject) {
@@ -101,6 +103,12 @@ class UIGViewController: UIViewController {
         if (currentA == 0) {
             tempCurrentA = "a"
         }
+        else if (currentA == 1) {
+            tempCurrentA = ""
+        }
+        else if (currentA == -1) {
+            tempCurrentA = "-"
+        }
         
         var tempCurrentH = String()
         
@@ -138,6 +146,12 @@ class UIGViewController: UIViewController {
         var tempCurrentA = String(currentA)
         if (currentA == 0) {
             tempCurrentA = "a"
+        }
+        else if (currentA == 1) {
+            tempCurrentA = ""
+        }
+        else if (currentA == -1) {
+            tempCurrentA = "-"
         }
         
         var tempCurrentH = String()
@@ -206,7 +220,8 @@ class UIGViewController: UIViewController {
         enterButton.hidden = false
         pauseButton.hidden = false
         pauseImage.hidden = false
-
+        rotateLabel.hidden = false
+        
     }
     
     @IBAction func pauseClicked(sender: AnyObject) {

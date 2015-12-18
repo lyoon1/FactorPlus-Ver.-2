@@ -92,7 +92,7 @@ class PauseViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "MainMenu")
         {
-            let mvc = segue.destinationViewController as! MainViewController
+            let svc = segue.destinationViewController as! StartViewController
         }
         else if(segue.identifier == "Continue MCF")
         {
