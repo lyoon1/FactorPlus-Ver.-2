@@ -113,7 +113,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         else if(segue.identifier == "Help")
         {
             //Same concept as above
-            let hvc = segue.destinationViewController as! HelpViewController
+            let hvc = segue.destinationViewController as! HelpEntranceViewController
         }
         else if(segue.identifier == "Credits")
         {

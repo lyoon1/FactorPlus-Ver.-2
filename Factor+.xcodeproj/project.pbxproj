@@ -21,6 +21,8 @@
 		6AAD16191BEAE12100097C7A /* UISCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD16181BEAE12100097C7A /* UISCViewController.swift */; };
 		6AEF920D1BDEF25A007F8E5E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEF920C1BDEF25A007F8E5E /* MainViewController.swift */; };
 		6AEF920F1BDEF954007F8E5E /* OptionsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEF920E1BDEF954007F8E5E /* OptionsCollectionViewCell.swift */; };
+		7705C7531C3C21360086F4FC /* HelpTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7705C7521C3C21360086F4FC /* HelpTwoViewController.swift */; };
+		7705C7571C3C224D0086F4FC /* HelpEntranceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7705C7561C3C224D0086F4FC /* HelpEntranceViewController.swift */; };
 		77364D361C15ED330078D164 /* HelpCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77364D351C15ED320078D164 /* HelpCollectionViewCell.swift */; };
 		775DF07E1BECF55C0060FE50 /* Quadratic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775DF07D1BECF55C0060FE50 /* Quadratic.swift */; };
 		775DF0801BECF5DF0060FE50 /* Trigonometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775DF07F1BECF5DF0060FE50 /* Trigonometry.swift */; };
@@ -112,6 +114,8 @@
 		6AAD16181BEAE12100097C7A /* UISCViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISCViewController.swift; sourceTree = "<group>"; };
 		6AEF920C1BDEF25A007F8E5E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		6AEF920E1BDEF954007F8E5E /* OptionsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsCollectionViewCell.swift; sourceTree = "<group>"; };
+		7705C7521C3C21360086F4FC /* HelpTwoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpTwoViewController.swift; sourceTree = "<group>"; };
+		7705C7561C3C224D0086F4FC /* HelpEntranceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpEntranceViewController.swift; sourceTree = "<group>"; };
 		77364D351C15ED320078D164 /* HelpCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpCollectionViewCell.swift; sourceTree = "<group>"; };
 		775DF07D1BECF55C0060FE50 /* Quadratic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quadratic.swift; sourceTree = "<group>"; };
 		775DF07F1BECF5DF0060FE50 /* Trigonometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trigonometry.swift; sourceTree = "<group>"; };
@@ -227,6 +231,8 @@
 				6A72DFEF1BEBA87D0043116E /* EndViewController.swift */,
 				6A7F37651BE910A200812797 /* Multiple Choice View Controllers */,
 				6A8211A51BE7A6A400B05349 /* HelpViewController.swift */,
+				7705C7521C3C21360086F4FC /* HelpTwoViewController.swift */,
+				7705C7561C3C224D0086F4FC /* HelpEntranceViewController.swift */,
 				6A8211A71BE7A6AD00B05349 /* CreditsViewController.swift */,
 				6AAD16111BEADC8E00097C7A /* User Input View Controllers */,
 				6A8211A31BE7A69A00B05349 /* StartViewController.swift */,
@@ -441,6 +447,7 @@
 				6A8211A61BE7A6A400B05349 /* HelpViewController.swift in Sources */,
 				77364D361C15ED330078D164 /* HelpCollectionViewCell.swift in Sources */,
 				6AAAEE171BE032AE00104386 /* UIFViewController.swift in Sources */,
+				7705C7531C3C21360086F4FC /* HelpTwoViewController.swift in Sources */,
 				6A72DFF01BEBA87D0043116E /* EndViewController.swift in Sources */,
 				6AAD16171BEAE11700097C7A /* UIRViewController.swift in Sources */,
 				775DF0801BECF5DF0060FE50 /* Trigonometry.swift in Sources */,
@@ -452,6 +459,7 @@
 				6AAD16151BEAE0CC00097C7A /* MCTViewController.swift in Sources */,
 				6A7F37641BE9109800812797 /* MCGViewController.swift in Sources */,
 				6A8211A81BE7A6AD00B05349 /* CreditsViewController.swift in Sources */,
+				7705C7571C3C224D0086F4FC /* HelpEntranceViewController.swift in Sources */,
 				77D356BF1C1646BF006251A8 /* MultipleCGraph.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

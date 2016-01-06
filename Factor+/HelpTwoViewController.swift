@@ -1,23 +1,23 @@
 //
-//  HelpViewController.swift
+//  HelpTwoViewController.swift
 //  Factor+
 //
-//  Created by Taehyun Lee on 2015-11-02.
-//  Copyright © 2015 LYM. All rights reserved.
+//  Created by Leo Yoon on 2016-01-05.
+//  Copyright © 2016 LYM. All rights reserved.
 //
 
 import UIKit
 
-class HelpViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-
+class HelpTwoViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     @IBOutlet weak var helpCollectionView: UICollectionView!
     
-    let imageArray = [UIImage(named:"Help Screen User Input")]
+    let imageArray = [UIImage(named:"Help Screen Basic Factoring"),UIImage(named:"Help Screen Graph to Equation"),UIImage(named:"Help Screen Advanced Factoring 1"),UIImage(named:"Help Screen Advanced Factoring 2")]
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
@@ -34,21 +34,10 @@ class HelpViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         return cell
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

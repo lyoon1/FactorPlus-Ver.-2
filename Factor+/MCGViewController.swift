@@ -191,9 +191,9 @@ class MultipleChoice2ViewController: UIViewController {
     
     func resetColours(){
         choice1Button.backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
-        choice2Button.backgroundColor = UIColor(red: 205/255.0, green: 86/255.0, blue: 67/255.0, alpha: 1.0)
+        choice2Button.backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
         choice3Button.backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
-        choice4Button.backgroundColor = UIColor(red: 205/255.0, green: 86/255.0, blue: 67/255.0, alpha: 1.0)
+        choice4Button.backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
     }
     
     override func viewDidLoad() {
@@ -210,6 +210,16 @@ class MultipleChoice2ViewController: UIViewController {
         graphView2.zoom(1.2, scaleY: 1, x: 120, y: 64)
         graphView2.dragEnabled = false
         graphView2.doubleTapToZoomEnabled = false
+        
+        let yAxis = ChartLimitLine(limit: 0)
+        let xAxis = ChartLimitLine(limit: 6.0)
+        graphView.leftAxis.addLimitLine(yAxis)
+        graphView.xAxis.addLimitLine(xAxis)
+        graphView2.leftAxis.addLimitLine(yAxis)
+        graphView2.xAxis.addLimitLine(xAxis)
+        
+        graphView.rightAxis.labelFont = UIFont(name: "", size: 0)!
+        graphView2.rightAxis.labelFont = UIFont(name: "", size: 0)!
         
         if (fromPause == true) {
             setChart(xValues, yval: yValues)

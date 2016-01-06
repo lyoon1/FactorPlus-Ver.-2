@@ -60,7 +60,7 @@ class GraphingPoints{
         //places 2 points at the front and back of array.
         pointX.insert("-6", atIndex: 0)
         pointX.insert("6", atIndex: 11)
-        pointYee.insert(Double(placeholderMax+(abs(a+3)*3)), atIndex: 0)
+        pointYee.insert(abs(Double(placeholderMax)*1.2)+Double(abs(a*10)), atIndex: 0)
         pointYee.insert(Double(placeholderMax+(a*5)), atIndex: 11)
     
         

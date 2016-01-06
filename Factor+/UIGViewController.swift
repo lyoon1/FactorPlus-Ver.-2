@@ -241,6 +241,16 @@ class UIGViewController: UIViewController {
         graphView2.dragEnabled = false
         graphView2.doubleTapToZoomEnabled = false
         
+        let yAxis = ChartLimitLine(limit: 0)
+        let xAxis = ChartLimitLine(limit: 6.0)
+        graphView.leftAxis.addLimitLine(yAxis)
+        graphView.xAxis.addLimitLine(xAxis)
+        graphView2.leftAxis.addLimitLine(yAxis)
+        graphView2.xAxis.addLimitLine(xAxis)
+        
+        graphView.rightAxis.labelFont = UIFont(name: "", size: 0)!
+        graphView2.rightAxis.labelFont = UIFont(name: "", size: 0)!
+        
         if (fromPause == true) {
             setChart(xValues, yval: yValues)
             

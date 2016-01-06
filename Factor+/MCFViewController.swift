@@ -443,11 +443,11 @@ class MultipleChoiceViewController: UIViewController {
     //responsible for reverting the button's colours to default at the start of each question
     func resetColours() {
         
-        //alternates pink, reddish-pink, pink, reddish-pink
+        //constant pink colour after Jan. 5
         choice1Button.backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
-        choice2Button.backgroundColor = UIColor(red: 205/255.0, green: 86/255.0, blue: 67/255.0, alpha: 1.0)
+        choice2Button.backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
         choice3Button.backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
-        choice4Button.backgroundColor = UIColor(red: 205/255.0, green: 86/255.0, blue: 67/255.0, alpha: 1.0)
+        choice4Button.backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
         
     } //end of resetColours func
     
