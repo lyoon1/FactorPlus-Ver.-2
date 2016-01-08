@@ -20,6 +20,34 @@
                ReferencedContainer = "container:Factor+.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7789D8B41BDA76AA00A0619F"
+               BuildableName = "Factor+Tests.xctest"
+               BlueprintName = "Factor+Tests"
+               ReferencedContainer = "container:Factor+.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7789D8BF1BDA76AA00A0619F"
+               BuildableName = "Factor+UITests.xctest"
+               BlueprintName = "Factor+UITests"
+               ReferencedContainer = "container:Factor+.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -28,26 +56,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7789D8B41BDA76AA00A0619F"
-               BuildableName = "Factor+Tests.xctest"
-               BlueprintName = "Factor+Tests"
-               ReferencedContainer = "container:Factor+.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7789D8BF1BDA76AA00A0619F"
-               BuildableName = "Factor+UITests.xctest"
-               BlueprintName = "Factor+UITests"
-               ReferencedContainer = "container:Factor+.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

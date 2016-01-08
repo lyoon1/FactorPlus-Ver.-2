@@ -56,6 +56,10 @@ class EndViewController: UIViewController {
         {
             performSegueWithIdentifier("restartMCF", sender: self)
         }
+        else if(type == "Multiple Choice Factor Timer")
+        {
+            performSegueWithIdentifier("restartMCFT", sender: self)
+        }
         else if(type == "User Input Factor")
         {
             performSegueWithIdentifier("restartUIF", sender: self)
@@ -97,6 +101,12 @@ class EndViewController: UIViewController {
             let mcvc = segue.destinationViewController as! MultipleChoiceViewController
             mcvc.numCorrect = score
             mcvc.numQuestions = numQuestion
+        }
+        else if(segue.identifier == "Continue MCFT")
+        {
+            let mcftvc = segue.destinationViewController as! MultipleChoiceTimerViewController
+            mcftvc.numCorrect = score
+            mcftvc.numQuestions = numQuestion
         }
         else if(segue.identifier == "Continue UIF")
         {

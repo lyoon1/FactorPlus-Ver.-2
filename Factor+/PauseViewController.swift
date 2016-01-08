@@ -30,6 +30,7 @@ class PauseViewController: UIViewController {
     var xval = [String]()
     var yval = [Double]()
     var graphPoint = [GraphingPoints]()
+    var timeRemaining = Int()
     
     @IBAction func restartGame(sender: AnyObject) {
         score = 0
@@ -52,6 +53,10 @@ class PauseViewController: UIViewController {
         if(type == "Multiple Choice Factor")
         {
             performSegueWithIdentifier("Continue MCF", sender: self)
+        }
+        else if(type == "Multiple Choice Factor Timer")
+        {
+            performSegueWithIdentifier("Continue MCFT", sender: self)
         }
         else if(type == "User Input Factor")
         {
@@ -112,6 +117,26 @@ class PauseViewController: UIViewController {
                 mcvc.choice.insert(multipleChoiceChoices[i], atIndex: i)
             }
         }
+        else if(segue.identifier == "Continue MCFT")
+        {
+            let mcftvc = segue.destinationViewController as! MultipleChoiceTimerViewController
+            mcftvc.numCorrect = score
+            mcftvc.numQuestions = numQuestion
+            
+            if (restarting == false) {
+                
+                mcftvc.firstFactor = factorOne
+                mcftvc.secondFactor = factorTwo
+                mcftvc.question = question
+                mcftvc.rightAnsIndex = rightAnswerIndex
+                mcftvc.timeRemaining = timeRemaining
+                mcftvc.fromPause = true
+            }
+            for (var i = 0; i < 4; i++){
+                mcftvc.choice.insert(multipleChoiceChoices[i], atIndex: i)
+            }
+        }
+
         else if(segue.identifier == "Continue UIF")
         {
             let uifvc = segue.destinationViewController as! UIFViewController
