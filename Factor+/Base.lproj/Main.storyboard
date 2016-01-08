@@ -834,10 +834,6 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="choice1Button" destination="jRX-Zt-2lf" id="eXu-jB-e9k"/>
-                        <outlet property="choice2Button" destination="Ly3-CO-c25" id="lFa-nW-PPW"/>
-                        <outlet property="choice3Button" destination="c4m-XD-eRD" id="e4f-ki-emu"/>
-                        <outlet property="choice4Button" destination="6gF-ka-Bmd" id="yM4-2x-SJ8"/>
                         <outlet property="coverUpButton" destination="qvy-tZ-TiF" id="T4n-AZ-QrH"/>
                         <outlet property="nextButton" destination="iHH-7R-yFc" id="FvG-lv-h7P"/>
                         <outlet property="pauseButton" destination="fjg-68-JYA" id="OOf-RF-HIR"/>
@@ -845,6 +841,10 @@
                         <outlet property="progressMCFT" destination="u7s-2U-nnT" id="OZC-ec-24C"/>
                         <outlet property="questionLabel" destination="EEr-md-jHi" id="0iR-A9-mKU"/>
                         <outlet property="timerLabel" destination="fvA-bM-gEI" id="1mR-7b-6jc"/>
+                        <outletCollection property="choiceButtons" destination="jRX-Zt-2lf" collectionClass="NSMutableArray" id="IpH-Mp-Vw0"/>
+                        <outletCollection property="choiceButtons" destination="Ly3-CO-c25" collectionClass="NSMutableArray" id="hLD-Vk-3Vw"/>
+                        <outletCollection property="choiceButtons" destination="c4m-XD-eRD" collectionClass="NSMutableArray" id="3oq-nR-dJb"/>
+                        <outletCollection property="choiceButtons" destination="6gF-ka-Bmd" collectionClass="NSMutableArray" id="DZY-oM-FKN"/>
                         <segue destination="jqq-ri-0lq" kind="show" identifier="pauseMCFT" id="l0c-Hf-EBJ"/>
                         <segue destination="ObN-ub-0JA" kind="show" identifier="endMCFT" id="Vif-j5-q61"/>
                     </connections>
@@ -1293,16 +1293,16 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="choice1Button" destination="wDY-XY-8rS" id="CNc-DJ-ptg"/>
-                        <outlet property="choice2Button" destination="sNp-yL-No3" id="8J4-AE-CnC"/>
-                        <outlet property="choice3Button" destination="fau-Hf-Ebk" id="sSh-Ox-SgB"/>
-                        <outlet property="choice4Button" destination="lBa-YG-Uh7" id="Xua-70-ctk"/>
                         <outlet property="coverUpButton" destination="FQA-mC-VEG" id="mJM-dB-Q12"/>
                         <outlet property="nextButton" destination="PnZ-fi-7DW" id="Iwz-S3-j0k"/>
                         <outlet property="pauseButton" destination="XVZ-eg-Buu" id="Ql7-Mk-6lb"/>
                         <outlet property="pauseImage" destination="BEd-wO-sWm" id="y7V-mF-hCQ"/>
                         <outlet property="progressMCF" destination="ba0-eo-WRg" id="1d9-2b-6oZ"/>
                         <outlet property="questionLabel" destination="Tg6-Zc-0DI" id="1fH-D1-2b5"/>
+                        <outletCollection property="choiceButtons" destination="wDY-XY-8rS" collectionClass="NSMutableArray" id="FFf-yj-ogZ"/>
+                        <outletCollection property="choiceButtons" destination="sNp-yL-No3" collectionClass="NSMutableArray" id="mzD-Jz-YIE"/>
+                        <outletCollection property="choiceButtons" destination="fau-Hf-Ebk" collectionClass="NSMutableArray" id="Cgz-7i-6i8"/>
+                        <outletCollection property="choiceButtons" destination="lBa-YG-Uh7" collectionClass="NSMutableArray" id="TUW-Pw-QqV"/>
                         <segue destination="jqq-ri-0lq" kind="show" identifier="pauseMCF" id="xZa-W2-wiV"/>
                         <segue destination="ObN-ub-0JA" kind="show" identifier="endMCF" id="FJv-uA-TGT"/>
                     </connections>
@@ -5212,10 +5212,6 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="choice1Button" destination="ErR-Vc-b5M" id="dxx-qU-g2O"/>
-                        <outlet property="choice2Button" destination="m4h-p6-r5G" id="dTi-nP-Pu1"/>
-                        <outlet property="choice3Button" destination="K1L-hU-sYJ" id="ezs-nX-wNT"/>
-                        <outlet property="choice4Button" destination="acK-TA-rQx" id="Kzt-17-sm3"/>
                         <outlet property="coverUpButton" destination="kYI-z1-mQP" id="VbD-Ir-i7o"/>
                         <outlet property="graphView" destination="HW8-gw-1Vp" id="rvr-Ud-egc"/>
                         <outlet property="graphView2" destination="BkT-km-KXd" id="82p-RK-RZx"/>
@@ -5224,6 +5220,10 @@
                         <outlet property="pauseImage" destination="FN8-xd-R7n" id="0jn-cL-SzS"/>
                         <outlet property="progressMCG" destination="gJh-cT-QIH" id="Xmd-mZ-gSd"/>
                         <outlet property="rotateLabel" destination="LIq-NB-c3M" id="FFg-Gq-dKc"/>
+                        <outletCollection property="choiceButtons" destination="ErR-Vc-b5M" id="dS1-rY-1AZ"/>
+                        <outletCollection property="choiceButtons" destination="m4h-p6-r5G" id="xal-Xi-vwE"/>
+                        <outletCollection property="choiceButtons" destination="K1L-hU-sYJ" id="Kd3-5H-aRy"/>
+                        <outletCollection property="choiceButtons" destination="acK-TA-rQx" id="zaC-kA-S0F"/>
                         <segue destination="jqq-ri-0lq" kind="show" identifier="pauseMCG" id="gOF-6a-Hw9"/>
                         <segue destination="ObN-ub-0JA" kind="show" identifier="endMCG" id="yhb-hL-RnZ"/>
                     </connections>
@@ -6086,17 +6086,17 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="xUp-Wb-eXU"/>
-        <segue reference="Vif-j5-q61"/>
+        <segue reference="yhb-hL-RnZ"/>
+        <segue reference="RRb-Wg-Lca"/>
+        <segue reference="gOF-6a-Hw9"/>
         <segue reference="UeY-uf-lHh"/>
         <segue reference="NgK-Jf-Oue"/>
         <segue reference="x8U-8U-6S0"/>
         <segue reference="iga-Ka-6ot"/>
         <segue reference="zFg-3u-os8"/>
-        <segue reference="RRb-Wg-Lca"/>
         <segue reference="6f4-m7-ccP"/>
         <segue reference="hEq-Cf-HRD"/>
         <segue reference="lyb-ow-iKn"/>
-        <segue reference="l0c-Hf-EBJ"/>
         <segue reference="mb5-MD-SV4"/>
     </inferredMetricsTieBreakers>
 </document>

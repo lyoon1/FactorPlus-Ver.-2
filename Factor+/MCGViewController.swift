@@ -15,11 +15,8 @@ import Charts
 
 class MultipleChoice2ViewController: UIViewController {
     
+    @IBOutlet var choiceButtons: Array<UIButton>?
     
-    @IBOutlet weak var choice1Button: UIButton!
-    @IBOutlet weak var choice2Button: UIButton!
-    @IBOutlet weak var choice3Button: UIButton!
-    @IBOutlet weak var choice4Button: UIButton!
     @IBOutlet weak var rotateLabel: UILabel!
     @IBOutlet weak var progressMCG: UIProgressView!
     @IBOutlet weak var pauseButton: UIButton!
@@ -36,128 +33,47 @@ class MultipleChoice2ViewController: UIViewController {
     var xValues = [String]()
     var yValues = [Double]()
     
-    @IBAction func choice1Clicked(sender: AnyObject) {
-    
-        if (checkForRightAnswer(1) == true)
-        {
-            choice1Button.backgroundColor = UIColor.greenColor()     //if correct, set the button to green
-            ttlScore++
-        }
-        else //if choice 1 is incorrect
-        {
-            choice1Button.backgroundColor = UIColor.redColor()       //if incorrect, set the button to red
+    func buttonClicked(buttonIndex: Int) {
+        
+        if (checkForRightAnswer(buttonIndex) == true) {
             
-            //then check every other index to see if they are correct, and highlight the correct answer in green
-            if (checkForRightAnswer(2) == true) {
-                choice2Button.backgroundColor = UIColor.greenColor()
-            }
-                
-            else if (checkForRightAnswer(3) == true) {
-                choice3Button.backgroundColor = UIColor.greenColor()
-            }
-                
-            else if (checkForRightAnswer(4) == true) {
-                choice4Button.backgroundColor = UIColor.greenColor()
-            }
+            choiceButtons![buttonIndex].backgroundColor = UIColor.greenColor()    //if correct, set the button to green
+            ttlScore++                                            //increment number of answers correctly chosen
+        }
+        else { //if choice 1 is incorrect
+            
+            choiceButtons![buttonIndex].backgroundColor = UIColor.redColor()      //if incorrect, set the button to red
+            
+            //then check every other answer to see if they are correct, and highlight the correct answer in green
+            choiceButtons![rightAnsIndex].backgroundColor = UIColor.greenColor()
+            
         }
         
         nextButton.hidden = false       //show the 'next' button
         pauseButton.hidden = true       //hide the 'pause' button to prevent the question from resetting
         coverUpButton.hidden = false    //show the 'coverUp' button which is to prevent other answer buttons from
         //being clicked once the question is answered
-        pauseImage.hidden = true        //hide the pause image as well
+        pauseImage.hidden = true        //hide the 'pause' image as well
         rotateLabel.hidden = true
+        
+    }
+    
+    @IBAction func choice1Clicked(sender: AnyObject) {
+    
+        buttonClicked(0)
 
 
     }
     @IBAction func choice2Clicked(sender: AnyObject) {
-        if (checkForRightAnswer(2) == true)
-        {
-            choice2Button.backgroundColor = UIColor.greenColor()
-            ttlScore++
-        }
-        else
-        {
-            choice2Button.backgroundColor = UIColor.redColor()
-            
-            if (checkForRightAnswer(1) == true) {
-                choice1Button.backgroundColor = UIColor.greenColor()
-            }
-                
-            else if (checkForRightAnswer(3) == true) {
-                choice3Button.backgroundColor = UIColor.greenColor()
-            }
-                
-            else if (checkForRightAnswer(4) == true) {
-                choice4Button.backgroundColor = UIColor.greenColor()
-            }
-        }
-        
-        nextButton.hidden = false
-        pauseButton.hidden = true
-        coverUpButton.hidden = false
-        pauseImage.hidden = true
-        rotateLabel.hidden = true
+        buttonClicked(1)
 
     }
     @IBAction func choice3Clicked(sender: AnyObject) {
-        if (checkForRightAnswer(3) == true)
-        {
-            choice3Button.backgroundColor = UIColor.greenColor()
-            ttlScore++
-        }
-        else
-        {
-            choice3Button.backgroundColor = UIColor.redColor()
-            
-            if (checkForRightAnswer(1) == true) {
-                choice1Button.backgroundColor = UIColor.greenColor()
-            }
-                
-            else if (checkForRightAnswer(2) == true) {
-                choice2Button.backgroundColor = UIColor.greenColor()
-            }
-                
-            else if (checkForRightAnswer(4) == true) {
-                choice4Button.backgroundColor = UIColor.greenColor()
-            }
-        }
-        
-        nextButton.hidden = false
-        pauseButton.hidden = true
-        coverUpButton.hidden = false
-        pauseImage.hidden = true
-        rotateLabel.hidden = true
+        buttonClicked(2)
 
     }
     @IBAction func choice4Clicked(sender: AnyObject) {
-        if (checkForRightAnswer(4) == true)
-        {
-            choice4Button.backgroundColor = UIColor.greenColor()
-            ttlScore++
-        }
-        else
-        {
-            choice4Button.backgroundColor = UIColor.redColor()
-            
-            if (checkForRightAnswer(1) == true) {
-                choice1Button.backgroundColor = UIColor.greenColor()
-            }
-                
-            else if (checkForRightAnswer(2) == true) {
-                choice2Button.backgroundColor = UIColor.greenColor()
-            }
-                
-            else if (checkForRightAnswer(3) == true) {
-                choice3Button.backgroundColor = UIColor.greenColor()
-            }
-        }
-        
-        nextButton.hidden = false
-        pauseButton.hidden = true
-        coverUpButton.hidden = false
-        pauseImage.hidden = true
-        rotateLabel.hidden = true
+        buttonClicked(3)
 
     }
     @IBAction func pauseClicked(sender: AnyObject) {
@@ -190,10 +106,10 @@ class MultipleChoice2ViewController: UIViewController {
     }
     
     func resetColours(){
-        choice1Button.backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
-        choice2Button.backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
-        choice3Button.backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
-        choice4Button.backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
+        choiceButtons![0].backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
+        choiceButtons![1].backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
+        choiceButtons![2].backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
+        choiceButtons![3].backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
     }
     
     override func viewDidLoad() {
@@ -223,10 +139,10 @@ class MultipleChoice2ViewController: UIViewController {
         
         if (fromPause == true) {
             setChart(xValues, yval: yValues)
-            choice1Button.setTitle(choice[0], forState: .Normal)
-            choice2Button.setTitle(choice[1], forState: .Normal)
-            choice3Button.setTitle(choice[2], forState: .Normal)
-            choice4Button.setTitle(choice[3], forState: .Normal)
+            choiceButtons![0].setTitle(choice[0], forState: .Normal)
+            choiceButtons![1].setTitle(choice[1], forState: .Normal)
+            choiceButtons![2].setTitle(choice[2], forState: .Normal)
+            choiceButtons![3].setTitle(choice[3], forState: .Normal)
         }
         else {
             var graphPoint = MultipleCGraph.getGraphOfPointsMC(MultipleChoice)
@@ -272,15 +188,15 @@ class MultipleChoice2ViewController: UIViewController {
         rightAnsIndex = MultipleChoice.getRightIndex()
         choice = MultipleChoice.getChoice()
         
-        self.choice1Button.setTitle(choice[0], forState: .Normal)
-        self.choice2Button.setTitle(choice[1], forState: .Normal)
-        self.choice3Button.setTitle(choice[2], forState: .Normal)
-        self.choice4Button.setTitle(choice[3], forState: .Normal)
+        self.choiceButtons![0].setTitle(choice[0], forState: .Normal)
+        self.choiceButtons![1].setTitle(choice[1], forState: .Normal)
+        self.choiceButtons![2].setTitle(choice[2], forState: .Normal)
+        self.choiceButtons![3].setTitle(choice[3], forState: .Normal)
     }
     
     func checkForRightAnswer(buttonNumber: Int) -> Bool
     {
-        if (rightAnsIndex == (buttonNumber - 1))
+        if (rightAnsIndex == (buttonNumber))
         {
             return true
         }

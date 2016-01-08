@@ -34,10 +34,11 @@ class MultipleChoiceViewController: UIViewController {
     
     var numQuestions = Int()
     
-    @IBOutlet weak var choice1Button: UIButton!       //the following UIButtons represent each of the 4
-    @IBOutlet weak var choice2Button: UIButton!       //answer choices, clickable by the user
-    @IBOutlet weak var choice3Button: UIButton!
-    @IBOutlet weak var choice4Button: UIButton!
+           //the following UIButtons represent each of the 4
+           //answer choices, clickable by the user
+    
+    @IBOutlet var choiceButtons: Array<UIButton>?
+    
     @IBOutlet weak var pauseButton: UIButton!         //the pause button
     @IBOutlet weak var questionLabel: UILabel!        //this UILabel displays the quadratic relation
     @IBOutlet weak var progressMCF: UIProgressView!   //the progress bar, consists of 10 questions
@@ -74,10 +75,10 @@ class MultipleChoiceViewController: UIViewController {
         if (fromPause == true) {
             
             questionLabel.text = question                           //set the questionLabel to the preserved question
-            choice1Button.setTitle(choice[0], forState: .Normal)    //then set each of the buttons to the corresponding
-            choice2Button.setTitle(choice[1], forState: .Normal)    //answer choices that were preserved
-            choice3Button.setTitle(choice[2], forState: .Normal)
-            choice4Button.setTitle(choice[3], forState: .Normal)
+            choiceButtons![0].setTitle(choice[0], forState: .Normal)    //then set each of the buttons to the corresponding
+            choiceButtons![1].setTitle(choice[1], forState: .Normal)    //answer choices that were preserved
+            choiceButtons![2].setTitle(choice[2], forState: .Normal)
+            choiceButtons![3].setTitle(choice[3], forState: .Normal)
             
         }
         //if the screen is NOT loaded from the Pause menu
@@ -254,153 +255,63 @@ class MultipleChoiceViewController: UIViewController {
     func assignToButtons() {
         
         //set each button's text to display the answer choices saved in choice[String]
-        self.choice1Button.setTitle(choice[0], forState: .Normal)
-        self.choice2Button.setTitle(choice[1], forState: .Normal)
-        self.choice3Button.setTitle(choice[2], forState: .Normal)
-        self.choice4Button.setTitle(choice[3], forState: .Normal)
+        self.choiceButtons![0].setTitle(choice[0], forState: .Normal)
+        self.choiceButtons![1].setTitle(choice[1], forState: .Normal)
+        self.choiceButtons![2].setTitle(choice[2], forState: .Normal)
+        self.choiceButtons![3].setTitle(choice[3], forState: .Normal)
         
     } //end of assignToButtons func
     
-    //step 3-1
-    //run this code when the first answer is clicked
-    @IBAction func choice1Clicked(sender: AnyObject) {
-        if (checkForRightAnswer(1) == true) {
+    func buttonClicked(buttonIndex: Int) {
+        
+        if (checkForRightAnswer(buttonIndex) == true) {
             
-            choice1Button.backgroundColor = UIColor.greenColor()    //if correct, set the button to green
+            choiceButtons![buttonIndex].backgroundColor = UIColor.greenColor()    //if correct, set the button to green
             numCorrect++                                            //increment number of answers correctly chosen
         }
         else { //if choice 1 is incorrect
-        
-            choice1Button.backgroundColor = UIColor.redColor()      //if incorrect, set the button to red
+            
+            choiceButtons![buttonIndex].backgroundColor = UIColor.redColor()      //if incorrect, set the button to red
             
             //then check every other answer to see if they are correct, and highlight the correct answer in green
-            if (checkForRightAnswer(2) == true) {
-                choice2Button.backgroundColor = UIColor.greenColor()
-            }
+            choiceButtons![rightAnsIndex].backgroundColor = UIColor.greenColor()
             
-            else if (checkForRightAnswer(3) == true) {
-                choice3Button.backgroundColor = UIColor.greenColor()
-            }
-            
-            else if (checkForRightAnswer(4) == true) {
-                choice4Button.backgroundColor = UIColor.greenColor()
-            }
-            
-        } //end of 'if else' statement
+        }
         
         nextButton.hidden = false       //show the 'next' button
         pauseButton.hidden = true       //hide the 'pause' button to prevent the question from resetting
         coverUpButton.hidden = false    //show the 'coverUp' button which is to prevent other answer buttons from
-                                        //being clicked once the question is answered
+        //being clicked once the question is answered
         pauseImage.hidden = true        //hide the 'pause' image as well
-
         
-        /* the following lines of codes commented out is the timer object in XCode, and may be used later for 
-           when the timed game mode getas implemented
+    }
+    
+    //step 3-1
+    //run this code when the first answer is clicked
+    @IBAction func choice1Clicked(sender: AnyObject) {
         
-        //http://stackoverflow.com/questions/27990085/nstimer-how-to-delay-in-swift
-        let seconds = 5.0
-        let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
-        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-        
-        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-            
-            // here code perfomed with delay (5 seconds in this case)
-            
-        })
-
-        */
+        buttonClicked(0)
         
     } //end of choice1Clicked func
     
     //run this code when the second answer is clicked, same logic as 'choice1Clicked'
     @IBAction func choice2Clicked(sender: AnyObject) {
-        if (checkForRightAnswer(2) == true) {
-         
-            choice2Button.backgroundColor = UIColor.greenColor()
-            numCorrect++
-        }
-        else {
-            
-            choice2Button.backgroundColor = UIColor.redColor()
-            
-            if (checkForRightAnswer(1) == true) {
-                choice1Button.backgroundColor = UIColor.greenColor()
-            }
-                
-            else if (checkForRightAnswer(3) == true) {
-                choice3Button.backgroundColor = UIColor.greenColor()
-            }
-                
-            else if (checkForRightAnswer(4) == true) {
-                choice4Button.backgroundColor = UIColor.greenColor()
-            }
-        }
-        nextButton.hidden = false
-        pauseButton.hidden = true
-        coverUpButton.hidden = false
-        pauseImage.hidden = true
+        
+        buttonClicked(1)
         
     } //end of choice2Clicked func
     
     //run this code when the third answer is clicked, same logic as 'choice1Clicked'
     @IBAction func choice3Clicked(sender: AnyObject) {
-        if (checkForRightAnswer(3) == true) {
-            
-            choice3Button.backgroundColor = UIColor.greenColor()
-            numCorrect++
-        }
-        else {
-            
-            choice3Button.backgroundColor = UIColor.redColor()
-            
-            if (checkForRightAnswer(1) == true) {
-                choice1Button.backgroundColor = UIColor.greenColor()
-            }
-            
-            else if (checkForRightAnswer(2) == true) {
-                choice2Button.backgroundColor = UIColor.greenColor()
-            }
-            
-            else if (checkForRightAnswer(4) == true) {
-                choice4Button.backgroundColor = UIColor.greenColor()
-            }
-        }
-        nextButton.hidden = false
-        pauseButton.hidden = true
-        coverUpButton.hidden = false
-        pauseImage.hidden = true
+        
+        buttonClicked(2)
         
     } //end of choice3Clicked func
     
     //run this code when the fourth answer is clicked, same logic and set-up as 'choice1Clicked'
     @IBAction func choice4Clicked(sender: AnyObject) {
-        if (checkForRightAnswer(4) == true) {
-          
-            choice4Button.backgroundColor = UIColor.greenColor()
-            numCorrect++
-        }
-        else {
-            
-            choice4Button.backgroundColor = UIColor.redColor()
-            
-            if (checkForRightAnswer(1) == true) {
-                choice1Button.backgroundColor = UIColor.greenColor()
-            }
-            
-            else if (checkForRightAnswer(2) == true) {
-                choice2Button.backgroundColor = UIColor.greenColor()
-            }
-            
-            else if (checkForRightAnswer(3) == true) {
-                choice3Button.backgroundColor = UIColor.greenColor()
-            }
-        }
         
-        nextButton.hidden = false
-        pauseButton.hidden = true
-        coverUpButton.hidden = false
-        pauseImage.hidden = true
+        buttonClicked(3)
         
     } //end of choice4Clicked func
     
@@ -409,7 +320,7 @@ class MultipleChoiceViewController: UIViewController {
     func checkForRightAnswer(buttonNumber: Int) -> Bool
     {
         //if the user chose the correct answer
-        if ((buttonNumber - 1) == rightAnsIndex) { //button numbers range from 1 ~ 4, and rightAnsIndex ranges from 0 ~ 3
+        if ((buttonNumber) == rightAnsIndex) { //button numbers range from 1 ~ 4, and rightAnsIndex ranges from 0 ~ 3
                                                    //hence the subtraction of 1
             return true     //return true
         }
@@ -444,10 +355,10 @@ class MultipleChoiceViewController: UIViewController {
     func resetColours() {
         
         //constant pink colour after Jan. 5
-        choice1Button.backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
-        choice2Button.backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
-        choice3Button.backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
-        choice4Button.backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
+        choiceButtons![0].backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
+        choiceButtons![1].backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
+        choiceButtons![2].backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
+        choiceButtons![3].backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
         
     } //end of resetColours func
     
