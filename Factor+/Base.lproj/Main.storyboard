@@ -2667,10 +2667,17 @@
                                     <segue destination="VVX-gE-KaG" kind="show" identifier="BackToEntrance" id="mb5-MD-SV4"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe for Help" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lu6-sL-V8r">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.66274509800000003" green="0.81960784310000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="sW2-FM-7nc" firstAttribute="centerY" secondItem="kzJ-nx-abT" secondAttribute="centerY" id="0fu-GY-m1n"/>
+                            <constraint firstItem="lu6-sL-V8r" firstAttribute="top" secondItem="k3N-Df-D3g" secondAttribute="bottom" constant="10" id="8Kq-Xp-G2z"/>
                             <constraint firstItem="m7i-fZ-NYG" firstAttribute="leading" secondItem="XPx-A2-nlt" secondAttribute="leadingMargin" constant="85" id="8mf-eL-j6k"/>
                             <constraint firstItem="cXM-dd-3ss" firstAttribute="top" secondItem="m7i-fZ-NYG" secondAttribute="bottom" constant="422" id="BHI-nR-jHQ"/>
                             <constraint firstItem="k3N-Df-D3g" firstAttribute="top" secondItem="m7i-fZ-NYG" secondAttribute="bottom" constant="3" id="Eu4-yz-TnB"/>
@@ -2680,11 +2687,13 @@
                             <constraint firstItem="kzJ-nx-abT" firstAttribute="top" secondItem="TKF-L6-XDg" secondAttribute="bottom" constant="508" id="G8t-ma-Ytp"/>
                             <constraint firstItem="OaM-4Z-w8b" firstAttribute="top" secondItem="k3N-Df-D3g" secondAttribute="bottom" constant="42" id="LPT-zf-VYO"/>
                             <constraint firstItem="Pmu-HZ-0E5" firstAttribute="centerX" secondItem="m7i-fZ-NYG" secondAttribute="centerX" id="Ljz-Pf-LBJ"/>
+                            <constraint firstItem="lu6-sL-V8r" firstAttribute="centerX" secondItem="k3N-Df-D3g" secondAttribute="centerX" id="MIJ-Ur-uTm"/>
                             <constraint firstAttribute="trailing" secondItem="Pmu-HZ-0E5" secondAttribute="trailing" id="UpL-11-ySg"/>
                             <constraint firstItem="k3N-Df-D3g" firstAttribute="leading" secondItem="Pmu-HZ-0E5" secondAttribute="leading" id="X1w-4A-gbE"/>
                             <constraint firstItem="sW2-FM-7nc" firstAttribute="centerX" secondItem="kzJ-nx-abT" secondAttribute="centerX" id="XkO-yE-881"/>
                             <constraint firstItem="k3N-Df-D3g" firstAttribute="trailing" secondItem="Pmu-HZ-0E5" secondAttribute="trailing" id="Zbx-wL-xWi"/>
                             <constraint firstItem="Pmu-HZ-0E5" firstAttribute="leading" secondItem="XPx-A2-nlt" secondAttribute="leading" id="hFL-TQ-ViB"/>
+                            <constraint firstItem="OaM-4Z-w8b" firstAttribute="top" secondItem="lu6-sL-V8r" secondAttribute="bottom" constant="11" id="hQp-mM-Yt1"/>
                             <constraint firstItem="cXM-dd-3ss" firstAttribute="top" secondItem="sW2-FM-7nc" secondAttribute="bottom" constant="8" symbolic="YES" id="iDC-Qx-WPD"/>
                             <constraint firstItem="m7i-fZ-NYG" firstAttribute="top" secondItem="TKF-L6-XDg" secondAttribute="bottom" constant="8" symbolic="YES" id="lHN-vf-Kql"/>
                             <constraint firstItem="kzJ-nx-abT" firstAttribute="bottom" secondItem="cXM-dd-3ss" secondAttribute="top" id="opz-Zd-3tl"/>
@@ -2695,6 +2704,7 @@
                             <constraint firstItem="OaM-4Z-w8b" firstAttribute="trailing" secondItem="k3N-Df-D3g" secondAttribute="trailing" id="wdk-Hs-qzJ"/>
                             <constraint firstItem="OaM-4Z-w8b" firstAttribute="leading" secondItem="k3N-Df-D3g" secondAttribute="leading" id="y5h-uV-5d6"/>
                             <constraint firstItem="Pmu-HZ-0E5" firstAttribute="top" secondItem="XPx-A2-nlt" secondAttribute="top" id="yX3-i9-ASd"/>
+                            <constraint firstItem="lu6-sL-V8r" firstAttribute="leading" secondItem="XPx-A2-nlt" secondAttribute="leadingMargin" constant="88" id="zMR-BT-eN2"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -2704,6 +2714,7 @@
                                 <exclude reference="OaM-4Z-w8b"/>
                                 <exclude reference="sW2-FM-7nc"/>
                                 <exclude reference="kzJ-nx-abT"/>
+                                <exclude reference="lu6-sL-V8r"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="BHI-nR-jHQ"/>
@@ -2712,7 +2723,11 @@
                                 <exclude reference="opz-Zd-3tl"/>
                                 <exclude reference="pG8-Eg-PeK"/>
                                 <exclude reference="udk-c3-CXd"/>
+                                <exclude reference="8Kq-Xp-G2z"/>
+                                <exclude reference="MIJ-Ur-uTm"/>
+                                <exclude reference="zMR-BT-eN2"/>
                                 <exclude reference="LPT-zf-VYO"/>
+                                <exclude reference="hQp-mM-Yt1"/>
                                 <exclude reference="wdk-Hs-qzJ"/>
                                 <exclude reference="y5h-uV-5d6"/>
                                 <exclude reference="Ljz-Pf-LBJ"/>
@@ -2737,6 +2752,7 @@
                                 <include reference="OaM-4Z-w8b"/>
                                 <include reference="sW2-FM-7nc"/>
                                 <include reference="kzJ-nx-abT"/>
+                                <include reference="lu6-sL-V8r"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="BHI-nR-jHQ"/>
@@ -2745,7 +2761,11 @@
                                 <include reference="opz-Zd-3tl"/>
                                 <include reference="pG8-Eg-PeK"/>
                                 <include reference="udk-c3-CXd"/>
+                                <include reference="8Kq-Xp-G2z"/>
+                                <include reference="MIJ-Ur-uTm"/>
+                                <include reference="zMR-BT-eN2"/>
                                 <include reference="LPT-zf-VYO"/>
+                                <include reference="hQp-mM-Yt1"/>
                                 <include reference="wdk-Hs-qzJ"/>
                                 <include reference="y5h-uV-5d6"/>
                                 <include reference="Ljz-Pf-LBJ"/>
@@ -2902,28 +2922,46 @@
                                     <segue destination="VVX-gE-KaG" kind="show" id="6TA-wG-Nj4"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4UX-2O-eht">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe for Help" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EcA-QB-KMh">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.66274509800000003" green="0.81960784310000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="BLy-0T-GdL" firstAttribute="top" secondItem="KYL-Xz-fRr" secondAttribute="top" id="0DX-0V-Cka"/>
                             <constraint firstItem="2GO-GH-2b4" firstAttribute="leading" secondItem="KYL-Xz-fRr" secondAttribute="leadingMargin" constant="-12" id="2Ja-uJ-w2I"/>
                             <constraint firstItem="rEy-nG-9VQ" firstAttribute="leading" secondItem="KYL-Xz-fRr" secondAttribute="leadingMargin" constant="-3" id="ANO-Wg-3ab"/>
+                            <constraint firstItem="4UX-2O-eht" firstAttribute="top" secondItem="ggK-vp-xVU" secondAttribute="bottom" constant="8" symbolic="YES" id="ELb-hd-W1B"/>
                             <constraint firstItem="ggK-vp-xVU" firstAttribute="leading" secondItem="KYL-Xz-fRr" secondAttribute="leading" id="Jsx-CM-uFj"/>
                             <constraint firstItem="rEy-nG-9VQ" firstAttribute="centerX" secondItem="2GO-GH-2b4" secondAttribute="centerX" id="Kxy-wt-e4o"/>
                             <constraint firstItem="ksx-03-9tW" firstAttribute="top" secondItem="rEy-nG-9VQ" secondAttribute="bottom" constant="8" symbolic="YES" id="LMS-Iv-W6c"/>
                             <constraint firstItem="V5X-ZW-ihb" firstAttribute="top" secondItem="88Q-SF-pWU" secondAttribute="bottom" constant="8" symbolic="YES" id="MHJ-G5-d88"/>
                             <constraint firstItem="ksx-03-9tW" firstAttribute="top" secondItem="ggK-vp-xVU" secondAttribute="bottom" constant="390" id="O4z-7q-ITA"/>
+                            <constraint firstItem="hDm-hh-qNw" firstAttribute="top" secondItem="EcA-QB-KMh" secondAttribute="bottom" constant="11" id="PLO-wa-oPR"/>
+                            <constraint firstItem="EcA-QB-KMh" firstAttribute="centerX" secondItem="ggK-vp-xVU" secondAttribute="centerX" id="QQK-NR-YFJ"/>
                             <constraint firstItem="rEy-nG-9VQ" firstAttribute="centerY" secondItem="2GO-GH-2b4" secondAttribute="centerY" id="QmW-aE-wJk"/>
                             <constraint firstItem="ggK-vp-xVU" firstAttribute="top" secondItem="V5X-ZW-ihb" secondAttribute="bottom" constant="3" id="SzW-a9-lhx"/>
                             <constraint firstItem="ggK-vp-xVU" firstAttribute="trailing" secondItem="BLy-0T-GdL" secondAttribute="trailing" id="Tcp-Bt-N9u"/>
                             <constraint firstItem="BLy-0T-GdL" firstAttribute="centerX" secondItem="V5X-ZW-ihb" secondAttribute="centerX" id="WRw-jb-ouW"/>
                             <constraint firstItem="hDm-hh-qNw" firstAttribute="top" secondItem="ggK-vp-xVU" secondAttribute="bottom" constant="42" id="Ydi-uD-uqc"/>
+                            <constraint firstAttribute="trailing" secondItem="4UX-2O-eht" secondAttribute="trailing" constant="139" id="apd-Pb-AqA"/>
+                            <constraint firstItem="EcA-QB-KMh" firstAttribute="top" secondItem="ggK-vp-xVU" secondAttribute="bottom" constant="10" id="buD-Ki-ULk"/>
                             <constraint firstItem="V5X-ZW-ihb" firstAttribute="leading" secondItem="KYL-Xz-fRr" secondAttribute="leadingMargin" constant="85" id="cBm-Rm-8iH"/>
                             <constraint firstAttribute="trailing" secondItem="ggK-vp-xVU" secondAttribute="trailing" id="cnB-im-hFe"/>
                             <constraint firstItem="2GO-GH-2b4" firstAttribute="top" secondItem="hDm-hh-qNw" secondAttribute="bottom" constant="8" symbolic="YES" id="fN2-LZ-Pe6"/>
                             <constraint firstItem="hDm-hh-qNw" firstAttribute="trailing" secondItem="ggK-vp-xVU" secondAttribute="trailing" id="lXe-8D-V2E"/>
                             <constraint firstItem="ggK-vp-xVU" firstAttribute="leading" secondItem="BLy-0T-GdL" secondAttribute="leading" id="u4Q-YH-YTo"/>
                             <constraint firstItem="hDm-hh-qNw" firstAttribute="leading" secondItem="ggK-vp-xVU" secondAttribute="leading" id="vdV-1M-cvf"/>
+                            <constraint firstItem="EcA-QB-KMh" firstAttribute="leading" secondItem="KYL-Xz-fRr" secondAttribute="leadingMargin" constant="88" id="x7L-sw-ADy"/>
                             <constraint firstItem="2GO-GH-2b4" firstAttribute="bottom" secondItem="ksx-03-9tW" secondAttribute="top" id="yNa-rn-0eX"/>
                         </constraints>
                         <variation key="default">
@@ -2934,6 +2972,8 @@
                                 <exclude reference="hDm-hh-qNw"/>
                                 <exclude reference="rEy-nG-9VQ"/>
                                 <exclude reference="2GO-GH-2b4"/>
+                                <exclude reference="4UX-2O-eht"/>
+                                <exclude reference="EcA-QB-KMh"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="LMS-Iv-W6c"/>
@@ -2941,6 +2981,11 @@
                                 <exclude reference="2Ja-uJ-w2I"/>
                                 <exclude reference="fN2-LZ-Pe6"/>
                                 <exclude reference="yNa-rn-0eX"/>
+                                <exclude reference="ELb-hd-W1B"/>
+                                <exclude reference="apd-Pb-AqA"/>
+                                <exclude reference="QQK-NR-YFJ"/>
+                                <exclude reference="buD-Ki-ULk"/>
+                                <exclude reference="x7L-sw-ADy"/>
                                 <exclude reference="0DX-0V-Cka"/>
                                 <exclude reference="WRw-jb-ouW"/>
                                 <exclude reference="MHJ-G5-d88"/>
@@ -2950,6 +2995,7 @@
                                 <exclude reference="Tcp-Bt-N9u"/>
                                 <exclude reference="cnB-im-hFe"/>
                                 <exclude reference="u4Q-YH-YTo"/>
+                                <exclude reference="PLO-wa-oPR"/>
                                 <exclude reference="Ydi-uD-uqc"/>
                                 <exclude reference="lXe-8D-V2E"/>
                                 <exclude reference="vdV-1M-cvf"/>
@@ -2966,6 +3012,8 @@
                                 <include reference="hDm-hh-qNw"/>
                                 <include reference="rEy-nG-9VQ"/>
                                 <include reference="2GO-GH-2b4"/>
+                                <include reference="4UX-2O-eht"/>
+                                <include reference="EcA-QB-KMh"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="LMS-Iv-W6c"/>
@@ -2973,6 +3021,11 @@
                                 <include reference="2Ja-uJ-w2I"/>
                                 <include reference="fN2-LZ-Pe6"/>
                                 <include reference="yNa-rn-0eX"/>
+                                <include reference="ELb-hd-W1B"/>
+                                <include reference="apd-Pb-AqA"/>
+                                <include reference="QQK-NR-YFJ"/>
+                                <include reference="buD-Ki-ULk"/>
+                                <include reference="x7L-sw-ADy"/>
                                 <include reference="0DX-0V-Cka"/>
                                 <include reference="WRw-jb-ouW"/>
                                 <include reference="MHJ-G5-d88"/>
@@ -2982,6 +3035,7 @@
                                 <include reference="Tcp-Bt-N9u"/>
                                 <include reference="cnB-im-hFe"/>
                                 <include reference="u4Q-YH-YTo"/>
+                                <include reference="PLO-wa-oPR"/>
                                 <include reference="Ydi-uD-uqc"/>
                                 <include reference="lXe-8D-V2E"/>
                                 <include reference="vdV-1M-cvf"/>
@@ -5220,10 +5274,10 @@
                         <outlet property="pauseImage" destination="FN8-xd-R7n" id="0jn-cL-SzS"/>
                         <outlet property="progressMCG" destination="gJh-cT-QIH" id="Xmd-mZ-gSd"/>
                         <outlet property="rotateLabel" destination="LIq-NB-c3M" id="FFg-Gq-dKc"/>
-                        <outletCollection property="choiceButtons" destination="ErR-Vc-b5M" id="dS1-rY-1AZ"/>
-                        <outletCollection property="choiceButtons" destination="m4h-p6-r5G" id="xal-Xi-vwE"/>
-                        <outletCollection property="choiceButtons" destination="K1L-hU-sYJ" id="Kd3-5H-aRy"/>
-                        <outletCollection property="choiceButtons" destination="acK-TA-rQx" id="zaC-kA-S0F"/>
+                        <outletCollection property="choiceButtons" destination="ErR-Vc-b5M" collectionClass="NSMutableArray" id="dS1-rY-1AZ"/>
+                        <outletCollection property="choiceButtons" destination="m4h-p6-r5G" collectionClass="NSMutableArray" id="xal-Xi-vwE"/>
+                        <outletCollection property="choiceButtons" destination="K1L-hU-sYJ" collectionClass="NSMutableArray" id="Kd3-5H-aRy"/>
+                        <outletCollection property="choiceButtons" destination="acK-TA-rQx" collectionClass="NSMutableArray" id="zaC-kA-S0F"/>
                         <segue destination="jqq-ri-0lq" kind="show" identifier="pauseMCG" id="gOF-6a-Hw9"/>
                         <segue destination="ObN-ub-0JA" kind="show" identifier="endMCG" id="yhb-hL-RnZ"/>
                     </connections>
@@ -6059,6 +6113,7 @@
                 <viewControllerPlaceholder id="gLz-d0-kqm" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dzz-KT-9iO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="784.5" y="396.75"/>
         </scene>
     </scenes>
     <resources>
@@ -6085,18 +6140,18 @@
         <image name="X Mark" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xUp-Wb-eXU"/>
-        <segue reference="yhb-hL-RnZ"/>
-        <segue reference="RRb-Wg-Lca"/>
-        <segue reference="gOF-6a-Hw9"/>
+        <segue reference="lyb-ow-iKn"/>
+        <segue reference="TzD-zS-1Xg"/>
         <segue reference="UeY-uf-lHh"/>
+        <segue reference="Vif-j5-q61"/>
+        <segue reference="xUp-Wb-eXU"/>
+        <segue reference="l0c-Hf-EBJ"/>
         <segue reference="NgK-Jf-Oue"/>
-        <segue reference="x8U-8U-6S0"/>
         <segue reference="iga-Ka-6ot"/>
         <segue reference="zFg-3u-os8"/>
+        <segue reference="RRb-Wg-Lca"/>
         <segue reference="6f4-m7-ccP"/>
         <segue reference="hEq-Cf-HRD"/>
-        <segue reference="lyb-ow-iKn"/>
         <segue reference="mb5-MD-SV4"/>
     </inferredMetricsTieBreakers>
 </document>

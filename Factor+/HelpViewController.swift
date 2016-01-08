@@ -17,7 +17,7 @@ class HelpViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     @IBOutlet weak var helpCollectionView: UICollectionView!
     
-    let imageArray = [UIImage(named:"Help Screen User Input"), UIImage(named:"Help Screen Pause")]
+    let imageArray = [UIImage(named:"Help Screen User Input"), UIImage(named:"Help Screen Pause"), UIImage(named:"Help Screen Time Trial Mode")]
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
