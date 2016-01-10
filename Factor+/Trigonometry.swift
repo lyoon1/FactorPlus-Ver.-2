@@ -5,7 +5,8 @@
 //  Created by Leo Yoon on 2015-11-06.
 //  Copyright © 2015 LYM. All rights reserved.
 //
-// will delete eventually
+//  Currently not in use. Will need to be updated for use later.
+//
 
 import Foundation
 import UIKit

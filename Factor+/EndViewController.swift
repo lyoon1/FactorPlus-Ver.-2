@@ -13,20 +13,15 @@ class EndViewController: UIViewController {
     var numCorrect = Int(), type = String(), score = Int(), numQuestion = Int()
     
     @IBOutlet weak var questionTypeLabel: UILabel!
-    
     @IBOutlet weak var numCorrectLabel: UILabel!
-
     @IBOutlet weak var numWrongLabel: UILabel!
-    
     @IBOutlet weak var scoreLabel: UILabel!
-    
     @IBOutlet weak var restartButton: UIButton!
-    
     @IBOutlet weak var menuButton: UIButton!
-    
     @IBOutlet weak var questionTypeImage: UIImageView!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         questionTypeImage.image = UIImage(named: type)
@@ -35,16 +30,17 @@ class EndViewController: UIViewController {
         numWrongLabel.text = String(10 - numCorrect)
         scoreLabel.text = "\(10 * numCorrect)%"
         
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func restartGame(sender: AnyObject) {
+        
         score = 0
         numQuestion = 0
         restartGame()
     }
     
     @IBAction func goToMenu(sender: AnyObject) {
+        
         score = 0
         numQuestion = 0
         type = ""
@@ -52,6 +48,7 @@ class EndViewController: UIViewController {
     }
     
     func restartGame (){
+        
         if(type == "Multiple Choice Factor")
         {
             performSegueWithIdentifier("restartMCF", sender: self)
@@ -72,6 +69,9 @@ class EndViewController: UIViewController {
         {
             performSegueWithIdentifier("restartUIG", sender: self)
         }
+            
+        //The codes below are not part of the ICS4U project
+        //they will be used when(if) Trigonometry gets implemented
         else if(type == "Multiple Choice Trig")
         {
             performSegueWithIdentifier("restartMCT", sender: self)
@@ -87,11 +87,13 @@ class EndViewController: UIViewController {
     }
     
     override func didReceiveMemoryWarning() {
+        
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
         if(segue.identifier == "MainMenu")
         {
             let mvc = segue.destinationViewController as! StartViewController
@@ -126,6 +128,9 @@ class EndViewController: UIViewController {
             uigvc.numQuestions = numQuestion
             uigvc.ttlScore = score
         }
+            
+        //The codes below are not part of the ICS4U project
+        //they will be used when(if) Trigonometry gets implemented
         else if(segue.identifier == "Continue MCT")
         {
             let mctvc = segue.destinationViewController as! MCTViewController

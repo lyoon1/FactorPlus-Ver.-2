@@ -5,10 +5,11 @@
 //  Created by Jia Long Ma on 2015-11-03.
 //  Copyright © 2015 LYM. All rights reserved.
 //
-//Credits to:
-//Taehyun Lee: For integration into the UI and separating the algorithmn into functions
-//Leo Yoon: For integration of the buttons around the algorithm and implementing the pause function
-//Jia Long Ma: For creating the base algorithm that generates multiple choice answers and returns the correct index
+//  Credits to:
+//  Taehyun Lee: For integration into the UI and separating the algorithmn into functions
+//  Leo Yoon: For integration of the buttons around the algorithm and implementing the pause function
+//  John Ma: For creating the base algorithm that generates multiple choice answers and returns the correct index
+//
 
 import UIKit
 import Charts
@@ -32,6 +33,27 @@ class MultipleChoice2ViewController: UIViewController {
     var choice = [String]()
     var xValues = [String]()
     var yValues = [Double]()
+    
+    @IBAction func choice1Clicked(sender: AnyObject) {
+    
+        buttonClicked(0)
+
+    }
+    @IBAction func choice2Clicked(sender: AnyObject) {
+       
+        buttonClicked(1)
+
+    }
+    @IBAction func choice3Clicked(sender: AnyObject) {
+    
+        buttonClicked(2)
+
+    }
+    @IBAction func choice4Clicked(sender: AnyObject) {
+
+        buttonClicked(3)
+
+    }
     
     func buttonClicked(buttonIndex: Int) {
         
@@ -58,25 +80,8 @@ class MultipleChoice2ViewController: UIViewController {
         
     }
     
-    @IBAction func choice1Clicked(sender: AnyObject) {
-    
-        buttonClicked(0)
-
-
-    }
-    @IBAction func choice2Clicked(sender: AnyObject) {
-        buttonClicked(1)
-
-    }
-    @IBAction func choice3Clicked(sender: AnyObject) {
-        buttonClicked(2)
-
-    }
-    @IBAction func choice4Clicked(sender: AnyObject) {
-        buttonClicked(3)
-
-    }
     @IBAction func pauseClicked(sender: AnyObject) {
+        
         performSegueWithIdentifier("pauseMCG", sender: sender)
     }
 
@@ -93,7 +98,7 @@ class MultipleChoice2ViewController: UIViewController {
 
     }
     
-    func changeProgress(){
+    func changeProgress() {
         numQuestions++
         var temp = Double(numQuestions)/10
         progressMCG.setProgress(Float(temp), animated: true)
@@ -105,7 +110,7 @@ class MultipleChoice2ViewController: UIViewController {
         endGame()
     }
     
-    func resetColours(){
+    func resetColours() {
         choiceButtons![0].backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
         choiceButtons![1].backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
         choiceButtons![2].backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
@@ -113,6 +118,7 @@ class MultipleChoice2ViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         var temp = Double(numQuestions)/10
@@ -157,6 +163,7 @@ class MultipleChoice2ViewController: UIViewController {
 
     //http://www.appcoda.com/ios-charts-api-tutorial/
     func setChart(xval:[String], yval:[Double]) {
+        
         var dataEntries: [ChartDataEntry] = []
         
         for i in 0..<xval.count {
@@ -174,8 +181,8 @@ class MultipleChoice2ViewController: UIViewController {
         graphView2.data?.setValueFont(UIFont(name:"Helvetica Neuve", size: 12))
         graphView2.setDescriptionTextPosition(x: CGFloat(10000), y: CGFloat(100000))
         
-        for (var i = 0; i < 12; i++)
-        {
+        for (var i = 0; i < 12; i++) {
+          
             xValues.insert(xval[i], atIndex: i)
             yValues.insert(yval[i], atIndex: i)
         }
@@ -183,7 +190,6 @@ class MultipleChoice2ViewController: UIViewController {
     }
 
     func makeMultipleChoice() {
-      //  var valueGenerator = GraphingPoints()
         
         rightAnsIndex = MultipleChoice.getRightIndex()
         choice = MultipleChoice.getChoice()
@@ -194,30 +200,34 @@ class MultipleChoice2ViewController: UIViewController {
         self.choiceButtons![3].setTitle(choice[3], forState: .Normal)
     }
     
-    func checkForRightAnswer(buttonNumber: Int) -> Bool
-    {
-        if (rightAnsIndex == (buttonNumber))
-        {
+    func checkForRightAnswer(buttonNumber: Int) -> Bool {
+        
+        //if the user chose the correct answer
+        if ((buttonNumber) == rightAnsIndex) {
+            
             return true
         }
-        else
-        {
+            //if the user's choice is incorrect
+        else {
+            
             return false
-        }
+            
+        } //end of 'if else' statement
     }
     
     override func didReceiveMemoryWarning() {
+        
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func endGame() {
-        if(numQuestions == 10)
-        {
+        
+        if(numQuestions == 10) {
+            
             performSegueWithIdentifier("endMCG", sender: self)
         }
-        else
-        {
+        else {
+            
             var graphPoint = MultipleCGraph.getGraphOfPointsMC(MultipleChoice)
             
             let xval = graphPoint().getXVal()
@@ -226,10 +236,10 @@ class MultipleChoice2ViewController: UIViewController {
         }
     }
     
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "pauseMCG")
-        {
+        
+        if(segue.identifier == "pauseMCG") {
+            
             let pvc = segue.destinationViewController as! PauseViewController
             pvc.score = ttlScore
             pvc.numQuestion = numQuestions
@@ -237,16 +247,18 @@ class MultipleChoice2ViewController: UIViewController {
             pvc.rightAnswerIndex = rightAnsIndex
             
             for (var i = 0; i <= 3; i++) {
+                
                 pvc.multipleChoiceChoices.insert(choice[i], atIndex: i)
             }
             
             for (var i = 0; i < 12; i++) {
+                
                 pvc.xval.insert(xValues[i], atIndex: i)
                 pvc.yval.insert(yValues[i], atIndex: i)
             }
         }
-        else if(segue.identifier == "endMCG")
-        {
+        else if(segue.identifier == "endMCG") {
+            
             let evc = segue.destinationViewController as! EndViewController
             evc.numCorrect = ttlScore
             evc.type = "Multiple Choice Graph"

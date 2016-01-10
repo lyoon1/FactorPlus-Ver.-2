@@ -22,7 +22,6 @@
 		6AEF920D1BDEF25A007F8E5E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEF920C1BDEF25A007F8E5E /* MainViewController.swift */; };
 		6AEF920F1BDEF954007F8E5E /* OptionsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEF920E1BDEF954007F8E5E /* OptionsCollectionViewCell.swift */; };
 		7705C7531C3C21360086F4FC /* HelpTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7705C7521C3C21360086F4FC /* HelpTwoViewController.swift */; };
-		7705C7571C3C224D0086F4FC /* HelpEntranceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7705C7561C3C224D0086F4FC /* HelpEntranceViewController.swift */; };
 		77364D361C15ED330078D164 /* HelpCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77364D351C15ED320078D164 /* HelpCollectionViewCell.swift */; };
 		7756CD531C3EC8380038359B /* MCFTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7756CD521C3EC8380038359B /* MCFTViewController.swift */; };
 		775DF07E1BECF55C0060FE50 /* Quadratic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775DF07D1BECF55C0060FE50 /* Quadratic.swift */; };
@@ -32,6 +31,7 @@
 		7789D8AF1BDA76AA00A0619F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7789D8AD1BDA76AA00A0619F /* LaunchScreen.storyboard */; };
 		7789D8BA1BDA76AA00A0619F /* Factor_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7789D8B91BDA76AA00A0619F /* Factor_Tests.swift */; };
 		7789D8C51BDA76AA00A0619F /* Factor_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7789D8C41BDA76AA00A0619F /* Factor_UITests.swift */; };
+		77A311121C42B95400D8E4C9 /* HelpEntranceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A311111C42B95400D8E4C9 /* HelpEntranceViewController.swift */; };
 		77AE785C1BF23A910039B595 /* MultipleC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AE785B1BF23A910039B595 /* MultipleC.swift */; };
 		77D0AD011BF4D11900270676 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77D0ACFC1BF4D10300270676 /* Charts.framework */; };
 		77D0AD021BF4D11900270676 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77D0ACFC1BF4D10300270676 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -116,7 +116,6 @@
 		6AEF920C1BDEF25A007F8E5E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		6AEF920E1BDEF954007F8E5E /* OptionsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsCollectionViewCell.swift; sourceTree = "<group>"; };
 		7705C7521C3C21360086F4FC /* HelpTwoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpTwoViewController.swift; sourceTree = "<group>"; };
-		7705C7561C3C224D0086F4FC /* HelpEntranceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpEntranceViewController.swift; sourceTree = "<group>"; };
 		77364D351C15ED320078D164 /* HelpCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpCollectionViewCell.swift; sourceTree = "<group>"; };
 		7756CD521C3EC8380038359B /* MCFTViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCFTViewController.swift; sourceTree = "<group>"; };
 		775DF07D1BECF55C0060FE50 /* Quadratic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quadratic.swift; sourceTree = "<group>"; };
@@ -132,6 +131,7 @@
 		7789D8C01BDA76AA00A0619F /* Factor+UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Factor+UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7789D8C41BDA76AA00A0619F /* Factor_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factor_UITests.swift; sourceTree = "<group>"; };
 		7789D8C61BDA76AA00A0619F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77A311111C42B95400D8E4C9 /* HelpEntranceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpEntranceViewController.swift; sourceTree = "<group>"; };
 		77AE785B1BF23A910039B595 /* MultipleC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleC.swift; sourceTree = "<group>"; };
 		77D0ACF51BF4D10300270676 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../Downloads/ios-charts-master/Charts/Charts.xcodeproj"; sourceTree = "<group>"; };
 		77D356BB1C1646BF006251A8 /* GraphingPoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphingPoints.swift; sourceTree = "<group>"; };
@@ -233,9 +233,9 @@
 				6AA250DE1BE83FB500633713 /* PauseViewController.swift */,
 				6A72DFEF1BEBA87D0043116E /* EndViewController.swift */,
 				6A7F37651BE910A200812797 /* Multiple Choice View Controllers */,
+				77A311111C42B95400D8E4C9 /* HelpEntranceViewController.swift */,
 				6A8211A51BE7A6A400B05349 /* HelpViewController.swift */,
 				7705C7521C3C21360086F4FC /* HelpTwoViewController.swift */,
-				7705C7561C3C224D0086F4FC /* HelpEntranceViewController.swift */,
 				6A8211A71BE7A6AD00B05349 /* CreditsViewController.swift */,
 				6AAD16111BEADC8E00097C7A /* User Input View Controllers */,
 				6A8211A31BE7A69A00B05349 /* StartViewController.swift */,
@@ -449,6 +449,7 @@
 				77D356C01C1646BF006251A8 /* mutipleCGraphComp.swift in Sources */,
 				7756CD531C3EC8380038359B /* MCFTViewController.swift in Sources */,
 				6A8211A61BE7A6A400B05349 /* HelpViewController.swift in Sources */,
+				77A311121C42B95400D8E4C9 /* HelpEntranceViewController.swift in Sources */,
 				77364D361C15ED330078D164 /* HelpCollectionViewCell.swift in Sources */,
 				6AAAEE171BE032AE00104386 /* UIFViewController.swift in Sources */,
 				7705C7531C3C21360086F4FC /* HelpTwoViewController.swift in Sources */,
@@ -463,7 +464,6 @@
 				6AAD16151BEAE0CC00097C7A /* MCTViewController.swift in Sources */,
 				6A7F37641BE9109800812797 /* MCGViewController.swift in Sources */,
 				6A8211A81BE7A6AD00B05349 /* CreditsViewController.swift in Sources */,
-				7705C7571C3C224D0086F4FC /* HelpEntranceViewController.swift in Sources */,
 				77D356BF1C1646BF006251A8 /* MultipleCGraph.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

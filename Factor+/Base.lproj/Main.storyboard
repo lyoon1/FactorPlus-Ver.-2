@@ -402,6 +402,9 @@
                                 <state key="normal" title="Choice 1">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="115" y="276" width="303" height="53"/>
+                                </variation>
                                 <connections>
                                     <action selector="choice1Clicked:" destination="I50-V8-fSy" eventType="touchUpInside" id="gT9-Wv-LRo"/>
                                 </connections>
@@ -414,6 +417,9 @@
                                 <state key="normal" title="Choice 2">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="115" y="360" width="303" height="98"/>
+                                </variation>
                                 <connections>
                                     <action selector="choice2Clicked:" destination="I50-V8-fSy" eventType="touchUpInside" id="yMx-vm-yeF"/>
                                 </connections>
@@ -426,6 +432,9 @@
                                 <state key="normal" title="Choice 3">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="115" y="492" width="303" height="33"/>
+                                </variation>
                                 <connections>
                                     <action selector="choice3Clicked:" destination="I50-V8-fSy" eventType="touchUpInside" id="a7l-aa-0kt"/>
                                 </connections>
@@ -438,6 +447,9 @@
                                 <state key="normal" title="Choice 4">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="115" y="556" width="303" height="227"/>
+                                </variation>
                                 <connections>
                                     <action selector="choice4Clicked:" destination="I50-V8-fSy" eventType="touchUpInside" id="G6e-fg-z1q"/>
                                 </connections>
@@ -453,7 +465,8 @@
                                         <exclude reference="emX-fS-Ara"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="418" height="131"/>
                                     <mask key="constraints">
                                         <include reference="emX-fS-Ara"/>
                                     </mask>
@@ -470,7 +483,8 @@
                                         <exclude reference="CZU-93-mCn"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="216" width="418" height="29"/>
                                     <mask key="constraints">
                                         <include reference="CZU-93-mCn"/>
                                     </mask>
@@ -481,6 +495,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="152" y="89" width="115" height="21"/>
+                                </variation>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pause" translatesAutoresizingMaskIntoConstraints="NO" id="QgI-W5-29q">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -492,7 +509,8 @@
                                         <exclude reference="TFe-It-ihl"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="315" y="-63" width="24" height="40"/>
                                     <mask key="constraints">
                                         <include reference="TFe-It-ihl"/>
                                     </mask>
@@ -500,22 +518,34 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fjg-68-JYA">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="305" y="800" width="44" height="34"/>
+                                </variation>
                                 <connections>
                                     <action selector="pauseClicked:" destination="I50-V8-fSy" eventType="touchUpInside" id="4ex-7l-x4a"/>
                                 </connections>
                             </button>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="u7s-2U-nnT">
                                 <rect key="frame" x="0.0" y="-2" width="150" height="2"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="85" y="259" width="248" height="2"/>
+                                </variation>
                             </progressView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHH-7R-yFc">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Next"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="193" y="-63" width="32" height="50"/>
+                                </variation>
                                 <connections>
                                     <action selector="nextButtonClicked:" destination="I50-V8-fSy" eventType="touchUpInside" id="CG7-cT-mrj"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Multiple Choice Banner White" translatesAutoresizingMaskIntoConstraints="NO" id="mU8-VH-Il6">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="25" y="158" width="92" height="742"/>
+                                </variation>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Multiple Choice Banner Circle" translatesAutoresizingMaskIntoConstraints="NO" id="jVI-fL-i4t">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -527,7 +557,8 @@
                                         <exclude reference="SYG-Co-OaI"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="31" y="285" width="80" height="35"/>
                                     <mask key="constraints">
                                         <include reference="SYG-Co-OaI"/>
                                     </mask>
@@ -543,7 +574,8 @@
                                         <exclude reference="SgY-xx-96m"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="31" y="369" width="80" height="80"/>
                                     <mask key="constraints">
                                         <include reference="SgY-xx-96m"/>
                                     </mask>
@@ -559,7 +591,8 @@
                                         <exclude reference="MSl-Ih-mRf"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="31" y="501" width="80" height="80"/>
                                     <mask key="constraints">
                                         <include reference="MSl-Ih-mRf"/>
                                     </mask>
@@ -567,9 +600,15 @@
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Multiple Choice Banner Circle" translatesAutoresizingMaskIntoConstraints="NO" id="bL2-39-ZLt">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="31" y="630" width="80" height="80"/>
+                                </variation>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvy-tZ-TiF">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="119" y="276" width="299" height="506"/>
+                                </variation>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Factor the following: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="olA-6t-0oA">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -582,6 +621,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="286" y="99" width="132" height="32"/>
+                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.66274509800000003" green="0.81960784310000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -2670,7 +2712,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe for Help" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lu6-sL-V8r">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -2925,13 +2967,13 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4UX-2O-eht">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe for Help" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EcA-QB-KMh">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -6140,18 +6182,18 @@
         <image name="X Mark" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lyb-ow-iKn"/>
-        <segue reference="TzD-zS-1Xg"/>
-        <segue reference="UeY-uf-lHh"/>
-        <segue reference="Vif-j5-q61"/>
-        <segue reference="xUp-Wb-eXU"/>
+        <segue reference="IBP-wz-HFx"/>
         <segue reference="l0c-Hf-EBJ"/>
-        <segue reference="NgK-Jf-Oue"/>
-        <segue reference="iga-Ka-6ot"/>
-        <segue reference="zFg-3u-os8"/>
-        <segue reference="RRb-Wg-Lca"/>
-        <segue reference="6f4-m7-ccP"/>
-        <segue reference="hEq-Cf-HRD"/>
+        <segue reference="LqW-5x-ZVx"/>
+        <segue reference="Vif-j5-q61"/>
+        <segue reference="aZ2-DE-bbv"/>
+        <segue reference="2Cn-AM-Fu6"/>
+        <segue reference="MWu-9m-6h2"/>
+        <segue reference="VeC-bX-SUA"/>
+        <segue reference="eUp-Mu-p1y"/>
+        <segue reference="z9N-k0-txZ"/>
+        <segue reference="inV-Jt-CB3"/>
         <segue reference="mb5-MD-SV4"/>
+        <segue reference="my7-AT-RRZ"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -5,10 +5,16 @@
 //  Created by Taehyun Lee on 2015-11-02.
 //  Copyright © 2015 LYM. All rights reserved.
 //
+//  The class that stores all data for the Pause Menu.
+//
+//  This class is linked from and to every game mode View Controller, with
+//  variables that are needed in each of the game modes.
+//
 
 import UIKit
 
 class PauseViewController: UIViewController {
+    
     @IBOutlet weak var restartButton: UIButton!
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var continueButton: UIButton!
@@ -85,22 +91,25 @@ class PauseViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
+        
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "MainMenu")
-        {
+        
+        if(segue.identifier == "MainMenu") {
+            
             let svc = segue.destinationViewController as! StartViewController
         }
-        else if(segue.identifier == "Continue MCF")
-        {
+            
+        else if(segue.identifier == "Continue MCF") {
+            
             let mcvc = segue.destinationViewController as! MultipleChoiceViewController
             mcvc.numCorrect = score
             mcvc.numQuestions = numQuestion
@@ -197,6 +206,9 @@ class PauseViewController: UIViewController {
             }
             
         }
+            
+        //The codes below are not part of the ICS4U project
+        //they will be used when(if) Trigonometry gets implemented
         else if(segue.identifier == "Continue MCT")
         {
             let mctvc = segue.destinationViewController as! MCTViewController

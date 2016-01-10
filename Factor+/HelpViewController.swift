@@ -5,6 +5,9 @@
 //  Created by Taehyun Lee on 2015-11-02.
 //  Copyright © 2015 LYM. All rights reserved.
 //
+//  The "Application Help" screen. One of two help screens.
+//  Linked from the HelpEntranceViewController view controller.
+//
 
 import UIKit
 
@@ -13,8 +16,9 @@ class HelpViewController: UIViewController, UICollectionViewDataSource, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
+    
+    //the UICollectionView that displays the help manuals
     @IBOutlet weak var helpCollectionView: UICollectionView!
     
     let imageArray = [UIImage(named:"Help Screen User Input"), UIImage(named:"Help Screen Pause"), UIImage(named:"Help Screen Time Trial Mode")]

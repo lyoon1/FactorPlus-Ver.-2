@@ -5,23 +5,28 @@
 //  Created by Leo Yoon on 2016-01-07.
 //  Copyright © 2016 LYM. All rights reserved.
 //
+//  This class behaves exactly the same as MCFViewController.
+//  The only difference is the timer system that will be commented on below.
+//
 
 import Foundation
 import UIKit
 
 class MultipleChoiceTimerViewController: UIViewController {
     
-    var numQuestions = Int()
+    var numQuestions = Int()                        //stores number of questions answered
     
-    @IBOutlet var choiceButtons: Array<UIButton>?
+    @IBOutlet var choiceButtons: Array<UIButton>?   //the UIButton array that stores the 4 answer buttons
     
-    @IBOutlet weak var pauseButton: UIButton!
-    @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet weak var timerLabel: UILabel!
-    @IBOutlet weak var progressMCFT: UIProgressView!
-    @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var coverUpButton: UIButton!
-    @IBOutlet weak var pauseImage: UIImageView!
+    @IBOutlet weak var pauseButton: UIButton!       //the pause button
+    @IBOutlet weak var questionLabel: UILabel!      //this UILabel displays the quadratic relation
+    @IBOutlet weak var timerLabel: UILabel!         //this displays the time remaining in seconds
+    @IBOutlet weak var progressMCFT: UIProgressView!//the progress bar, consists of 10 questions
+    @IBOutlet weak var nextButton: UIButton!        //the next button, generates next question when
+                                                    //clicked
+    @IBOutlet weak var coverUpButton: UIButton!     //this appears when an answer is clicked, as a
+                                                    //means of disabling other buttons
+    @IBOutlet weak var pauseImage: UIImageView!     //the green pause image
     
     var firstFactor: String = ""        //the first factor
     var secondFactor: String = ""       //the second factor
@@ -34,9 +39,9 @@ class MultipleChoiceTimerViewController: UIViewController {
     var question: String = ""           //the variable that stores the question
     var fromPause: Bool = false         //was the "continue" button pressed from the pause menu?
     var basicFactor = Bool()            //is the quadratic relation basic or advanced?
-    var timeRemaining: Int = 30
-    var timer = NSTimer()
-    var repeatTimer = NSTimer()
+    var timeRemaining: Int = 30         //each question is given 30 seconds to answer
+    var timer = NSTimer()               //the 30 seconds timer
+    var repeatTimer = NSTimer()         //repeats every second to update the timerLabel
     
     //Step 1 (but only occurs once unless pause is activated)
     //when this screen is loaded, the following occurs:
@@ -59,11 +64,13 @@ class MultipleChoiceTimerViewController: UIViewController {
             choiceButtons![2].setTitle(choice[2], forState: .Normal)
             choiceButtons![3].setTitle(choice[3], forState: .Normal)
             
+            //restart the timer with 'timeRemaining' seconds left
             timer = NSTimer.scheduledTimerWithTimeInterval(Double(timeRemaining), target: self, selector: "thirtySeconds:", userInfo: nil, repeats: false)
             
+            //re-initialize the repeatTimer
             repeatTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "secondPassed:", userInfo: nil, repeats: true)
             
-            timerLabel.text = String(timeRemaining)
+            timerLabel.text = String(timeRemaining) //update the timerLabel
         }
             //if the screen is NOT loaded from the Pause menu
             //so if this is a fresh game
@@ -74,6 +81,7 @@ class MultipleChoiceTimerViewController: UIViewController {
             selectionSort()      //determine the rightAnsIndex
             assignToButtons()    //update the buttons for answer choices
             
+            //start the timers as soon as the view loads
             timer = NSTimer.scheduledTimerWithTimeInterval(30.0, target: self, selector: "thirtySeconds:", userInfo: nil, repeats: false)
             
             repeatTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "secondPassed:", userInfo: nil, repeats: true)
@@ -250,34 +258,9 @@ class MultipleChoiceTimerViewController: UIViewController {
         self.choiceButtons![3].setTitle(choice[3], forState: .Normal)
         
     } //end of assignToButtons func
-
-    func buttonClicked(buttonIndex: Int) {
-        
-        timer.invalidate()
-        repeatTimer.invalidate()
-        
-        if (checkForRightAnswer(buttonIndex) == true) {
-            
-            choiceButtons![buttonIndex].backgroundColor = UIColor.greenColor()    //if correct, set the button to green
-            numCorrect++                                            //increment number of answers correctly chosen
-        }
-        else { //if choice 1 is incorrect
-            
-            choiceButtons![buttonIndex].backgroundColor = UIColor.redColor()      //if incorrect, set the button to red
-            
-            //then check every other answer to see if they are correct, and highlight the correct answer in green
-            choiceButtons![rightAnsIndex].backgroundColor = UIColor.greenColor()
-            
-        }
-        
-        nextButton.hidden = false       //show the 'next' button
-        pauseButton.hidden = true       //hide the 'pause' button to prevent the question from resetting
-        coverUpButton.hidden = false    //show the 'coverUp' button which is to prevent other answer buttons from
-        //being clicked once the question is answered
-        pauseImage.hidden = true        //hide the 'pause' image as well
-        
-    }
     
+    //step 3-1
+    //when the user selects an answer, do one of these
     @IBAction func choice1Clicked(sender: AnyObject) {
         
         buttonClicked(0)
@@ -299,19 +282,49 @@ class MultipleChoiceTimerViewController: UIViewController {
 
     }
     
+    //this is ran when any button is clicked
+    func buttonClicked(buttonIndex: Int) {
+        
+        //the timers stop when the user answers the question
+        timer.invalidate()
+        repeatTimer.invalidate()
+        
+        if (checkForRightAnswer(buttonIndex) == true) {
+            
+            choiceButtons![buttonIndex].backgroundColor = UIColor.greenColor()    //if correct, set the button to green
+            numCorrect++                                                          //increment number of answers correctly chosen
+        }
+        else { //if choice 1 is incorrect
+            
+            choiceButtons![buttonIndex].backgroundColor = UIColor.redColor()      //if incorrect, set the button to red
+            
+            //then highlight the correct answer in green
+            choiceButtons![rightAnsIndex].backgroundColor = UIColor.greenColor()
+            
+        }
+        
+        nextButton.hidden = false       //show the 'next' button
+        pauseButton.hidden = true       //hide the 'pause' button to prevent the question from resetting
+        coverUpButton.hidden = false    //show the 'coverUp' button which is to prevent other answer buttons from
+                                        //being clicked once the question is answered
+        pauseImage.hidden = true        //hide the 'pause' image as well
+        
+    }
+    
     //step 3-2
     //checks for whether the user clicked the right answer or not, returns a "true" or "false" Bool
     func checkForRightAnswer(buttonNumber: Int) -> Bool
     {
         //if the user chose the correct answer
-        if ((buttonNumber) == rightAnsIndex) { //button numbers range from 1 ~ 4, and rightAnsIndex ranges from 0 ~ 3
-            //hence the subtraction of 1
-            return true     //return true
+        if ((buttonNumber) == rightAnsIndex) {
+            
+            return true
         }
             //if the user's choice is incorrect
         else {
             
-            return false    //return false
+            return false
+            
         } //end of 'if else' statement
         
     } //end of checkForRightAnswer func
@@ -319,7 +332,6 @@ class MultipleChoiceTimerViewController: UIViewController {
     //step 4
     //run this code when the next button is clicked
     //in essence, these codes occur when generating the next question
-    
     @IBAction func nextButtonClicked(sender: AnyObject) {
         
         resetColours()              //resets the colour pattern of buttons to usual state
@@ -332,8 +344,10 @@ class MultipleChoiceTimerViewController: UIViewController {
         nextButton.hidden = true    //hide the next button
         coverUpButton.hidden = true //hide the disabler
         pauseImage.hidden = false   //show the pause image
-        timeRemaining = 30
-        timerLabel.text = String(timeRemaining)
+        timeRemaining = 30          //reset time to 30 seconds
+        timerLabel.text = String(timeRemaining) //reset the timerLabel
+        
+        //and restart both timers
         timer = NSTimer.scheduledTimerWithTimeInterval(30.0, target: self, selector: "thirtySeconds:", userInfo: nil, repeats: false)
         repeatTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "secondPassed:", userInfo: nil, repeats: true)
     }
@@ -342,7 +356,7 @@ class MultipleChoiceTimerViewController: UIViewController {
     //responsible for reverting the button's colours to default at the start of each question
     func resetColours() {
         
-        //constant pink colour after Jan. 5
+        //constant pink colour for all buttons
         choiceButtons![0].backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
         choiceButtons![1].backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
         choiceButtons![2].backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
@@ -354,8 +368,8 @@ class MultipleChoiceTimerViewController: UIViewController {
     //responsible for changing the progress bar
     func changeProgress() {
         
-        numQuestions++                                       //increment the number of questions answered
-        var temp = Double(numQuestions)/10                   //the temp variable to be used for the progress bar
+        numQuestions++                                        //increment the number of questions answered
+        var temp = Double(numQuestions)/10                    //the temp variable to be used for the progress bar
         progressMCFT.setProgress(Float(temp), animated: true) //set the progress bar
         
         if (numQuestions == 10) { //if 10 questions are completed
@@ -374,11 +388,12 @@ class MultipleChoiceTimerViewController: UIViewController {
         
     } //end of endGame func
     
+    //when the pause button is clicked
     @IBAction func pauseClicked(sender: AnyObject) {
         
-        performSegueWithIdentifier("pauseMCFT", sender: sender)  //proceed to the PauseViewController
+        performSegueWithIdentifier("pauseMCFT", sender: sender) //proceed to the PauseViewController
 
-    }
+    } //end of pauseClicked func
 
     //just a default func, there should be no chance of insufficient memory
     override func didReceiveMemoryWarning() {
@@ -427,6 +442,7 @@ class MultipleChoiceTimerViewController: UIViewController {
     //here code perfomed with delay (30 seconds in this case)
     func thirtySeconds(timer: NSTimer) {
         
+        //display the correct answer
         if (checkForRightAnswer(1) == true) {
             choiceButtons![0].backgroundColor = UIColor.greenColor()
         }
@@ -443,19 +459,24 @@ class MultipleChoiceTimerViewController: UIViewController {
             choiceButtons![3].backgroundColor = UIColor.greenColor()
         }
         
+        //now the user can't choose another answer, and can only click 'next'
         nextButton.hidden = false
         pauseButton.hidden = true
         coverUpButton.hidden = false
         pauseImage.hidden = true
         
+        //stop the repeating timer and set the timerLabel text to let the user know "time up"
         repeatTimer.invalidate()
         timerLabel.text = "Time Up"
-    }
+        
+    } //end of thirtySeconds func
     
+    //do this each second
     func secondPassed(repeatTimer: NSTimer) {
 
+        //one less second, and update the label to reflect that
         timeRemaining--
         timerLabel.text = String(timeRemaining)
     }
 
-}
+} //end of class

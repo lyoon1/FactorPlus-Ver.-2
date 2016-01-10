@@ -32,12 +32,9 @@ import UIKit
 
 class MultipleChoiceViewController: UIViewController {
     
-    var numQuestions = Int()
+    var numQuestions = Int()                          //stores number of questions answered
     
-           //the following UIButtons represent each of the 4
-           //answer choices, clickable by the user
-    
-    @IBOutlet var choiceButtons: Array<UIButton>?
+    @IBOutlet var choiceButtons: Array<UIButton>?     //the UIButton array that stores the 4 answer buttons
     
     @IBOutlet weak var pauseButton: UIButton!         //the pause button
     @IBOutlet weak var questionLabel: UILabel!        //this UILabel displays the quadratic relation
@@ -262,30 +259,6 @@ class MultipleChoiceViewController: UIViewController {
         
     } //end of assignToButtons func
     
-    func buttonClicked(buttonIndex: Int) {
-        
-        if (checkForRightAnswer(buttonIndex) == true) {
-            
-            choiceButtons![buttonIndex].backgroundColor = UIColor.greenColor()    //if correct, set the button to green
-            numCorrect++                                            //increment number of answers correctly chosen
-        }
-        else { //if choice 1 is incorrect
-            
-            choiceButtons![buttonIndex].backgroundColor = UIColor.redColor()      //if incorrect, set the button to red
-            
-            //then check every other answer to see if they are correct, and highlight the correct answer in green
-            choiceButtons![rightAnsIndex].backgroundColor = UIColor.greenColor()
-            
-        }
-        
-        nextButton.hidden = false       //show the 'next' button
-        pauseButton.hidden = true       //hide the 'pause' button to prevent the question from resetting
-        coverUpButton.hidden = false    //show the 'coverUp' button which is to prevent other answer buttons from
-        //being clicked once the question is answered
-        pauseImage.hidden = true        //hide the 'pause' image as well
-        
-    }
-    
     //step 3-1
     //run this code when the first answer is clicked
     @IBAction func choice1Clicked(sender: AnyObject) {
@@ -315,19 +288,44 @@ class MultipleChoiceViewController: UIViewController {
         
     } //end of choice4Clicked func
     
+    func buttonClicked(buttonIndex: Int) {
+        
+        if (checkForRightAnswer(buttonIndex) == true) {
+            
+            choiceButtons![buttonIndex].backgroundColor = UIColor.greenColor()    //if correct, set the button to green
+            numCorrect++                                                          //increment number of answers correctly chosen
+        }
+        else { //if given choice is incorrect
+            
+            choiceButtons![buttonIndex].backgroundColor = UIColor.redColor()      //if incorrect, set the button to red
+            
+            //then highlight the correct answer in green
+            choiceButtons![rightAnsIndex].backgroundColor = UIColor.greenColor()
+            
+        }
+        
+        nextButton.hidden = false       //show the 'next' button
+        pauseButton.hidden = true       //hide the 'pause' button to prevent the question from resetting
+        coverUpButton.hidden = false    //show the 'coverUp' button which is to prevent other answer buttons from
+                                        //being clicked once the question is answered
+        pauseImage.hidden = true        //hide the 'pause' image as well
+        
+    }
+    
     //step 3-2
     //checks for whether the user clicked the right answer or not, returns a "true" or "false" Bool
     func checkForRightAnswer(buttonNumber: Int) -> Bool
     {
         //if the user chose the correct answer
-        if ((buttonNumber) == rightAnsIndex) { //button numbers range from 1 ~ 4, and rightAnsIndex ranges from 0 ~ 3
-                                                   //hence the subtraction of 1
-            return true     //return true
+        if ((buttonNumber) == rightAnsIndex) {
+            
+            return true
         }
         //if the user's choice is incorrect
         else {
             
-            return false    //return false
+            return false
+        
         } //end of 'if else' statement
         
     } //end of checkForRightAnswer func

@@ -5,11 +5,14 @@
 //  Created by Taehyun Lee on 2015-11-02.
 //  Copyright © 2015 LYM. All rights reserved.
 //
+//  Simply displays the credits.
+//
 
 import UIKit
 
 class CreditsViewController: UIViewController {
 
+    //the back button to go back to main menu
     @IBOutlet weak var backButton: UIButton!
     
     override func viewDidLoad() {
@@ -23,7 +26,6 @@ class CreditsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 
