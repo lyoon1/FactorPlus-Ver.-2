@@ -10,13 +10,14 @@
 //  Leo Yoon: For integration of the buttons around the algorithm and implementing the pause function
 //  John Ma: For creating the base algorithm that generates multiple choice answers and returns the correct index
 //
+// Commentor: John Ma
 
 import UIKit
 import Charts
 
 class MultipleChoice2ViewController: UIViewController {
     
-    @IBOutlet var choiceButtons: Array<UIButton>?
+    //The following outlets link the MultipleChoice2ViewController class to the graphing multiple choice view controller
     
     @IBOutlet weak var rotateLabel: UILabel!
     @IBOutlet weak var progressMCG: UIProgressView!
@@ -27,12 +28,24 @@ class MultipleChoice2ViewController: UIViewController {
     @IBOutlet weak var graphView2: LineChartView!
     @IBOutlet weak var pauseImage: UIImageView!
     
-    var rightAnsIndex = Int(), numQuestions = Int(), ttlScore = Int()
-    var fromPause: Bool = false
-    var MultipleChoice = MultipleCGraph()
-    var choice = [String]()
-    var xValues = [String]()
-    var yValues = [Double]()
+    @IBOutlet var choiceButtons: Array<UIButton>? // Since the choice buttons on the view controller are identical, they
+                                                  // can be stored in a button array. Each of the buttons in the view controller
+                                                  // must be linked in the correct order to take up spots in the array
+    
+    //variables that are used in the class are declared
+    
+    var rightAnsIndex = Int(), numQuestions = Int(), ttlScore = Int() //rightAnsIndex stores the index of the correct answer
+                                                                      //numQuestions stores the number of questions answered
+                                                                      //ttlScore stores the basic form of the current score
+    var fromPause: Bool = false 
+    var MultipleChoice = MultipleCGraph() //object that will call upon the MultipleCGraph class in another file
+    var choice = [String]() //String array that will store possible multiple choice answers
+    var xValues = [String]() //Stores x values that will be inputed into a graphing function (x values must be strings)
+    var yValues = [Double]() //Stores y values that will be inputed into a graphing function (y values must be doubles)
+    
+    
+    //Depending on the multiple choice button clicked, the function "buttonClicked" will be called upon with the parameters 
+    //being the choice button's index in the "choiceButtons" Array
     
     @IBAction func choice1Clicked(sender: AnyObject) {
     
@@ -54,6 +67,21 @@ class MultipleChoice2ViewController: UIViewController {
         buttonClicked(3)
 
     }
+    
+    //In the buttonClicked function, a button index is recieved and sndwngrenge
+    gregheorgoe
+    
+    gr
+    g
+    e
+    gr
+    eg
+    e
+    gr
+    g
+    e
+    gregerg
+    reg
     
     func buttonClicked(buttonIndex: Int) {
         
