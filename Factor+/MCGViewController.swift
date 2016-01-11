@@ -68,21 +68,7 @@ class MultipleChoice2ViewController: UIViewController {
 
     }
     
-    //In the buttonClicked function, a button index is recieved and sndwngrenge
-    gregheorgoe
-    
-    gr
-    g
-    e
-    gr
-    eg
-    e
-    gr
-    g
-    e
-    gregerg
-    reg
-    
+    //In the buttonClicked function, a button index is received
     func buttonClicked(buttonIndex: Int) {
         
         if (checkForRightAnswer(buttonIndex) == true) {

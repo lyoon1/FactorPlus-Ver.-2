@@ -10,12 +10,13 @@ import UIKit
 
 class EndViewController: UIViewController {
     
-    var numCorrect = Int(), type = String(), score = Int(), numQuestion = Int()
+    var numCorrect = Int(), type = String(), score = Int(), numQuestion = Int(), highScore = Int()
     
     @IBOutlet weak var questionTypeLabel: UILabel!
     @IBOutlet weak var numCorrectLabel: UILabel!
     @IBOutlet weak var numWrongLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var highScoreLabel: UILabel!
     @IBOutlet weak var restartButton: UIButton!
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var questionTypeImage: UIImageView!
@@ -29,6 +30,23 @@ class EndViewController: UIViewController {
         numCorrectLabel.text = String(numCorrect)
         numWrongLabel.text = String(10 - numCorrect)
         scoreLabel.text = "\(10 * numCorrect)%"
+        
+        let prevHighScore = NSUserDefaults.standardUserDefaults()
+        
+        if (prevHighScore.valueForKey(type) != nil) {
+            
+            highScore = prevHighScore.valueForKey(type) as! NSInteger
+        }
+        
+        if (highScore < numCorrect) {
+            
+            highScore = numCorrect
+        }
+        
+        let highScoreString = "Highscore: \(highScore*10)%"
+        highScoreLabel.text = highScoreString
+        
+        prevHighScore.setValue(highScore, forKey: type)
         
     }
 

@@ -16,8 +16,8 @@ class HelpTwoViewController: UIViewController, UICollectionViewDataSource, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
     }
+    
     @IBOutlet weak var helpCollectionView: UICollectionView!
     
     let imageArray = [UIImage(named:"Help Screen Basic Factoring"),UIImage(named:"Help Screen Graph to Equation"),UIImage(named:"Help Screen Advanced Factoring 1"),UIImage(named:"Help Screen Advanced Factoring 2")]
@@ -39,8 +39,8 @@ class HelpTwoViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     override func didReceiveMemoryWarning() {
+        
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }
