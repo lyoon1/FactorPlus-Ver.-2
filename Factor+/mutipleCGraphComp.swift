@@ -9,10 +9,8 @@
 import Foundation
 import UIKit
 
-class multipleCGraphComp{
-    init(){
-        
-    }
+class multipleCGraphComp {
+
     var a: Int = 0
     var h: Int = 0
     var k: Int = 0

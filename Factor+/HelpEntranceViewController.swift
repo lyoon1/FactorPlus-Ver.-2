@@ -14,6 +14,4 @@
 
 import UIKit
 
-class HelpEntranceViewController: UIViewController {
-
-}
+class HelpEntranceViewController: UIViewController { }

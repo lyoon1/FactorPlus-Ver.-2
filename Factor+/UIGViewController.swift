@@ -37,6 +37,7 @@ class UIGViewController: UIViewController {
     }
 
     @IBAction func changeProgress(sender: AnyObject) {
+        
         checkAnswer()
         nextButton.hidden = false
         enterButton.hidden = true
@@ -46,48 +47,9 @@ class UIGViewController: UIViewController {
     }
     
     @IBAction func valChangeA(sender: AnyObject) {
-        
-        currentA = Int(sliderA.value)
-        currentH = Int(sliderH.value)
-        currentK = Int(sliderK.value)
-        
-        var tempCurrentA = String(currentA)
-        if (currentA == 0) {
-            tempCurrentA = "a"
-        }
-        else if (currentA == 1) {
-            tempCurrentA = ""
-        }
-        else if (currentA == -1) {
-            tempCurrentA = "-"
-        }
-        
-        var tempCurrentH = String()
-        
-        if (currentH < 0) {
-            tempCurrentH = " + \(abs(currentH))"
-        }
-        else if (currentH > 0) {
-            tempCurrentH = " - \(currentH)"
-        }
-        else {
-            tempCurrentH = ""
-        }
-        
-        var tempCurrentK = String()
-        
-        if (currentK < 0) {
-            tempCurrentK = " - \(abs(currentK))"
-        }
-        else if (currentK > 0) {
-            tempCurrentK = " + \(currentK)"
-        }
-        else {
-            tempCurrentK = ""
-        }
-        
-        answerLabel.text = ("\(tempCurrentA)(x\(tempCurrentH))²\(tempCurrentK)")
-        
+      
+        valChanged()
+    
         if (fromPause == true && currentA == 0 && currentH == 0 && currentK == 0) {
             
             answerLabel.text = "a(x - h)² + k"
@@ -95,55 +57,27 @@ class UIGViewController: UIViewController {
     }
     
     @IBAction func valChangeH(sender: AnyObject) {
-        currentA = Int(sliderA.value)
-        currentH = Int(sliderH.value)
-        currentK = Int(sliderK.value)
         
-        var tempCurrentA = String(currentA)
-        if (currentA == 0) {
-            tempCurrentA = "a"
-        }
-        else if (currentA == 1) {
-            tempCurrentA = ""
-        }
-        else if (currentA == -1) {
-            tempCurrentA = "-"
-        }
-        
-        var tempCurrentH = String()
-        
-        if (currentH < 0) {
-            tempCurrentH = " + \(abs(currentH))"
-        }
-        else if (currentH > 0) {
-            tempCurrentH = " - \(currentH)"
-        }
-        else {
-            tempCurrentH = ""
-        }
-        
-        var tempCurrentK = String()
-        
-        if (currentK < 0) {
-            tempCurrentK = " - \(abs(currentK))"
-        }
-        else if (currentK > 0) {
-            tempCurrentK = " + \(currentK)"
-        }
-        else {
-            tempCurrentK = ""
-        }
-        
-        answerLabel.text = ("\(tempCurrentA)(x\(tempCurrentH))²\(tempCurrentK)")
-        
+        valChanged()
+
     }
     
     @IBAction func valChangeK(sender: AnyObject) {
+       
+        valChanged()
+        
+    }
+    
+    func valChanged() {
+     
         currentA = Int(sliderA.value)
         currentH = Int(sliderH.value)
         currentK = Int(sliderK.value)
         
         var tempCurrentA = String(currentA)
+        var tempCurrentH = String()
+        var tempCurrentK = String()
+        
         if (currentA == 0) {
             tempCurrentA = "a"
         }
@@ -154,8 +88,6 @@ class UIGViewController: UIViewController {
             tempCurrentA = "-"
         }
         
-        var tempCurrentH = String()
-        
         if (currentH < 0) {
             tempCurrentH = " + \(abs(currentH))"
         }
@@ -165,8 +97,6 @@ class UIGViewController: UIViewController {
         else {
             tempCurrentH = ""
         }
-        
-        var tempCurrentK = String()
         
         if (currentK < 0) {
             tempCurrentK = " - \(abs(currentK))"
@@ -187,6 +117,7 @@ class UIGViewController: UIViewController {
         var dataEntries: [ChartDataEntry] = []
         
         for i in 0..<xval.count {
+            
             let dataEntry = ChartDataEntry(value: yval[i], xIndex: i)
             dataEntries.append(dataEntry)
         }
@@ -209,6 +140,7 @@ class UIGViewController: UIViewController {
     }
     
     @IBAction func nextButtonClicked(sender: AnyObject) {
+        
         numQuestions++
         var temp = Double(numQuestions)/10
         progressUIG.setProgress(Float(temp), animated: true)
@@ -225,10 +157,12 @@ class UIGViewController: UIViewController {
     }
     
     @IBAction func pauseClicked(sender: AnyObject) {
+        
         performSegueWithIdentifier("pauseUIG", sender: sender)
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         var temp = Double(numQuestions)/10
         progressUIG.setProgress(Float(temp), animated: false)
@@ -252,6 +186,7 @@ class UIGViewController: UIViewController {
         graphView2.rightAxis.labelFont = UIFont(name: "", size: 0)!
         
         if (fromPause == true) {
+            
             setChart(xValues, yval: yValues)
             
             sliderA.setValue(Float (currentA), animated: false)

@@ -14,8 +14,8 @@ import UIKit
 class HelpTwoViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         
+        super.viewDidLoad()
     }
     
     @IBOutlet weak var helpCollectionView: UICollectionView!

@@ -14,8 +14,8 @@ import UIKit
 class HelpViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-
     }
     
     //the UICollectionView that displays the help manuals
@@ -24,14 +24,17 @@ class HelpViewController: UIViewController, UICollectionViewDataSource, UICollec
     let imageArray = [UIImage(named:"Help Screen User Input"), UIImage(named:"Help Screen Pause"), UIImage(named:"Help Screen Time Trial Mode")]
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        
         return 1
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         return imageArray.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Help Cell", forIndexPath: indexPath) as! HelpCollectionViewCell
         
         cell.helpImage?.image = imageArray[indexPath.item]

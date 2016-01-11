@@ -42,11 +42,14 @@ class UIFViewController: UIViewController {
     var question: String = ""
     
     @IBAction func pauseClicked(sender: AnyObject) {
+        
         performSegueWithIdentifier("pauseUIF", sender: sender)
     }
+    
     @IBOutlet weak var label: UILabel!
     
     @IBAction func changeProgress(sender: AnyObject) {
+        
         checkAnswer()
         nextButton.hidden = false
         enterButton.hidden = true
@@ -57,6 +60,17 @@ class UIFViewController: UIViewController {
     //declaring and initializing a function of the sliders within the view controller.
     //source to the code: https://www.youtube.com/watch?v=jJA9UCbcos0
     @IBAction func valChangeM(sender: AnyObject) {
+        
+        valChanged()
+    }
+    
+    @IBAction func valChangeN(sender: AnyObject) {
+
+        valChanged()
+
+    }
+    
+    func valChanged() {
         
         currentM = Int(sliderM.value)
         currentN = Int(sliderN.value)
@@ -89,42 +103,7 @@ class UIFViewController: UIViewController {
         else {
             label.text = ("\(tempCurrentM) \(tempCurrentN)")
         }
-    }
-    
-    @IBAction func valChangeN(sender: AnyObject) {
-
-        var currentM = Int(sliderM.value)
-        var currentN = Int(sliderN.value)
         
-        var tempCurrentM = String(currentM)
-        if (currentM < 0) {
-            tempCurrentM = "(x + \(abs(currentM)))"
-        }
-        else if (currentM > 0) {
-            tempCurrentM = "(x - \(currentM))"
-        }
-        else {
-            tempCurrentM = "x"
-        }
-        
-        var tempCurrentN = String(currentN)
-        if (currentN < 0) {
-            tempCurrentN = "(x + \(abs(currentN)))"
-        }
-        else if (currentN > 0) {
-            tempCurrentN = "(x - \(currentN))"
-        }
-        else {
-            tempCurrentN = "x"
-        }
-        
-        if (currentM == 0 && currentN == 0) {
-            label.text = "x²"
-        }
-        else {
-            label.text = ("\(tempCurrentM) \(tempCurrentN)")
-        }
-
     }
     
     @IBAction func nextButtonClicked(sender: AnyObject) {
@@ -148,30 +127,16 @@ class UIFViewController: UIViewController {
         progressUIF.setProgress(Float(temp), animated: false)
         
         if (fromPause == true) {
+            
             questionLabel.text = question
             sliderM.setValue(Float (currentM), animated: false)
             sliderN.setValue(Float (currentN), animated: false)
             
-            if(currentM >= 0 && currentN >= 0){
-                label.text = "( x - \(currentM) ) ( x - \(currentN) )"
-            }
-            else if(currentM >= 0 && currentN < 0)
-            {
-                var temp = abs(currentN)
-                label.text = "( x - \(currentM) ) ( x + \(temp) )"
-            }
-            else if(currentM < 0 && currentN >= 0)
-            {
-                var temp = abs(currentM)
-                label.text = "( x + \(temp) ) ( x - \(currentN) )"
-            }
-            else
-            {
-                var temp = abs(currentM), temp2 = abs(currentN)
-                label.text = "( x + \(temp) ) ( x + \(temp2) )"
-            }
+            valChanged()
+            
         }
         else {
+            
             makeQuestion()
         }
     }

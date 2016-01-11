@@ -5,6 +5,9 @@
 //  Created by Leo Yoon on 2015-10-23.
 //  Copyright © 2015 LYM. All rights reserved.
 //
+//  A default file that generates itself with a new Xcode project.
+//  We have no clue what this class does, it was never touched.
+//
 
 import UIKit
 
@@ -12,7 +15,6 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.

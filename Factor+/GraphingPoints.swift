@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class GraphingPoints{
-    //: Playground - noun: a place where people can play
     
     var pointX = [String]();
     var pointYee = [Double]();
@@ -20,7 +19,7 @@ class GraphingPoints{
     var h = Int()
     var k = Int()
     
-    init(){
+    init() {
         
         a = produceA()
         h = Int(arc4random_uniform(7) + 1) - 4
