@@ -37,6 +37,7 @@ class PauseViewController: UIViewController {
     var yval = [Double]()
     var graphPoint = [GraphingPoints]()
     var timeRemaining = Int()
+    var timeTaken = Int()
     
     @IBAction func restartGame(sender: AnyObject) {
         score = 0
@@ -139,6 +140,7 @@ class PauseViewController: UIViewController {
                 mcftvc.question = question
                 mcftvc.rightAnsIndex = rightAnswerIndex
                 mcftvc.timeRemaining = timeRemaining
+                mcftvc.timeTaken = timeTaken
                 mcftvc.fromPause = true
             }
             for (var i = 0; i < 4; i++){

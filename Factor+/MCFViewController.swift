@@ -41,6 +41,7 @@ class MultipleChoiceViewController: UIViewController {
     @IBOutlet weak var progressMCF: UIProgressView!   //the progress bar, consists of 10 questions
     @IBOutlet weak var nextButton: UIButton!          //the next button, generates next question when
                                                       //clicked
+    @IBOutlet weak var buttonFrame: UIImageView!
     @IBOutlet weak var coverUpButton: UIButton!       //this appears when an answer is clicked, as a
                                                       //means of disabling other buttons
     @IBOutlet weak var pauseImage: UIImageView!       //the green pause image
@@ -72,10 +73,13 @@ class MultipleChoiceViewController: UIViewController {
         if (fromPause == true) {
             
             questionLabel.text = question                           //set the questionLabel to the preserved question
-            choiceButtons![0].setTitle(choice[0], forState: .Normal)    //then set each of the buttons to the corresponding
-            choiceButtons![1].setTitle(choice[1], forState: .Normal)    //answer choices that were preserved
-            choiceButtons![2].setTitle(choice[2], forState: .Normal)
-            choiceButtons![3].setTitle(choice[3], forState: .Normal)
+            
+            for (var i = 0; i < 4; i++) {
+                
+                //then set each of the buttons to the corresponding answer choices that were preserved
+                choiceButtons![i].setTitle(choice[i], forState: .Normal)
+                
+            }
             
         }
         //if the screen is NOT loaded from the Pause menu
@@ -252,10 +256,11 @@ class MultipleChoiceViewController: UIViewController {
     func assignToButtons() {
         
         //set each button's text to display the answer choices saved in choice[String]
-        self.choiceButtons![0].setTitle(choice[0], forState: .Normal)
-        self.choiceButtons![1].setTitle(choice[1], forState: .Normal)
-        self.choiceButtons![2].setTitle(choice[2], forState: .Normal)
-        self.choiceButtons![3].setTitle(choice[3], forState: .Normal)
+        for (var i = 0; i < 4; i++) {
+            
+            choiceButtons![i].setTitle(choice[i], forState: .Normal)
+            
+        }
         
     } //end of assignToButtons func
     
@@ -305,6 +310,7 @@ class MultipleChoiceViewController: UIViewController {
         }
         
         nextButton.hidden = false       //show the 'next' button
+        buttonFrame.hidden = false       //show the buttonFrame
         pauseButton.hidden = true       //hide the 'pause' button to prevent the question from resetting
         coverUpButton.hidden = false    //show the 'coverUp' button which is to prevent other answer buttons from
                                         //being clicked once the question is answered
@@ -343,6 +349,7 @@ class MultipleChoiceViewController: UIViewController {
         assignToButtons()           //change text of buttons to the random answers, including a correct one
         pauseButton.hidden = false  //show the pause button
         nextButton.hidden = true    //hide the next button
+        buttonFrame.hidden = true   //hide the buttonFrame
         coverUpButton.hidden = true //hide the disabler
         pauseImage.hidden = false   //show the pause image
         
@@ -353,10 +360,11 @@ class MultipleChoiceViewController: UIViewController {
     func resetColours() {
         
         //constant pink colour after Jan. 5
-        choiceButtons![0].backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
-        choiceButtons![1].backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
-        choiceButtons![2].backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
-        choiceButtons![3].backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
+        for (var i = 0; i < 4; i++) {
+            
+            choiceButtons![i].backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
+        }
+
         
     } //end of resetColours func
     

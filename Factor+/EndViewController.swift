@@ -10,12 +10,13 @@ import UIKit
 
 class EndViewController: UIViewController {
     
-    var numCorrect = Int(), type = String(), score = Int(), numQuestion = Int(), highScore = Int()
+    var numCorrect = Int(), type = String(), score = Int(), numQuestion = Int(), highScore = Int(), timeTaken = Int()
     
     @IBOutlet weak var questionTypeLabel: UILabel!
     @IBOutlet weak var numCorrectLabel: UILabel!
     @IBOutlet weak var numWrongLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var highScoreLabel: UILabel!
     @IBOutlet weak var restartButton: UIButton!
     @IBOutlet weak var menuButton: UIButton!
@@ -30,6 +31,13 @@ class EndViewController: UIViewController {
         numCorrectLabel.text = String(numCorrect)
         numWrongLabel.text = String(10 - numCorrect)
         scoreLabel.text = "\(10 * numCorrect)%"
+      
+        if (type == "Multiple Choice Factor Timer") {
+            
+            timeLabel.text = "Time Elapsed: \(timeTaken) seconds"
+            timeLabel.hidden = false
+            
+        }
         
         let prevHighScore = NSUserDefaults.standardUserDefaults()
         

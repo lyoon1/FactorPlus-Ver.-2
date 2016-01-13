@@ -23,6 +23,7 @@ class MultipleChoice2ViewController: UIViewController {
     @IBOutlet weak var progressMCG: UIProgressView!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var buttonFrame: UIImageView!
     @IBOutlet weak var coverUpButton: UIButton!
     @IBOutlet weak var graphView: LineChartView!
     @IBOutlet weak var graphView2: LineChartView!
@@ -85,6 +86,7 @@ class MultipleChoice2ViewController: UIViewController {
             
         }
         
+        buttonFrame.hidden = false       //show the button frame
         nextButton.hidden = false       //show the 'next' button
         pauseButton.hidden = true       //hide the 'pause' button to prevent the question from resetting
         coverUpButton.hidden = false    //show the 'coverUp' button which is to prevent other answer buttons from
@@ -105,6 +107,7 @@ class MultipleChoice2ViewController: UIViewController {
         changeProgress()
         makeMultipleChoice()
         pauseButton.hidden = false
+        buttonFrame.hidden = true
         nextButton.hidden = true
         coverUpButton.hidden = true
         pauseImage.hidden = false
@@ -125,10 +128,12 @@ class MultipleChoice2ViewController: UIViewController {
     }
     
     func resetColours() {
-        choiceButtons![0].backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
-        choiceButtons![1].backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
-        choiceButtons![2].backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
-        choiceButtons![3].backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
+        
+        for (var i = 0; i < 4; i++) {
+            
+            choiceButtons![i].backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
+        }
+        
     }
     
     override func viewDidLoad() {
@@ -158,11 +163,15 @@ class MultipleChoice2ViewController: UIViewController {
         graphView2.rightAxis.labelFont = UIFont(name: "", size: 0)!
         
         if (fromPause == true) {
+            
             setChart(xValues, yval: yValues)
-            choiceButtons![0].setTitle(choice[0], forState: .Normal)
-            choiceButtons![1].setTitle(choice[1], forState: .Normal)
-            choiceButtons![2].setTitle(choice[2], forState: .Normal)
-            choiceButtons![3].setTitle(choice[3], forState: .Normal)
+            
+            for (var i = 0; i < 4; i++) {
+                
+                choiceButtons![i].setTitle(choice[i], forState: .Normal)
+
+            }
+            
         }
         else {
             var graphPoint = MultipleCGraph.getGraphOfPointsMC(MultipleChoice)
@@ -208,10 +217,12 @@ class MultipleChoice2ViewController: UIViewController {
         rightAnsIndex = MultipleChoice.getRightIndex()
         choice = MultipleChoice.getChoice()
         
-        self.choiceButtons![0].setTitle(choice[0], forState: .Normal)
-        self.choiceButtons![1].setTitle(choice[1], forState: .Normal)
-        self.choiceButtons![2].setTitle(choice[2], forState: .Normal)
-        self.choiceButtons![3].setTitle(choice[3], forState: .Normal)
+        for (var i = 0; i < 4; i++) {
+            
+            choiceButtons![i].setTitle(choice[i], forState: .Normal)
+            
+        }
+        
     }
     
     func checkForRightAnswer(buttonNumber: Int) -> Bool {
