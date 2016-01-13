@@ -37,7 +37,8 @@ class MultipleChoice2ViewController: UIViewController {
     var rightAnsIndex = Int(), numQuestions = Int(), ttlScore = Int() //rightAnsIndex stores the index of the correct answer
                                                                       //numQuestions stores the number of questions answered
                                                                       //ttlScore stores the basic form of the current score
-    var fromPause: Bool = false 
+                                                                      
+    var fromPause: Bool = false //Checks whether or not the view controller was accessed through the pause screen
     var MultipleChoice = MultipleCGraph() //object that will call upon the MultipleCGraph class in another file
     var choice = [String]() //String array that will store possible multiple choice answers
     var xValues = [String]() //Stores x values that will be inputed into a graphing function (x values must be strings)
@@ -68,10 +69,12 @@ class MultipleChoice2ViewController: UIViewController {
 
     }
     
-    //In the buttonClicked function, a button index is received
-    func buttonClicked(buttonIndex: Int) {
+    //In the buttonClicked function, a button index is recieved and the general output for clicking a multiple choice button
+    //is activated
+    
+    func buttonClicked(buttonIndex: Int) { //Start of buttonClicked method
         
-        if (checkForRightAnswer(buttonIndex) == true) {
+        if (checkForRightAnswer(buttonIndex) == true) { //
             
             choiceButtons![buttonIndex].backgroundColor = UIColor.greenColor()    //if correct, set the button to green
             ttlScore++                                            //increment number of answers correctly chosen
