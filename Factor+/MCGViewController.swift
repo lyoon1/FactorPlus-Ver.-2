@@ -74,12 +74,13 @@ class MultipleChoice2ViewController: UIViewController {
     
     func buttonClicked(buttonIndex: Int) { //Start of buttonClicked method
         
-        if (checkForRightAnswer(buttonIndex) == true) { //
+        if (checkForRightAnswer(buttonIndex) == true) { //calls upon checkForRightAnswer method to see if button clicked has
+                                                        //the right answer string
             
             choiceButtons![buttonIndex].backgroundColor = UIColor.greenColor()    //if correct, set the button to green
             ttlScore++                                            //increment number of answers correctly chosen
         }
-        else { //if choice 1 is incorrect
+        else { //if the choice button is incorrect
             
             choiceButtons![buttonIndex].backgroundColor = UIColor.redColor()      //if incorrect, set the button to red
             
@@ -97,12 +98,12 @@ class MultipleChoice2ViewController: UIViewController {
         
     }
     
-    @IBAction func pauseClicked(sender: AnyObject) {
+    @IBAction func pauseClicked(sender: AnyObject) { //opens pause screen when called upon
         
         performSegueWithIdentifier("pauseMCG", sender: sender)
     }
 
-    @IBAction func nextButtonClicked(sender: AnyObject) {
+    @IBAction func nextButtonClicked(sender: AnyObject) { // Upon clicking the next button, the following buttons are affected
         
         resetColours()
         changeProgress()
