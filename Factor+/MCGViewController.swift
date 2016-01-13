@@ -119,10 +119,10 @@ class MultipleChoice2ViewController: UIViewController {
 
     }
     
-    func changeProgress() {
-        numQuestions++
-        var temp = Double(numQuestions)/10
-        progressMCG.setProgress(Float(temp), animated: true)
+    func changeProgress() { //Calling upon this method updates the progress of the Multiple Choice Graphing game mode
+        numQuestions++ //The question number increments
+        var temp = Double(numQuestions)/10 //Stores percentage of questions answered
+        progressMCG.setProgress(Float(temp), animated: true) //Uses var temp to change the progress bar
         
         MultipleChoice = MultipleCGraph()
         
