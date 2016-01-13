@@ -9,7 +9,8 @@
 //  Linked from the HelpEntranceViewController view controller.
 //
 //  HelpViewController is a controller with one main function: To display a collection view with images that show the functionality of some screens that seem ambiguous.
-// 
+//  To do this, the application help images are put into an array, which will be used to declare the cells in the collection view
+//  
 
 import UIKit
 
