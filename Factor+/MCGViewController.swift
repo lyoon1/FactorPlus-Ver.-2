@@ -38,7 +38,8 @@ class MultipleChoice2ViewController: UIViewController {
     var rightAnsIndex = Int(), numQuestions = Int(), ttlScore = Int() //rightAnsIndex stores the index of the correct answer
                                                                       //numQuestions stores the number of questions answered
                                                                       //ttlScore stores the basic form of the current score
-    var fromPause: Bool = false 
+                                                                      
+    var fromPause: Bool = false //Checks whether or not the view controller was accessed through the pause screen
     var MultipleChoice = MultipleCGraph() //object that will call upon the MultipleCGraph class in another file
     var choice = [String]() //String array that will store possible multiple choice answers
     var xValues = [String]() //Stores x values that will be inputed into a graphing function (x values must be strings)
@@ -69,15 +70,18 @@ class MultipleChoice2ViewController: UIViewController {
 
     }
     
-    //In the buttonClicked function, a button index is received
-    func buttonClicked(buttonIndex: Int) {
+    //In the buttonClicked function, a button index is recieved and the general output for clicking a multiple choice button
+    //is activated
+    
+    func buttonClicked(buttonIndex: Int) { //Start of buttonClicked method
         
-        if (checkForRightAnswer(buttonIndex) == true) {
+        if (checkForRightAnswer(buttonIndex) == true) { //calls upon checkForRightAnswer method to see if button clicked has
+                                                        //the right answer string
             
             choiceButtons![buttonIndex].backgroundColor = UIColor.greenColor()    //if correct, set the button to green
             ttlScore++                                            //increment number of answers correctly chosen
         }
-        else { //if choice 1 is incorrect
+        else { //if the choice button is incorrect
             
             choiceButtons![buttonIndex].backgroundColor = UIColor.redColor()      //if incorrect, set the button to red
             
@@ -96,12 +100,12 @@ class MultipleChoice2ViewController: UIViewController {
         
     }
     
-    @IBAction func pauseClicked(sender: AnyObject) {
+    @IBAction func pauseClicked(sender: AnyObject) { //opens pause screen when called upon
         
         performSegueWithIdentifier("pauseMCG", sender: sender)
     }
 
-    @IBAction func nextButtonClicked(sender: AnyObject) {
+    @IBAction func nextButtonClicked(sender: AnyObject) { // Upon clicking the next button, the following buttons are affected
         
         resetColours()
         changeProgress()
