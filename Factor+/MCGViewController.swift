@@ -23,7 +23,7 @@ class MultipleChoice2ViewController: UIViewController {
     @IBOutlet weak var progressMCG: UIProgressView!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var buttonFrame: UIImageView!
+    @IBOutlet weak var buttonFrame: UIImageView!    //the blue background behind the buttons
     @IBOutlet weak var coverUpButton: UIButton!
     @IBOutlet weak var graphView: LineChartView!
     @IBOutlet weak var graphView2: LineChartView!

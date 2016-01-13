@@ -24,7 +24,7 @@ class MultipleChoiceTimerViewController: UIViewController {
     @IBOutlet weak var progressMCFT: UIProgressView!//the progress bar, consists of 10 questions
     @IBOutlet weak var nextButton: UIButton!        //the next button, generates next question when
                                                     //clicked
-    @IBOutlet weak var buttonFrame: UIImageView!
+    @IBOutlet weak var buttonFrame: UIImageView!    //the blue background behind the buttons
     @IBOutlet weak var coverUpButton: UIButton!     //this appears when an answer is clicked, as a
                                                     //means of disabling other buttons
     @IBOutlet weak var pauseImage: UIImageView!     //the green pause image
