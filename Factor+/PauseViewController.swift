@@ -15,6 +15,7 @@ import UIKit
 
 class PauseViewController: UIViewController {
     
+    //the three buttons on the Pause screen
     @IBOutlet weak var restartButton: UIButton!
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var continueButton: UIButton!
