@@ -105,17 +105,18 @@ class MultipleChoice2ViewController: UIViewController {
         performSegueWithIdentifier("pauseMCG", sender: sender)
     }
 
-    @IBAction func nextButtonClicked(sender: AnyObject) { // Upon clicking the next button, the following buttons are affected
+    @IBAction func nextButtonClicked(sender: AnyObject) { // Upon clicking the next button, the following buttons
+                                                          // and methods are affected
         
-        resetColours()
-        changeProgress()
-        makeMultipleChoice()
-        pauseButton.hidden = false
-        buttonFrame.hidden = true
-        nextButton.hidden = true
-        coverUpButton.hidden = true
-        pauseImage.hidden = false
-        rotateLabel.hidden = false
+        resetColours() //Calls upon resetColours method to reset button colours
+        changeProgress() //call upon changeProgress method
+        makeMultipleChoice() //call upon the makeMultipleChoice method
+        pauseButton.hidden = false //Reveals pause button
+        buttonFrame.hidden = true //Hides the frame of the next button
+        nextButton.hidden = true //Hides next button
+        coverUpButton.hidden = true //Hides coverUpButton (Prevents user from spamming choice buttons)
+        pauseImage.hidden = false //Shows the pause button image
+        rotateLabel.hidden = false //Shows the "Rotate Screen for Better View" Text
 
     }
     
@@ -124,16 +125,14 @@ class MultipleChoice2ViewController: UIViewController {
         var temp = Double(numQuestions)/10 //Stores percentage of questions answered
         progressMCG.setProgress(Float(temp), animated: true) //Uses var temp to change the progress bar
         
-        MultipleChoice = MultipleCGraph()
+        MultipleChoice = MultipleCGraph() //Creates a MultipleCGraph object
         
-        var choice = MultipleChoice.getChoice
-        
-        endGame()
+        endGame() //Calls upon endGame method to check if the game has ended
     }
     
-    func resetColours() {
+    func resetColours() { //this method resets colours on the buttons
         
-        for (var i = 0; i < 4; i++) {
+        for (var i = 0; i < 4; i++) { //For choiceButtons 1 to 4, the colour is reset using this for loop
             
             choiceButtons![i].backgroundColor = UIColor(red: 222/255.0, green: 168/255.0, blue: 160/255.0, alpha: 1.0)
         }
