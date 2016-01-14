@@ -125,9 +125,9 @@ class MultipleChoice2ViewController: UIViewController {
         var temp = Double(numQuestions)/10 //Stores percentage of questions answered
         progressMCG.setProgress(Float(temp), animated: true) //Uses var temp to change the progress bar
         
-        MultipleChoice = MultipleCGraph()
+        MultipleChoice = MultipleCGraph() //Creates a MultipleCGraph object
         
-        endGame()
+        endGame() //Calls upon endGame method to check if the game has ended
     }
     
     func resetColours() { //this method resets colours on the buttons
