@@ -90,13 +90,13 @@ class MultipleChoice2ViewController: UIViewController {
             
         }
         
-        buttonFrame.hidden = false       //show the button frame
-        nextButton.hidden = false       //show the 'next' button
-        pauseButton.hidden = true       //hide the 'pause' button to prevent the question from resetting
-        coverUpButton.hidden = false    //show the 'coverUp' button which is to prevent other answer buttons from
-        //being clicked once the question is answered
-        pauseImage.hidden = true        //hide the 'pause' image as well
-        rotateLabel.hidden = true
+        buttonFrame.hidden = false     //show the button frame
+        nextButton.hidden = false      //show the 'next' button
+        pauseButton.hidden = true      //hide the 'pause' button to prevent the question from resetting
+        coverUpButton.hidden = false   //show the 'coverUp' button which is to prevent other answer buttons from
+                                       //being clicked once the question is answered
+        pauseImage.hidden = true       //hide the 'pause' image as well
+        rotateLabel.hidden = true      
         
     }
     
@@ -125,8 +125,6 @@ class MultipleChoice2ViewController: UIViewController {
         progressMCG.setProgress(Float(temp), animated: true) //Uses var temp to change the progress bar
         
         MultipleChoice = MultipleCGraph()
-        
-        var choice = MultipleChoice.getChoice
         
         endGame()
     }

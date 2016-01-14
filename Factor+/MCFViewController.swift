@@ -310,7 +310,7 @@ class MultipleChoiceViewController: UIViewController {
         }
         
         nextButton.hidden = false       //show the 'next' button
-        buttonFrame.hidden = false       //show the buttonFrame
+        buttonFrame.hidden = false      //show the buttonFrame
         pauseButton.hidden = true       //hide the 'pause' button to prevent the question from resetting
         coverUpButton.hidden = false    //show the 'coverUp' button which is to prevent other answer buttons from
                                         //being clicked once the question is answered
