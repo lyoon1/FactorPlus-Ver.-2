@@ -25,7 +25,7 @@ class MultipleChoice2ViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var buttonFrame: UIImageView!    //the blue background behind the buttons
     @IBOutlet weak var coverUpButton: UIButton!
-    @IBOutlet weak var graphView: LineChartView!
+    @IBOutlet weak var graphView: LineChartView!    //a custom view from IOS Charts API that display a line graph
     @IBOutlet weak var graphView2: LineChartView!
     @IBOutlet weak var pauseImage: UIImageView!
     
@@ -147,27 +147,30 @@ class MultipleChoice2ViewController: UIViewController {
         progressMCG.setProgress(Float(temp), animated: false)
         coverUpButton.hidden = true
         
-        graphView.zoom(1.2, scaleY: 1, x: 120, y: 64)
-        graphView.dragEnabled = false
-        graphView.doubleTapToZoomEnabled = false
+        graphView.zoom(1.2, scaleY: 1, x: 120, y: 64) //zooms the graphView, which is a LineChartView by a certain percentage about the indicated point
+        graphView.dragEnabled = false //disables user interaction with graphView via dragging
+        graphView.doubleTapToZoomEnabled = false //disables user interaction with graphView via double tapping
         
         graphView2.zoom(1.2, scaleY: 1, x: 120, y: 64)
         graphView2.dragEnabled = false
         graphView2.doubleTapToZoomEnabled = false
         
-        let yAxis = ChartLimitLine(limit: 0)
-        let xAxis = ChartLimitLine(limit: 6.0)
-        graphView.leftAxis.addLimitLine(yAxis)
-        graphView.xAxis.addLimitLine(xAxis)
+        let yAxis = ChartLimitLine(limit: 0) //yAxis is declared as a ChartLimitLine object with its value set to 0
+        let xAxis = ChartLimitLine(limit: 6.0) //xAxis is declared as a ChartLimitLine object with its x-index at 6
+        //this actually creates the yAxis
+        //It is declared as xAxis due to it being defined from the x-axis (x-index is the x value, and the value stored in the x-index is the y value)
+        graphView.leftAxis.addLimitLine(yAxis) //adds a line through the y-axis
+        graphView.xAxis.addLimitLine(xAxis) //adds a line through the x-axis
         graphView2.leftAxis.addLimitLine(yAxis)
         graphView2.xAxis.addLimitLine(xAxis)
-        
-        graphView.rightAxis.labelFont = UIFont(name: "", size: 0)!
+    
+        graphView.rightAxis.labelFont = UIFont(name: "", size: 0)! //lables on the right side of the graph is set to have a font of zero, making them invisible
         graphView2.rightAxis.labelFont = UIFont(name: "", size: 0)!
         
         if (fromPause == true) {
             
-            setChart(xValues, yval: yValues)
+            setChart(xValues, yval: yValues) //when coming from PauseViewController as fromPause set to true, the x-values and y-values that were stored in the PauseViewController is set to be the xValues and yValues of this class
+            //since the chart has no data when the view loads after coming from pause, the charts are reset with the new xValues and yValues
             
             for (var i = 0; i < 4; i++) {
                 
