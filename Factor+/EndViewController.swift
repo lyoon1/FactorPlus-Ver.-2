@@ -5,33 +5,52 @@
 //  Created by Taehyun Lee on 2015-11-05.
 //  Copyright © 2015 LYM. All rights reserved.
 //
+//  The end screen of the program.
+//
+//  
+//
+//
+//
+//
 
 import UIKit
 
 class EndViewController: UIViewController {
     
+    /*
+    * numCorrect -> number of correct answers
+    * type -> the name of the game mode
+    * score -> the score achieved through correct answers
+    * numQuestion -> number of questions answered - reset to zero from this screen
+    * highScore -> stored highscore
+    * timeTaken -> time elapsed
+    */
     var numCorrect = Int(), type = String(), score = Int(), numQuestion = Int(), highScore = Int(), timeTaken = Int()
     
-    @IBOutlet weak var questionTypeLabel: UILabel!
-    @IBOutlet weak var numCorrectLabel: UILabel!
-    @IBOutlet weak var numWrongLabel: UILabel!
-    @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var highScoreLabel: UILabel!
-    @IBOutlet weak var restartButton: UIButton!
-    @IBOutlet weak var menuButton: UIButton!
-    @IBOutlet weak var questionTypeImage: UIImageView!
+    @IBOutlet weak var questionTypeLabel: UILabel!      //displays the type of question
+    @IBOutlet weak var numCorrectLabel: UILabel!        //displays number of correct answers
+    @IBOutlet weak var numWrongLabel: UILabel!          //displays number of wrong answers
+    @IBOutlet weak var scoreLabel: UILabel!             //displays the score in %
+    @IBOutlet weak var timeLabel: UILabel!              //displays the time elapsed
+    @IBOutlet weak var highScoreLabel: UILabel!         //displays the highscore for the game mode
+    @IBOutlet weak var restartButton: UIButton!         //the restart button
+    @IBOutlet weak var menuButton: UIButton!            //the main menu button
+    @IBOutlet weak var questionTypeImage: UIImageView!  //the image that displays the game mode
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
 
+        //set the image and text based on the game mode performed
         questionTypeImage.image = UIImage(named: type)
         questionTypeLabel.text = type
+        
+        //set the score labels based on numCorrect
         numCorrectLabel.text = String(numCorrect)
         numWrongLabel.text = String(10 - numCorrect)
         scoreLabel.text = "\(10 * numCorrect)%"
       
+        //ONLY display the timer if it's timer mode
         if (type == "Multiple Choice Factor Timer") {
             
             timeLabel.text = "Time Elapsed: \(timeTaken) seconds"
