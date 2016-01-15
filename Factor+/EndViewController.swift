@@ -5,12 +5,15 @@
 //  Created by Taehyun Lee on 2015-11-05.
 //  Copyright © 2015 LYM. All rights reserved.
 //
-//  The end screen of the program.
+//  The end screen of the program, appears after 10 questions of a game mode.
 //
-//  
-//
-//
-//
+//  Displays the following:
+//      Number of correct answers
+//      Number of incorrect answers
+//      The score for the play performed & previous highscore
+//      Type of the game mode performed
+//      Navigation - Restart/Menu buttons
+//      Time elapsed
 //
 
 import UIKit
@@ -77,21 +80,26 @@ class EndViewController: UIViewController {
         
     }
 
+    //runs when Restart button clicked
     @IBAction func restartGame(sender: AnyObject) {
         
+        //reset all counters and restart
         score = 0
         numQuestion = 0
         restartGame()
     }
     
+    //runs when Menu button clicked
     @IBAction func goToMenu(sender: AnyObject) {
         
+        //reset all counters and go to menu
         score = 0
         numQuestion = 0
         type = ""
         performSegueWithIdentifier("MainMenu", sender: sender)
     }
     
+    //select the corresponding Segue
     func restartGame (){
         
         if(type == "Multiple Choice Factor")
@@ -131,68 +139,19 @@ class EndViewController: UIViewController {
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+    //Runs when Menu button is clicked
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if(segue.identifier == "MainMenu")
         {
             let mvc = segue.destinationViewController as! StartViewController
         }
-        else if(segue.identifier == "Continue MCF")
-        {
-            let mcvc = segue.destinationViewController as! MultipleChoiceViewController
-            mcvc.numCorrect = score
-            mcvc.numQuestions = numQuestion
-        }
-        else if(segue.identifier == "Continue MCFT")
-        {
-            let mcftvc = segue.destinationViewController as! MultipleChoiceTimerViewController
-            mcftvc.numCorrect = score
-            mcftvc.numQuestions = numQuestion
-        }
-        else if(segue.identifier == "Continue UIF")
-        {
-            let uifvc = segue.destinationViewController as! UIFViewController
-            uifvc.numQuestions = numQuestion
-            uifvc.ttlScore = score
-        }
-        else if(segue.identifier == "Continue MCG")
-        {
-            let mc2vc = segue.destinationViewController as! MultipleChoice2ViewController
-            mc2vc.numQuestions = numQuestion
-            mc2vc.ttlScore = score
-        }
-        else if(segue.identifier == "Continue UIG")
-        {
-            let uigvc = segue.destinationViewController as! UIGViewController
-            uigvc.numQuestions = numQuestion
-            uigvc.ttlScore = score
-        }
             
-        //The codes below are not part of the ICS4U project
-        //they will be used when(if) Trigonometry gets implemented
-        else if(segue.identifier == "Continue MCT")
-        {
-            let mctvc = segue.destinationViewController as! MCTViewController
-            mctvc.numQuestions = numQuestion
-            mctvc.ttlScore = score
-        }
-        else if(segue.identifier == "Continue UIR")
-        {
-            let uirvc = segue.destinationViewController as! UIRViewController
-            uirvc.ttlScore = score
-            uirvc.numQuestions = numQuestion
-        }
-        else if(segue.identifier == "Continue UISC")
-        {
-            let uiscvc = segue.destinationViewController as! UISCViewController
-            uiscvc.numQuestions = numQuestion
-            uiscvc.ttlScore = score
-        }
     }
+    
+    override func didReceiveMemoryWarning() {
+        
+        super.didReceiveMemoryWarning()
+    }
+
 }
