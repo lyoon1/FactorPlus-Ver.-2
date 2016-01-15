@@ -8,6 +8,9 @@
 //  The "Math Help" screen. One of two help screens.
 //  Linked from the HelpEntranceViewController view controller.
 //
+//  The HelpTwoViewController has the same functionalities and code as HelpViewController
+//  The difference is in the imageArray, since the help images aid students in solving math problems instead of navigation of the app
+//  This class may be merged with HelpViewController, so that there would be one class but two imageArrays that will activate depending on which help menu was clicked
 
 import UIKit
 
