@@ -23,7 +23,7 @@
 //  * Work distribution
 //  Taehyun: responsible for the creation of the class and setting up the skeletons of the class
 //           such as the endGame(), viewDidLoad(), prepareForSegue(), etc.
-//  John: responsible for the Multiple Choice algorithm used in this class: makeMultipleChoice()
+//  John: responsible for the Multiple Choice algorithm used in this class: makeMultipleChoice(), selectionSort()
 //  Leo: responsible for thoroughly commenting the class, and completing other funcs such as the
 //       resetColours() or checkForRightAnswer() as well as integrating all of the pieces together
 //
