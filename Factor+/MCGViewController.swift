@@ -218,12 +218,12 @@ class MultipleChoice2ViewController: UIViewController {
         
     }
 
-    func makeMultipleChoice() {
+    func makeMultipleChoice() { //This method creates a multiple choice string array and stores puts them on buttons
         
-        rightAnsIndex = MultipleChoice.getRightIndex()
-        choice = MultipleChoice.getChoice()
+        rightAnsIndex = MultipleChoice.getRightIndex() //Returns correct answers
+        choice = MultipleChoice.getChoice() //Recieves string array
         
-        for (var i = 0; i < 4; i++) {
+        for (var i = 0; i < 4; i++) { //Sets the strings in the array to corresponding buttons
             
             choiceButtons![i].setTitle(choice[i], forState: .Normal)
             
@@ -231,7 +231,7 @@ class MultipleChoice2ViewController: UIViewController {
         
     }
     
-    func checkForRightAnswer(buttonNumber: Int) -> Bool {
+    func checkForRightAnswer(buttonNumber: Int) -> Bool { //This method calls returns a boolean depending on the index entered
         
         //if the user chose the correct answer
         if ((buttonNumber) == rightAnsIndex) {
@@ -251,7 +251,7 @@ class MultipleChoice2ViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func endGame() {
+    func endGame() { //This method checks if the game has ended. If it has, then the end screen will be loaded
         
         if(numQuestions == 10) {
             
