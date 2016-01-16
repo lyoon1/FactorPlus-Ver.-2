@@ -17,7 +17,7 @@ class multipleChoice { //Start of multipleChoice class
     var r = Int() //will represent the "m" values in (kx + m)(jx + n)
     var s = Int() //will represent the "n" values in (kx + m)(jx + n)
 
-    func getRAns(rI: Int) -> String { //An integer "rI" is randomly generated and sent from another class
+    func getRAns(rI: Int) -> String { //An integer "rI" is randomly generated and sent from MCFViewController class
         
         if(rI > 0) { //If rI is greater than 0, then the integer will be casted as a string and returned as "+ rI"
             
@@ -37,7 +37,7 @@ class multipleChoice { //Start of multipleChoice class
         
     }
     
-    func getSAns(sI: Int) -> String { //An integer "sI" is randomly generated and sent from another class
+    func getSAns(sI: Int) -> String { //An integer "sI" is randomly generated and sent from MCFViewController class
         
         if(sI > 0) {
             
@@ -56,7 +56,7 @@ class multipleChoice { //Start of multipleChoice class
         }
     }
     
-    func getKAns(kI: Int) -> String { //An integer "kI" is randomly generated and sent from another class
+    func getKAns(kI: Int) -> String { //An integer "kI" is randomly generated and sent from MCFViewController class
         
         if(kI == 1) {
             
@@ -70,7 +70,7 @@ class multipleChoice { //Start of multipleChoice class
         
     }
     
-    func getJAns(jI: Int) -> String { //An integer "jI" is randomly generated and sent from another class
+    func getJAns(jI: Int) -> String { //An integer "jI" is randomly generated and sent from MCFViewController class
         
         if(jI == 1) {
             
