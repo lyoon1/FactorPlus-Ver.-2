@@ -8,7 +8,7 @@
 //  Credits to:
 //  Taehyun Lee: For integration into the UI and separating the algorithmn into functions
 //  Leo Yoon: For integration of the buttons around the algorithm and implementing the pause function
-//  John Ma: For creating the base algorithm that generates multiple choice answers and returns the correct index
+//  John Ma: For creating the base algorithm that generates graphing multiple choice answers and returns the correct index
 //
 // Commentor: John Ma
 
