@@ -7,7 +7,7 @@
 //
 //  This class is designated for factoring multiple choice
 //  It takes randomly generated integers and returns them in an appropriate string so they can be used to create factors
-//  in the form of (kx + m)(jx + n)
+//  in the form of (kx + m)(jx + n) in the MCF and MCFT Viewcontrollers
 
 import Foundation
 import UIKit
@@ -39,30 +39,32 @@ class multipleChoice { //Start of multipleChoice class
     
     func getSAns(sI: Int) -> String { //An integer "sI" is randomly generated and sent from MCFViewController class
         
-        if(sI > 0) {
+        if(sI > 0) { //If sI is greater than 0, then the integer will be casted as a string and returned as "+ sI"
             
             return "+"+String(sI)
             
         }
-        else if(sI < 0) {
+        else if(sI < 0) { //If sI is less than 0, then the integer will be casted as a string and returned as "- sI"
             
             return String(sI)
             
         }
-        else {
+        else { //If sI is 0, then nothing will be returned
             
             return ""
             
         }
     }
     
+    //In the next two methods, kI and jI integers sent will always be positive
+    
     func getKAns(kI: Int) -> String { //An integer "kI" is randomly generated and sent from MCFViewController class
         
-        if(kI == 1) {
+        if(kI == 1) { //If kI is equal to 1, return nothing
             
             return ""
         }
-        else {
+        else { //Otherwise, return the kI in the form of a string
         
             return String(kI)
             
@@ -72,11 +74,11 @@ class multipleChoice { //Start of multipleChoice class
     
     func getJAns(jI: Int) -> String { //An integer "jI" is randomly generated and sent from MCFViewController class
         
-        if(jI == 1) {
+        if(jI == 1) { //If jI is equal to 1, return nothing
             
             return ""
         }
-        else {
+        else { //Otherwise, return the jI in the form of a string
             
             return String(jI)
             
