@@ -5,6 +5,8 @@
 //  Created by Jia Long Ma on 2015-11-23.
 //  Copyright © 2015 LYM. All rights reserved.
 //
+//  This class works similar to multipleC.swift and is designated to graphing multiple choice
+//  It recieves input from the graphing
 
 import Foundation
 import UIKit
