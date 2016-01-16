@@ -396,9 +396,6 @@
                         <subviews>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Button Frame" translatesAutoresizingMaskIntoConstraints="NO" id="cTS-qu-Opr">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="95" y="-53" width="364" height="40"/>
-                                </variation>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jRX-Zt-2lf">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -408,9 +405,6 @@
                                 <state key="normal" title="Choice 1">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="66" y="-749" width="488" height="53"/>
-                                </variation>
                                 <connections>
                                     <action selector="choice1Clicked:" destination="I50-V8-fSy" eventType="touchUpInside" id="gT9-Wv-LRo"/>
                                 </connections>
@@ -423,9 +417,6 @@
                                 <state key="normal" title="Choice 2">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="66" y="-665" width="488" height="53"/>
-                                </variation>
                                 <connections>
                                     <action selector="choice2Clicked:" destination="I50-V8-fSy" eventType="touchUpInside" id="yMx-vm-yeF"/>
                                 </connections>
@@ -438,9 +429,6 @@
                                 <state key="normal" title="Choice 3">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="66" y="-578" width="488" height="53"/>
-                                </variation>
                                 <connections>
                                     <action selector="choice3Clicked:" destination="I50-V8-fSy" eventType="touchUpInside" id="a7l-aa-0kt"/>
                                 </connections>
@@ -453,9 +441,6 @@
                                 <state key="normal" title="Choice 4">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="66" y="-494" width="488" height="424"/>
-                                </variation>
                                 <connections>
                                     <action selector="choice4Clicked:" destination="I50-V8-fSy" eventType="touchUpInside" id="G6e-fg-z1q"/>
                                 </connections>
@@ -475,8 +460,7 @@
                                         <exclude reference="YrZ-qj-5Fh"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="-809" width="554" height="29"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="YrZ-qj-5Fh"/>
                                     </mask>
@@ -495,8 +479,7 @@
                                         <exclude reference="sLH-DO-QUB"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="70" y="89" width="414" height="21"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="sLH-DO-QUB"/>
                                     </mask>
@@ -504,24 +487,15 @@
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pause" translatesAutoresizingMaskIntoConstraints="NO" id="QgI-W5-29q">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="500" y="-43" width="24" height="20"/>
-                                </variation>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fjg-68-JYA">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="490" y="-53" width="44" height="40"/>
-                                </variation>
                                 <connections>
                                     <action selector="pauseClicked:" destination="I50-V8-fSy" eventType="touchUpInside" id="4ex-7l-x4a"/>
                                 </connections>
                             </button>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="u7s-2U-nnT">
                                 <rect key="frame" x="0.0" y="-2" width="150" height="2"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="85" y="-766" width="384" height="2"/>
-                                </variation>
                             </progressView>
                             <button hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHH-7R-yFc">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -529,18 +503,12 @@
                                 <state key="normal" title="Next">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="95" y="-53" width="364" height="40"/>
-                                </variation>
                                 <connections>
                                     <action selector="nextButtonClicked:" destination="I50-V8-fSy" eventType="touchUpInside" id="CG7-cT-mrj"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Multiple Choice Banner White" translatesAutoresizingMaskIntoConstraints="NO" id="mU8-VH-Il6">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="25" y="-781" width="43" height="742"/>
-                                </variation>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Multiple Choice Banner Circle" translatesAutoresizingMaskIntoConstraints="NO" id="jVI-fL-i4t">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -552,8 +520,7 @@
                                         <exclude reference="hiD-3u-UjS"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="31" y="-740" width="31" height="35"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="hiD-3u-UjS"/>
                                     </mask>
@@ -569,8 +536,7 @@
                                         <exclude reference="wNe-pn-LCU"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="31" y="-656" width="31" height="35"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="wNe-pn-LCU"/>
                                     </mask>
@@ -586,8 +552,7 @@
                                         <exclude reference="t6e-hD-Uva"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="31" y="-569" width="31" height="35"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="t6e-hD-Uva"/>
                                     </mask>
@@ -595,24 +560,15 @@
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Multiple Choice Banner Circle" translatesAutoresizingMaskIntoConstraints="NO" id="bL2-39-ZLt">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="31" y="-485" width="31" height="406"/>
-                                </variation>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvy-tZ-TiF">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="70" y="-749" width="484" height="678"/>
-                                </variation>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvA-bM-gEI">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="470" y="-829" width="84" height="21"/>
-                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Factor the following: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="olA-6t-0oA">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -627,8 +583,7 @@
                                         <exclude reference="del-yJ-yb7"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="197" y="50" width="160" height="21"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="del-yJ-yb7"/>
                                     </mask>
@@ -2040,7 +1995,7 @@
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="pauseClicked:" destination="FZ1-uI-3qI" eventType="touchUpInside" id="DmT-ds-gCF"/>
+                                    <action selector="pauseClicked:" destination="FZ1-uI-3qI" eventType="touchUpInside" id="z6k-a5-h8X"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfo-6b-ugu">
@@ -2293,8 +2248,8 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="answerLabel" destination="nbF-EC-l5w" id="xCC-ux-Xuv"/>
                         <outlet property="enterButton" destination="jtB-Oe-Gv5" id="0qx-jb-DxB"/>
-                        <outlet property="label" destination="nbF-EC-l5w" id="2XV-AA-L5j"/>
                         <outlet property="nextButton" destination="3dT-E9-3Wd" id="7HK-gA-dcX"/>
                         <outlet property="pauseButton" destination="Kea-ZT-ePf" id="rNh-RU-gs1"/>
                         <outlet property="pauseImage" destination="0Ix-Va-6bQ" id="cUh-jS-Lhk"/>
@@ -6324,18 +6279,18 @@
         <image name="X Mark" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IBP-wz-HFx"/>
-        <segue reference="pYJ-84-rOX"/>
-        <segue reference="VeC-bX-SUA"/>
-        <segue reference="94G-sf-LDF"/>
-        <segue reference="UeY-uf-lHh"/>
-        <segue reference="eUp-Mu-p1y"/>
-        <segue reference="z9N-k0-txZ"/>
-        <segue reference="aZ2-DE-bbv"/>
-        <segue reference="2Cn-AM-Fu6"/>
-        <segue reference="LqW-5x-ZVx"/>
-        <segue reference="MWu-9m-6h2"/>
-        <segue reference="lyb-ow-iKn"/>
         <segue reference="2Qi-5d-xf6"/>
+        <segue reference="lyb-ow-iKn"/>
+        <segue reference="eUp-Mu-p1y"/>
+        <segue reference="l0c-Hf-EBJ"/>
+        <segue reference="LqW-5x-ZVx"/>
+        <segue reference="Vif-j5-q61"/>
+        <segue reference="UeY-uf-lHh"/>
+        <segue reference="VeC-bX-SUA"/>
+        <segue reference="2Cn-AM-Fu6"/>
+        <segue reference="MWu-9m-6h2"/>
+        <segue reference="aZ2-DE-bbv"/>
+        <segue reference="z9N-k0-txZ"/>
+        <segue reference="IBP-wz-HFx"/>
     </inferredMetricsTieBreakers>
 </document>

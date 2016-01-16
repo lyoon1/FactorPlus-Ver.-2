@@ -10,7 +10,8 @@
 //  Leo Yoon: For integration of the buttons around the algorithm and implementing the pause function
 //  John Ma: For creating the base algorithm that generates multiple choice answers and returns the correct index
 //
-// Commentor: John Ma
+// Commentor: John Ma, Taehyun Lee
+//
 
 import UIKit
 import Charts
@@ -45,10 +46,100 @@ class MultipleChoice2ViewController: UIViewController {
     var xValues = [String]() //Stores x values that will be inputed into a graphing function (x values must be strings)
     var yValues = [Double]() //Stores y values that will be inputed into a graphing function (y values must be doubles)
     
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        var temp = Double(numQuestions)/10
+        progressMCG.setProgress(Float(temp), animated: false)
+        coverUpButton.hidden = true
+        
+        graphView.zoom(1.2, scaleY: 1, x: 120, y: 64) //zooms the graphView, which is a LineChartView by a certain percentage about the indicated point
+        graphView.dragEnabled = false //disables user interaction with graphView via dragging
+        graphView.doubleTapToZoomEnabled = false //disables user interaction with graphView via double tapping
+        
+        graphView2.zoom(1.2, scaleY: 1, x: 120, y: 64)
+        graphView2.dragEnabled = false
+        graphView2.doubleTapToZoomEnabled = false
+        
+        let yAxis = ChartLimitLine(limit: 0) //yAxis is declared as a ChartLimitLine object with its value set to 0
+        let xAxis = ChartLimitLine(limit: 6.0) //xAxis is declared as a ChartLimitLine object with its x-index at 6
+        //this actually creates the yAxis
+        //It is declared as xAxis due to it being defined from the x-axis (x-index is the x value, and the value stored in the x-index is the y value)
+        graphView.leftAxis.addLimitLine(yAxis) //adds a line through the y-axis
+        graphView.xAxis.addLimitLine(xAxis) //adds a line through the x-axis
+        graphView2.leftAxis.addLimitLine(yAxis)
+        graphView2.xAxis.addLimitLine(xAxis)
+        
+        graphView.rightAxis.labelFont = UIFont(name: "", size: 0)! //lables on the right side of the graph is set to have a font of zero, making them invisible
+        graphView2.rightAxis.labelFont = UIFont(name: "", size: 0)!
+        
+        if (fromPause == true) {
+            
+            setChart(xValues, yval: yValues) //when coming from PauseViewController as fromPause set to true, the x-values and y-values that were stored in the PauseViewController is set to be the xValues and yValues of this class
+            //since the chart has no data when the view loads after coming from pause, the charts are reset with the new xValues and yValues
+            
+            for (var i = 0; i < 4; i++) {
+                
+                choiceButtons![i].setTitle(choice[i], forState: .Normal)
+                
+            }
+            
+        }
+        else {
+            var graphPoint = MultipleCGraph.getGraphOfPointsMC(MultipleChoice)
+            
+            let xval = graphPoint().getXVal()
+            let yval = graphPoint().getYVal()
+            setChart(xval, yval:yval)
+            makeMultipleChoice()
+        }
+        
+    }
+    
+    //http://www.appcoda.com/ios-charts-api-tutorial/
+    func setChart(xval:[String], yval:[Double]) {
+        
+        var dataEntries: [ChartDataEntry] = []
+        
+        for i in 0..<xval.count {
+            let dataEntry = ChartDataEntry(value: yval[i], xIndex: i)
+            dataEntries.append(dataEntry)
+        }
+        
+        let xvalDataSet = LineChartDataSet(yVals: dataEntries, label: "")
+        let xvalData = LineChartData(xVals: xval, dataSet: xvalDataSet)
+        graphView.data = xvalData
+        graphView.data?.setValueFont(UIFont(name:"Helvetica Neuve", size: 12))
+        graphView.setDescriptionTextPosition(x: CGFloat(10000), y: CGFloat(100000))
+        
+        graphView2.data = xvalData
+        graphView2.data?.setValueFont(UIFont(name:"Helvetica Neuve", size: 12))
+        graphView2.setDescriptionTextPosition(x: CGFloat(10000), y: CGFloat(100000))
+        
+        for (var i = 0; i < 12; i++) {
+            
+            xValues.insert(xval[i], atIndex: i)
+            yValues.insert(yval[i], atIndex: i)
+        }
+        
+    }
+    
+    func makeMultipleChoice() { //This method creates a multiple choice string array and stores puts them on buttons
+        
+        rightAnsIndex = MultipleChoice.getRightIndex() //Returns correct answers
+        choice = MultipleChoice.getChoice() //Recieves string array
+        
+        for (var i = 0; i < 4; i++) { //Sets the strings in the array to corresponding buttons
+            
+            choiceButtons![i].setTitle(choice[i], forState: .Normal)
+            
+        }
+        
+    }
     
     //Depending on the multiple choice button clicked, the function "buttonClicked" will be called upon with the parameters 
     //being the choice button's index in the "choiceButtons" Array
-    
     @IBAction func choice1Clicked(sender: AnyObject) {
     
         buttonClicked(0)
@@ -100,6 +191,21 @@ class MultipleChoice2ViewController: UIViewController {
         
     }
     
+    func checkForRightAnswer(buttonNumber: Int) -> Bool { //This method calls returns a boolean depending on the index entered
+        
+        //if the user chose the correct answer
+        if ((buttonNumber) == rightAnsIndex) {
+            
+            return true
+        }
+            //if the user's choice is incorrect
+        else {
+            
+            return false
+            
+        } //end of 'if else' statement
+    }
+    
     @IBAction func pauseClicked(sender: AnyObject) { //opens pause screen when called upon
         
         performSegueWithIdentifier("pauseMCG", sender: sender)
@@ -139,118 +245,6 @@ class MultipleChoice2ViewController: UIViewController {
         
     }
     
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        
-        var temp = Double(numQuestions)/10
-        progressMCG.setProgress(Float(temp), animated: false)
-        coverUpButton.hidden = true
-        
-        graphView.zoom(1.2, scaleY: 1, x: 120, y: 64) //zooms the graphView, which is a LineChartView by a certain percentage about the indicated point
-        graphView.dragEnabled = false //disables user interaction with graphView via dragging
-        graphView.doubleTapToZoomEnabled = false //disables user interaction with graphView via double tapping
-        
-        graphView2.zoom(1.2, scaleY: 1, x: 120, y: 64)
-        graphView2.dragEnabled = false
-        graphView2.doubleTapToZoomEnabled = false
-        
-        let yAxis = ChartLimitLine(limit: 0) //yAxis is declared as a ChartLimitLine object with its value set to 0
-        let xAxis = ChartLimitLine(limit: 6.0) //xAxis is declared as a ChartLimitLine object with its x-index at 6
-        //this actually creates the yAxis
-        //It is declared as xAxis due to it being defined from the x-axis (x-index is the x value, and the value stored in the x-index is the y value)
-        graphView.leftAxis.addLimitLine(yAxis) //adds a line through the y-axis
-        graphView.xAxis.addLimitLine(xAxis) //adds a line through the x-axis
-        graphView2.leftAxis.addLimitLine(yAxis)
-        graphView2.xAxis.addLimitLine(xAxis)
-    
-        graphView.rightAxis.labelFont = UIFont(name: "", size: 0)! //lables on the right side of the graph is set to have a font of zero, making them invisible
-        graphView2.rightAxis.labelFont = UIFont(name: "", size: 0)!
-        
-        if (fromPause == true) {
-            
-            setChart(xValues, yval: yValues) //when coming from PauseViewController as fromPause set to true, the x-values and y-values that were stored in the PauseViewController is set to be the xValues and yValues of this class
-            //since the chart has no data when the view loads after coming from pause, the charts are reset with the new xValues and yValues
-            
-            for (var i = 0; i < 4; i++) {
-                
-                choiceButtons![i].setTitle(choice[i], forState: .Normal)
-
-            }
-            
-        }
-        else {
-            var graphPoint = MultipleCGraph.getGraphOfPointsMC(MultipleChoice)
-        
-            let xval = graphPoint().getXVal()
-            let yval = graphPoint().getYVal()
-            setChart(xval, yval:yval)
-            makeMultipleChoice()
-        }
-        // Do any additional setup after loading the view.
-    }
-
-    //http://www.appcoda.com/ios-charts-api-tutorial/
-    func setChart(xval:[String], yval:[Double]) {
-        
-        var dataEntries: [ChartDataEntry] = []
-        
-        for i in 0..<xval.count {
-            let dataEntry = ChartDataEntry(value: yval[i], xIndex: i)
-            dataEntries.append(dataEntry)
-        }
-        
-        let xvalDataSet = LineChartDataSet(yVals: dataEntries, label: "")
-        let xvalData = LineChartData(xVals: xval, dataSet: xvalDataSet)
-        graphView.data = xvalData
-        graphView.data?.setValueFont(UIFont(name:"Helvetica Neuve", size: 12))
-        graphView.setDescriptionTextPosition(x: CGFloat(10000), y: CGFloat(100000))
-     
-        graphView2.data = xvalData
-        graphView2.data?.setValueFont(UIFont(name:"Helvetica Neuve", size: 12))
-        graphView2.setDescriptionTextPosition(x: CGFloat(10000), y: CGFloat(100000))
-        
-        for (var i = 0; i < 12; i++) {
-          
-            xValues.insert(xval[i], atIndex: i)
-            yValues.insert(yval[i], atIndex: i)
-        }
-        
-    }
-
-    func makeMultipleChoice() { //This method creates a multiple choice string array and stores puts them on buttons
-        
-        rightAnsIndex = MultipleChoice.getRightIndex() //Returns correct answers
-        choice = MultipleChoice.getChoice() //Recieves string array
-        
-        for (var i = 0; i < 4; i++) { //Sets the strings in the array to corresponding buttons
-            
-            choiceButtons![i].setTitle(choice[i], forState: .Normal)
-            
-        }
-        
-    }
-    
-    func checkForRightAnswer(buttonNumber: Int) -> Bool { //This method calls returns a boolean depending on the index entered
-        
-        //if the user chose the correct answer
-        if ((buttonNumber) == rightAnsIndex) {
-            
-            return true
-        }
-            //if the user's choice is incorrect
-        else {
-            
-            return false
-            
-        } //end of 'if else' statement
-    }
-    
-    override func didReceiveMemoryWarning() {
-        
-        super.didReceiveMemoryWarning()
-    }
-    
     func endGame() { //This method checks if the game has ended. If it has, then the end screen will be loaded
         
         if(numQuestions == 10) {
@@ -265,6 +259,11 @@ class MultipleChoice2ViewController: UIViewController {
             let yval = graphPoint().getYVal()
             setChart(xval, yval: yval)
         }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        
+        super.didReceiveMemoryWarning()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
