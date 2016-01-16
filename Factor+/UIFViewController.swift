@@ -24,7 +24,19 @@ import UIKit
 
 class UIFViewController: UIViewController {
     
-    //initializing UI objects from the UIF (User Input Factor) view controller by declareing them as an outlet.
+    //initializing UI objects from the UIF (User Input Factor) view controller by declaring them as an outlet.
+    
+    /*
+    * sliderM: (x - m)(x - n)
+    * sliderN: the sliders control the variables
+    * enterButton: the Enter button
+    * progressUIF: the progress bar
+    * pauseButton: the Pause button
+    * questionLabel: displays the question
+    * rightOrWrong: shows either a check mark or a X
+    * nextButton: the Next button
+    * pauseImage: just an image of the pause symbol, the actual button hitbox is larger
+    */
     @IBOutlet weak var sliderM: UISlider!
     @IBOutlet weak var sliderN: UISlider!
     @IBOutlet weak var enterButton: UIButton!
@@ -35,6 +47,16 @@ class UIFViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var pauseImage: UIImageView!
     
+    /*
+    * ttlScore: the number of correct answers
+    * numQuestions: questions answered so far
+    * currentM: the current value of sliderM
+    * currentN: the current value of sliderN
+    * firstFactor: one of the two factors
+    * secondFactor: other one of the two factors
+    * fromPause: is the screen loaded from pause screen?
+    * question: the variable that stores the question
+    */
     var ttlScore = Int(), numQuestions = Int(), currentM = Int(), currentN = Int()
     var firstFactor: String = ""
     var secondFactor: String = ""
@@ -46,6 +68,7 @@ class UIFViewController: UIViewController {
         performSegueWithIdentifier("pauseUIF", sender: sender)
     }
     
+    //question label
     @IBOutlet weak var label: UILabel!
     
     @IBAction func changeProgress(sender: AnyObject) {
@@ -59,46 +82,66 @@ class UIFViewController: UIViewController {
 
     //declaring and initializing a function of the sliders within the view controller.
     //source to the code: https://www.youtube.com/watch?v=jJA9UCbcos0
+    //runs when sliderM is changed
     @IBAction func valChangeM(sender: AnyObject) {
         
         valChanged()
     }
     
+    //runs when sliderN is changed
     @IBAction func valChangeN(sender: AnyObject) {
 
         valChanged()
 
     }
     
+    //all slider changes are redirected to here
+    //all formatting for the label is done in here
     func valChanged() {
         
+        //the current M, N value - doesn't change
         currentM = Int(sliderM.value)
         currentN = Int(sliderN.value)
         
+        //a temporary M value to be used for formatting
         var tempCurrentM = String(currentM)
+        
         if (currentM < 0) {
+            
             tempCurrentM = "(x + \(abs(currentM)))"
         }
         else if (currentM > 0) {
+            
             tempCurrentM = "(x - \(currentM))"
         }
         else {
+            
             tempCurrentM = "x"
         }
         
+        //a temporary N value to be used for formatting
         var tempCurrentN = String(currentN)
+        
         if (currentN < 0) {
+            
             tempCurrentN = "(x + \(abs(currentN)))"
         }
         else if (currentN > 0) {
+            
             tempCurrentN = "(x - \(currentN))"
         }
         else {
+            
             tempCurrentN = "x"
         }
         
         if (currentM == 0 && currentN == 0) {
             label.text = "x²"
+            
+            if (fromPause == true) {
+                
+                label.text = "( x - m ) ( x - n )"
+            }
         }
         else {
             label.text = ("\(tempCurrentM) \(tempCurrentN)")
@@ -106,6 +149,7 @@ class UIFViewController: UIViewController {
         
     }
     
+    //when next button is clicked
     @IBAction func nextButtonClicked(sender: AnyObject) {
         
         numQuestions++
@@ -113,6 +157,8 @@ class UIFViewController: UIViewController {
         progressUIF.setProgress(Float(temp), animated: true)
         endGame()
         makeQuestion()
+        
+        //hide/show the buttons necessary
         nextButton.hidden = true
         rightOrWrong.hidden = true
         enterButton.hidden = false
