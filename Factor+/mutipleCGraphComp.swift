@@ -8,6 +8,7 @@
 //  This class works similar to multipleC.swift and is designated to graphing multiple choice
 //  It recieves integers from the MultipleCGraph class and formats them into strings that can be used
 //  The strings will be combined in the format of a(x-h)+k
+//
 
 import Foundation
 import UIKit

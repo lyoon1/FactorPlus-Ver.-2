@@ -105,8 +105,7 @@ class MultipleChoice2ViewController: UIViewController {
         performSegueWithIdentifier("pauseMCG", sender: sender)
     }
 
-    @IBAction func nextButtonClicked(sender: AnyObject) { // Upon clicking the next button, the following buttons
-                                                          // and methods are affected
+    @IBAction func nextButtonClicked(sender: AnyObject) { // Upon clicking the next button, the following buttons and methods are affected
         
         resetColours() //Calls upon resetColours method to reset button colours
         changeProgress() //call upon changeProgress method

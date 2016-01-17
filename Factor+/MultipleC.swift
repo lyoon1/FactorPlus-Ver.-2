@@ -8,6 +8,7 @@
 //  This class is designated for factoring multiple choice
 //  It takes randomly generated integers and returns them in an appropriate string so they can be used to create factors
 //  in the form of (kx + m)(jx + n) in the MCF and MCFT Viewcontrollers
+//
 
 import Foundation
 import UIKit
