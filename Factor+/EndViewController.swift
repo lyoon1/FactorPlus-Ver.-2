@@ -61,9 +61,10 @@ class EndViewController: UIViewController {
             
         }
         
-        let prevHighScore = NSUserDefaults.standardUserDefaults()
+        let prevHighScore = NSUserDefaults.standardUserDefaults() //new NSUserDefaults is created
+        //an NSUserDefault allows the system to use the defaults database to store variables
         
-        if (prevHighScore.valueForKey(type) != nil) {
+        if (prevHighScore.valueForKey(type) != nil) { //if there is already a stored default variable for highscore, highScore will become the stored highscore
             
             highScore = prevHighScore.valueForKey(type) as! NSInteger
         }
@@ -73,10 +74,10 @@ class EndViewController: UIViewController {
             highScore = numCorrect
         }
         
-        let highScoreString = "Highscore: \(highScore*10)%"
+        let highScoreString = "Highscore: \(highScore*10)%" //after it is ensured that highScore is greater or equal to numCorrect, the highScoreString is set
         highScoreLabel.text = highScoreString
         
-        prevHighScore.setValue(highScore, forKey: type)
+        prevHighScore.setValue(highScore, forKey: type) //the new highScore value is stored as the user default
         
     }
 
