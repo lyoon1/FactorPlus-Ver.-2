@@ -24,8 +24,8 @@ class PauseViewController: UIViewController {
     var numQuestion = Int() //current question number value
     var score = Int() //current score value
     var type = String() //value that saves the type of game mode pause screen is called from
-    var factorOne = String()
-    var factorTwo = String()
+    var factorOne = String() //current first factor
+    var factorTwo = String() //current second factor
     var question = String() //current question label
     var multipleChoiceChoices = [String]() //current multiple choice choices in the right order
     var rightAnswerIndex = Int() //index value of the correct multiple choice choice
@@ -36,7 +36,7 @@ class PauseViewController: UIViewController {
     var currentK = Int() //current value of sliderK
     var xval = [String]() //current x-value for the LineChartGraph
     var yval = [Double]() //current y-value for the LineChartGraph
-    var graphPoint = [GraphingPoints]()
+    var graphPoint = [GraphingPoints]() //current graphPoint for UIGViewController
     var timeRemaining = Int()
     var timeTaken = Int()
     
@@ -103,20 +103,21 @@ class PauseViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) { //method that 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) { //method that takes in an identifier and proceeds to do the corresponding segue
         
-        if(segue.identifier == "MainMenu") {
+        if(segue.identifier == "MainMenu") { //when identifier is MainMenu, it will load up the StartViewController
             
             let svc = segue.destinationViewController as! StartViewController
         }
-            
+        
+        //if the identifier is a gamemode, it will load up the corresponding gamemode screen
         else if(segue.identifier == "Continue MCF") {
             
             let mcvc = segue.destinationViewController as! MultipleChoiceViewController
             mcvc.numCorrect = score
             mcvc.numQuestions = numQuestion
             
-            if (restarting == false) {
+            if (restarting == false) { //if restarting is false, the game sets all the necassary variables to the stored value
             
                 mcvc.firstFactor = factorOne
                 mcvc.secondFactor = factorTwo
