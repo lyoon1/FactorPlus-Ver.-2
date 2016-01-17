@@ -40,24 +40,24 @@ class PauseViewController: UIViewController {
     var timeRemaining = Int()
     var timeTaken = Int()
     
-    @IBAction func restartGame(sender: AnyObject) {
+    @IBAction func restartGame(sender: AnyObject) { //if restart button pressed, score and question number is set to zero, and restarting is set to true
         score = 0
         numQuestion = 0
         restarting = true
         continueToGame()
     }
-    @IBAction func continueGame(sender: AnyObject) {
+    @IBAction func continueGame(sender: AnyObject) { //when continue button pressed, no values are set to zero and proceeds to continueToGame()
         
         continueToGame()
     }
-    @IBAction func goToMenu(sender: AnyObject) {
+    @IBAction func goToMenu(sender: AnyObject) { //when main menu button pressed, score, number of question, and type is set to zero or "" and proceeds stright to perform segue method
         score = 0
         numQuestion = 0
         type = ""
         performSegueWithIdentifier("MainMenu", sender: sender)
     }
     
-    func continueToGame (){
+    func continueToGame (){ //according to type, the program proceeds to perform segue with the corresponding identifier
         if(type == "Multiple Choice Factor")
         {
             performSegueWithIdentifier("Continue MCF", sender: self)
@@ -103,7 +103,7 @@ class PauseViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) { //method that 
         
         if(segue.identifier == "MainMenu") {
             
