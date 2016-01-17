@@ -61,6 +61,8 @@ class EndViewController: UIViewController {
             
         }
         
+        //source for NSUserDefaults: https://www.youtube.com/watch?v=CLmOoHzIekw
+        
         let prevHighScore = NSUserDefaults.standardUserDefaults() //new NSUserDefaults is created
         //an NSUserDefault allows the system to use the defaults database to store variables
         
