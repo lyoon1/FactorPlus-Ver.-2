@@ -9,7 +9,7 @@
 //
 //  This class is linked from and to every game mode View Controller, with
 //  variables that are needed in each of the game modes.
-//
+//  It can continue or restart to a certain game mode, or go to the main menu.
 
 import UIKit
 
@@ -20,22 +20,22 @@ class PauseViewController: UIViewController {
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var continueButton: UIButton!
 
-    var restarting: Bool = false
-    var numQuestion = Int()
-    var score = Int()
-    var type = String()
+    var restarting: Bool = false //boolean value that will be true if the set game will restart and false if the set game will continue
+    var numQuestion = Int() //current question number value
+    var score = Int() //current score value
+    var type = String() //value that saves the type of game mode pause screen is called from
     var factorOne = String()
     var factorTwo = String()
-    var question = String()
-    var multipleChoiceChoices = [String]()
-    var rightAnswerIndex = Int()
+    var question = String() //current question label
+    var multipleChoiceChoices = [String]() //current multiple choice choices in the right order
+    var rightAnswerIndex = Int() //index value of the correct multiple choice choice
     var currentM = Int() //current value of sliderM
     var currentN = Int() //current value of sliderN
     var currentA = Int() //current value of sliderA
     var currentH = Int() //current value of sliderH
     var currentK = Int() //current value of sliderK
-    var xval = [String]()
-    var yval = [Double]()
+    var xval = [String]() //current x-value for the LineChartGraph
+    var yval = [Double]() //current y-value for the LineChartGraph
     var graphPoint = [GraphingPoints]()
     var timeRemaining = Int()
     var timeTaken = Int()
