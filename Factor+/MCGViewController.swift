@@ -169,7 +169,7 @@ class MultipleChoice2ViewController: UIViewController {
         if (fromPause == true) {
             
             setChart(xValues, yval: yValues) //when coming from PauseViewController as fromPause set to true, the x-values and y-values that were stored in the PauseViewController is set to be the xValues and yValues of this class
-            //since the chart has no data when the view loads after coming from pause, the charts are reset with the new xValues and yValues
+            //chart with x-value and y-value from pause screen is made
             
             for (var i = 0; i < 4; i++) {
                 
@@ -178,8 +178,8 @@ class MultipleChoice2ViewController: UIViewController {
             }
             
         }
-        else {
-            var graphPoint = MultipleCGraph.getGraphOfPointsMC(MultipleChoice)
+        else { //if not from PauseViewController, new x-values and y-values are made
+            var graphPoint = MultipleCGraph.getGraphOfPointsMC(MultipleChoice) 
         
             let xval = graphPoint().getXVal()
             let yval = graphPoint().getYVal()
@@ -192,24 +192,24 @@ class MultipleChoice2ViewController: UIViewController {
     //http://www.appcoda.com/ios-charts-api-tutorial/
     func setChart(xval:[String], yval:[Double]) {
         
-        var dataEntries: [ChartDataEntry] = []
+        var dataEntries: [ChartDataEntry] = [] //ChartDataEntry objects store the y-value for a specific index
         
         for i in 0..<xval.count {
             let dataEntry = ChartDataEntry(value: yval[i], xIndex: i)
             dataEntries.append(dataEntry)
         }
         
-        let xvalDataSet = LineChartDataSet(yVals: dataEntries, label: "")
-        let xvalData = LineChartData(xVals: xval, dataSet: xvalDataSet)
-        graphView.data = xvalData
-        graphView.data?.setValueFont(UIFont(name:"Helvetica Neuve", size: 12))
-        graphView.setDescriptionTextPosition(x: CGFloat(10000), y: CGFloat(100000))
+        let xvalDataSet = LineChartDataSet(yVals: dataEntries, label: "") //using the array of ChartDataEntry, LineChartDataSet object is created
+        let xvalData = LineChartData(xVals: xval, dataSet: xvalDataSet) //by merging the x-values and y-values into one, LineChartData object is created
+        graphView.data = xvalData //the LineChartData is set as the data of graphView
+        graphView.data?.setValueFont(UIFont(name:"Helvetica Neuve", size: 12)) //this sets the font of the displayed y-values
+        graphView.setDescriptionTextPosition(x: CGFloat(10000), y: CGFloat(100000)) //this moves the description text label of the graph to be placed out of the graphView
      
         graphView2.data = xvalData
         graphView2.data?.setValueFont(UIFont(name:"Helvetica Neuve", size: 12))
         graphView2.setDescriptionTextPosition(x: CGFloat(10000), y: CGFloat(100000))
         
-        for (var i = 0; i < 12; i++) {
+        for (var i = 0; i < 12; i++) { //the x-values and y-values are set to attributes xValues and yValues so that the coordinates can be transferred between PauseViewController and MCGViewController
           
             xValues.insert(xval[i], atIndex: i)
             yValues.insert(yval[i], atIndex: i)
@@ -266,9 +266,9 @@ class MultipleChoice2ViewController: UIViewController {
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) { //this method brings up either pause screen or end screen depending on the identifier
         
-        if(segue.identifier == "pauseMCG") {
+        if(segue.identifier == "pauseMCG") { //if the identifier is pauseMCG, all output values (values on-screen) and the score is stored in PauseViewController
             
             let pvc = segue.destinationViewController as! PauseViewController
             pvc.score = ttlScore
@@ -287,7 +287,7 @@ class MultipleChoice2ViewController: UIViewController {
                 pvc.yval.insert(yValues[i], atIndex: i)
             }
         }
-        else if(segue.identifier == "endMCG") {
+        else if(segue.identifier == "endMCG") { //if the identifer is endMCG, the score is set as numCorrect variable of EndViewController
             
             let evc = segue.destinationViewController as! EndViewController
             evc.numCorrect = ttlScore
