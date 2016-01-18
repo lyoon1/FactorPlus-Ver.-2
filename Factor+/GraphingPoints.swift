@@ -52,9 +52,7 @@ class GraphingPoints{ //Start of class GraphingPoints
             {
                 placeholderMax = y
             }
-            
-            //var quadraticResult = quadraticFunction(x, a: a, h: h, k: k)
-            
+                        
         }
         
         //Places 2 points at the front and back of pointX array.

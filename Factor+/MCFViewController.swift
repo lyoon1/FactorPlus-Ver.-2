@@ -194,12 +194,19 @@ class MultipleChoiceViewController: UIViewController {
                         choice[i] = "("+formatter.getKAns(k)+"x"+formatter.getRAns(formatter.r)+")("+formatter.getJAns(j)+"x"+formatter.getSAns(formatter.s)+")"
                     }
                     
-                    //if the second index is being filled
-                    if (i == 1) {
+                    /* If the multiple choice answer is completely different from the correct answer, it is compared to the rest of the
+                    * multiple choice answers in the choice array
+                    * This is done through the following for loop
+                    * If a single element in the choice array matches tempAns, the multiple choice answer will be erased and the i counter
+                    * will decrement to prevent the wasting of a turn
+                    *
+                    * Otherwise, the multiple choice answer will be added to the choice array
+                    */
+                    for (var checkAnyAns: Int = 0; checkAnyAns < i; checkAnyAns++) {
                         
-                        //check to see that it doesn't equal the 0th index
+                        //check to see that it doesn't equal the previous indexes
                         //this is to prevent multiple choices displaying the same answer
-                        if(choice[i] == choice[0]) {
+                        if (choice[i] == choice[checkAnyAns]){
                             
                             //if so remove that and blank it
                             choice.removeAtIndex(i)
@@ -208,29 +215,8 @@ class MultipleChoiceViewController: UIViewController {
                                 //i increments each time the forloop ends
                             
                         } //end of 'if' statement
-                    }
-                    //same logic as above
-                    else if (i == 2) {
                         
-                        //this time check 0th and 1st index
-                        if(choice[i] == choice[0] || choice[i] == choice[1]) {
-                            
-                            choice.removeAtIndex(i)
-                            choice.insert("", atIndex: i)
-                            i--
-                        } //end of 'if' statement
-                    }
-                    //same logic as above
-                    else if (i == 3) {
-                        
-                        //check all but the 3rd index
-                        if(choice[i] == choice[0] || choice[i] == choice[1] || choice[i] == choice[2]) {
-                            
-                            choice.removeAtIndex(i)
-                            choice.insert("", atIndex: i)
-                            i--
-                        } //end of 'if' statement
-                    } //end of the duplicate check 'else if' statements
+                    } //end of forloop for duplicate check
                     
                 } //end of the blank check 'if' statement
             
