@@ -78,18 +78,6 @@ class PauseViewController: UIViewController {
         {
             performSegueWithIdentifier("Continue UIG", sender: self)
         }
-        else if(type == "Multiple Choice Trig")
-        {
-            performSegueWithIdentifier("Continue MCT", sender: self)
-        }
-        else if(type == "User Input Right Triangle")
-        {
-            performSegueWithIdentifier("Continue UIR", sender: self)
-        }
-        else if(type == "User Input Sine Cosine")
-        {
-            performSegueWithIdentifier("Continue UISC", sender: self)
-        }
     }
     
     override func viewDidLoad() {
@@ -209,27 +197,6 @@ class PauseViewController: UIViewController {
                 uigvc.graphPoint.insert(graphPoint[0], atIndex: 0)
             }
             
-        }
-            
-        //The codes below are not part of the ICS4U project
-        //they will be used when(if) Trigonometry gets implemented
-        else if(segue.identifier == "Continue MCT")
-        {
-            let mctvc = segue.destinationViewController as! MCTViewController
-            mctvc.numQuestions = numQuestion
-            mctvc.ttlScore = score
-        }
-        else if(segue.identifier == "Continue UIR")
-        {
-            let uirvc = segue.destinationViewController as! UIRViewController
-            uirvc.ttlScore = score
-            uirvc.numQuestions = numQuestion
-        }
-        else if(segue.identifier == "Continue UISC")
-        {
-            let uiscvc = segue.destinationViewController as! UISCViewController
-            uiscvc.numQuestions = numQuestion
-            uiscvc.ttlScore = score
         }
     }
 }

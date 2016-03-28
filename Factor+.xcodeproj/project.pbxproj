@@ -16,16 +16,12 @@
 		6AA250DF1BE83FB500633713 /* PauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA250DE1BE83FB500633713 /* PauseViewController.swift */; };
 		6AAAEE171BE032AE00104386 /* UIFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAAEE161BE032AE00104386 /* UIFViewController.swift */; };
 		6AAD16131BEADCE900097C7A /* UIGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD16121BEADCE900097C7A /* UIGViewController.swift */; };
-		6AAD16151BEAE0CC00097C7A /* MCTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD16141BEAE0CC00097C7A /* MCTViewController.swift */; };
-		6AAD16171BEAE11700097C7A /* UIRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD16161BEAE11700097C7A /* UIRViewController.swift */; };
-		6AAD16191BEAE12100097C7A /* UISCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD16181BEAE12100097C7A /* UISCViewController.swift */; };
 		6AEF920D1BDEF25A007F8E5E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEF920C1BDEF25A007F8E5E /* MainViewController.swift */; };
 		6AEF920F1BDEF954007F8E5E /* OptionsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEF920E1BDEF954007F8E5E /* OptionsCollectionViewCell.swift */; };
 		7705C7531C3C21360086F4FC /* HelpTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7705C7521C3C21360086F4FC /* HelpTwoViewController.swift */; };
 		77364D361C15ED330078D164 /* HelpCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77364D351C15ED320078D164 /* HelpCollectionViewCell.swift */; };
 		7756CD531C3EC8380038359B /* MCFTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7756CD521C3EC8380038359B /* MCFTViewController.swift */; };
 		775DF07E1BECF55C0060FE50 /* Quadratic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775DF07D1BECF55C0060FE50 /* Quadratic.swift */; };
-		775DF0801BECF5DF0060FE50 /* Trigonometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775DF07F1BECF5DF0060FE50 /* Trigonometry.swift */; };
 		7789D8A51BDA76AA00A0619F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7789D8A41BDA76AA00A0619F /* AppDelegate.swift */; };
 		7789D8AA1BDA76AA00A0619F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7789D8A81BDA76AA00A0619F /* Main.storyboard */; };
 		7789D8AF1BDA76AA00A0619F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7789D8AD1BDA76AA00A0619F /* LaunchScreen.storyboard */; };
@@ -110,16 +106,12 @@
 		6AA250DE1BE83FB500633713 /* PauseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PauseViewController.swift; sourceTree = "<group>"; };
 		6AAAEE161BE032AE00104386 /* UIFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFViewController.swift; sourceTree = "<group>"; };
 		6AAD16121BEADCE900097C7A /* UIGViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIGViewController.swift; sourceTree = "<group>"; };
-		6AAD16141BEAE0CC00097C7A /* MCTViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCTViewController.swift; sourceTree = "<group>"; };
-		6AAD16161BEAE11700097C7A /* UIRViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIRViewController.swift; sourceTree = "<group>"; };
-		6AAD16181BEAE12100097C7A /* UISCViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISCViewController.swift; sourceTree = "<group>"; };
 		6AEF920C1BDEF25A007F8E5E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		6AEF920E1BDEF954007F8E5E /* OptionsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsCollectionViewCell.swift; sourceTree = "<group>"; };
 		7705C7521C3C21360086F4FC /* HelpTwoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpTwoViewController.swift; sourceTree = "<group>"; };
 		77364D351C15ED320078D164 /* HelpCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpCollectionViewCell.swift; sourceTree = "<group>"; };
 		7756CD521C3EC8380038359B /* MCFTViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCFTViewController.swift; sourceTree = "<group>"; };
 		775DF07D1BECF55C0060FE50 /* Quadratic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quadratic.swift; sourceTree = "<group>"; };
-		775DF07F1BECF5DF0060FE50 /* Trigonometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trigonometry.swift; sourceTree = "<group>"; };
 		7789D8A11BDA76AA00A0619F /* Factor+.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Factor+.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7789D8A41BDA76AA00A0619F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7789D8A91BDA76AA00A0619F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -172,7 +164,6 @@
 				6A9A82D01BE26ACE00572417 /* MCFViewController.swift */,
 				7756CD521C3EC8380038359B /* MCFTViewController.swift */,
 				6A7F37631BE9109800812797 /* MCGViewController.swift */,
-				6AAD16141BEAE0CC00097C7A /* MCTViewController.swift */,
 			);
 			name = "Multiple Choice View Controllers";
 			sourceTree = "<group>";
@@ -191,8 +182,6 @@
 			children = (
 				6AAAEE161BE032AE00104386 /* UIFViewController.swift */,
 				6AAD16121BEADCE900097C7A /* UIGViewController.swift */,
-				6AAD16161BEAE11700097C7A /* UIRViewController.swift */,
-				6AAD16181BEAE12100097C7A /* UISCViewController.swift */,
 			);
 			name = "User Input View Controllers";
 			sourceTree = "<group>";
@@ -223,7 +212,6 @@
 			children = (
 				77AE785B1BF23A910039B595 /* MultipleC.swift */,
 				775DF07D1BECF55C0060FE50 /* Quadratic.swift */,
-				775DF07F1BECF5DF0060FE50 /* Trigonometry.swift */,
 				7789D8A41BDA76AA00A0619F /* AppDelegate.swift */,
 				77D356BB1C1646BF006251A8 /* GraphingPoints.swift */,
 				77D356BC1C1646BF006251A8 /* MultipleCGraph.swift */,
@@ -454,14 +442,10 @@
 				6AAAEE171BE032AE00104386 /* UIFViewController.swift in Sources */,
 				7705C7531C3C21360086F4FC /* HelpTwoViewController.swift in Sources */,
 				6A72DFF01BEBA87D0043116E /* EndViewController.swift in Sources */,
-				6AAD16171BEAE11700097C7A /* UIRViewController.swift in Sources */,
-				775DF0801BECF5DF0060FE50 /* Trigonometry.swift in Sources */,
 				775DF07E1BECF55C0060FE50 /* Quadratic.swift in Sources */,
 				6AEF920D1BDEF25A007F8E5E /* MainViewController.swift in Sources */,
 				6AAD16131BEADCE900097C7A /* UIGViewController.swift in Sources */,
 				6A9A82D11BE26ACE00572417 /* MCFViewController.swift in Sources */,
-				6AAD16191BEAE12100097C7A /* UISCViewController.swift in Sources */,
-				6AAD16151BEAE0CC00097C7A /* MCTViewController.swift in Sources */,
 				6A7F37641BE9109800812797 /* MCGViewController.swift in Sources */,
 				6A8211A81BE7A6AD00B05349 /* CreditsViewController.swift in Sources */,
 				77D356BF1C1646BF006251A8 /* MultipleCGraph.swift in Sources */,

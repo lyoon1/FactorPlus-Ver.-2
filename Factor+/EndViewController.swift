@@ -125,21 +125,7 @@ class EndViewController: UIViewController {
         {
             performSegueWithIdentifier("restartUIG", sender: self)
         }
-            
-        //The codes below are not part of the ICS4U project
-        //they will be used when(if) Trigonometry gets implemented
-        else if(type == "Multiple Choice Trig")
-        {
-            performSegueWithIdentifier("restartMCT", sender: self)
-        }
-        else if(type == "User Input Right Triangle")
-        {
-            performSegueWithIdentifier("restartUIR", sender: self)
-        }
-        else if(type == "User Input Sine Cosine")
-        {
-            performSegueWithIdentifier("restartUISC", sender: self)
-        }
+     
     }
     
     //Runs when Menu button is clicked
