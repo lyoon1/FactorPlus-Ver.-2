@@ -41,21 +41,14 @@ class quadratic {
     var factoringType: Int  //is it basic or advanced factoring?
     
     //the question is generated in the init
-    init (fromUI: Bool, numCorrect: Int) {
+    init (numCorrect: Int) {
         
         k = Int(arc4random_uniform(5) + 1)  //random integer from 1 ~ 5
         j = Int(arc4random_uniform(5) + 1)  //random integer from 1 ~ 5
         factorOne = Int(arc4random_uniform(19) + 1) - 10   //random Integer from -9 ~ 9
         factorTwo = Int(arc4random_uniform(19) + 1) - 10   //random Integer from -9 ~ 9
   
-        //is the game mode User Input?
-        if (fromUI == true) {
-            
-            //the User Input Factoring mode doesn't support the
-            //advanced factoring yet
-            factoringType = 1
-        }
-        else if (numCorrect >= 5) {
+        if (numCorrect >= 5) {
             
             //all questions will become advanced after 5 correct answers
             factoringType = 2
@@ -73,6 +66,9 @@ class quadratic {
             a = 1
             b = (factorOne * -1) + (factorTwo * -1) //represents the coefficient of x
             c = (factorOne * -1) * (factorTwo * -1) //represents the constant value
+            
+            k = 1
+            j = 1
             
             signOne = ""    //stores whether x is negative or positive
             signTwo = ""    //stores whether the constant is negative or positive

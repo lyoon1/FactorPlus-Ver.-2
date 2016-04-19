@@ -98,7 +98,7 @@ class MultipleChoiceViewController: UIViewController {
     //this func may change in the future to accommodate for advanced factoring where a > 1
     func makeQuestion() {
 
-        var quadraticRelation = quadratic(fromUI: false, numCorrect: numCorrect) //the quadratic object, which generates a quadratic relation
+        var quadraticRelation = quadratic(numCorrect: numCorrect) //the quadratic object, which generates a quadratic relation
 
         question = quadraticRelation.getExpression()    //use an accessor method to get the question
         

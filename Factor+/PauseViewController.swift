@@ -33,12 +33,16 @@ class PauseViewController: UIViewController {
     var currentN = Int() //current value of sliderN
     var currentA = Int() //current value of sliderA
     var currentH = Int() //current value of sliderH
-    var currentK = Int() //current value of sliderK
+    var currentK = Int() //current value of sliderK or variable k
+    var currentJ = Int() //current value of varible j
+    var currentVar = String() //current varible being modified
     var xval = [String]() //current x-value for the LineChartGraph
     var yval = [Double]() //current y-value for the LineChartGraph
     var graphPoint = [GraphingPoints]() //current graphPoint for UIGViewController
     var timeRemaining = Int()
     var timeTaken = Int()
+    var kValue = Int()
+    var jValue = Int()
     
     @IBAction func restartGame(sender: AnyObject) { //if restart button pressed, score and question number is set to zero, and restarting is set to true
         score = 0
@@ -148,9 +152,14 @@ class PauseViewController: UIViewController {
                 
                 uifvc.firstFactor = factorOne
                 uifvc.secondFactor = factorTwo
+                uifvc.kValue = kValue
+                uifvc.jValue = jValue
                 uifvc.question = question
+                uifvc.currentK = currentK
+                uifvc.currentJ = currentJ
                 uifvc.currentM = currentM
                 uifvc.currentN = currentN
+                uifvc.currentVar = currentVar
                 uifvc.fromPause = true
             }
         }
